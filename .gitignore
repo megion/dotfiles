@@ -1,0 +1,54 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+mybuild/*.o
+mybuild/*.d
+mybuild/primer
+mybuild/test_runner
+build
+
+# Precompiled Headers
+*.gch
+*.pch
+*.d
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.seed
+*.pid
+*.gz
+*.md.html
+*.iml
+
+.settings
+.idea
+.project
+.cproject
+*.swp
+*~
+
+lvq_pak-3.1/*.o
+som_pak-3.1/*.o
+
+
+
+

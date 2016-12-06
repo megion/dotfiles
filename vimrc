@@ -144,6 +144,7 @@ Plugin 'sjl/badwolf'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
