@@ -125,8 +125,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Add plugins here
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
-Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
-Plugin 'dracula/vim'
+"Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
+"Plugin 'dracula/vim'
 "Plugin 'taglist.vim' " ctags
 "Plugin 'snippetsEmu' " snippets
 "Plugin 'project.tar.gz'
@@ -136,14 +136,14 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdtree-project-plugin'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'romainl/Apprentice'
+"Plugin 'romainl/Apprentice'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'KeitaNakamura/neodark.vim'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'sjl/badwolf'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'xolox/vim-session'
-Plugin 'xolox/vim-misc'
+"Plugin 'KeitaNakamura/neodark.vim'
+"Plugin 'junegunn/seoul256.vim'
+"Plugin 'sjl/badwolf'
+"Plugin 'jonathanfilip/vim-lucius'
+"Plugin 'xolox/vim-session'
+"Plugin 'xolox/vim-misc'
 Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
@@ -164,8 +164,8 @@ syntax enable
 
 "colorscheme gruvbox
 set background=dark    " Setting dark mode
-let g:solarized_termcolors=256
-colorscheme gruvbox 
+"let g:solarized_termcolors=256
+colorscheme solarized "gruvbox 
 set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 let g:ackhighlight = 1
