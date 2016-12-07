@@ -166,6 +166,10 @@ syntax enable
 set background=dark    " Setting dark mode
 let g:solarized_termcolors=256
 colorscheme gruvbox 
+set colorcolumn=120
+highlight ColorColumn ctermbg=darkgray
+let g:ackhighlight = 1
+au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
 " open buf explorer
 " default key: <leader>be
@@ -181,6 +185,14 @@ vnoremap <F4> :tabnew<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 inoremap <F3> :NERDTreeToggle<CR>
 vnoremap <F3> :NERDTreeToggle<CR>
+
+" search current word
+noremap <Leader>a :Ack <cword><cr>
+
+" toggle highlight search
+nnoremap <F2> :set hlsearch!<CR>
+inoremap <F2> :set hlsearch!<CR>
+vnoremap <F2> :set hlsearch!<CR>
 
 " Read additional .vimrc file in current directory
 set exrc

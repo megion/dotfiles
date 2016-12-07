@@ -43,6 +43,7 @@ dw Remove word
 
 y Copy (yank)
 yy Copy line
+yw Yank word
 
 p Insert after current cursor position
 P Insert before cuposition
@@ -106,6 +107,11 @@ ctrl-w F Open file in new window
 ===========NERDtree
 cd change CWD to selected tree node 
 shift-t change CWD to selected node and open in tabnew
+i Open file in horizontal split window
+I Toggle hidden file
+s Open file in vertical split window
+m Show menu
+R refresh tree
 :NERDTreeProjectSave <name>
 :NERDTreeProjectLoad <name>
 :NERDTreeProjectLoadFromCWD
@@ -116,3 +122,12 @@ prerix + % split by horizontal
 prefix ctrl+up,down,left,right resize current pane
 prefix + } swap current pane whith next pane ('{' prev pane)
 prefix + up,down,left,right Change pane
+
+========== Ack
+:Ack ctrl+rw Search word under cursor
+
+========== Ack quickfix window
+o Open file 
+go To preview file, stay focus in quickfix
+t Open in new tab
+T Open in new tab without move it
