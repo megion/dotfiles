@@ -125,7 +125,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Add plugins here
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
-"Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
+Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
 "Plugin 'dracula/vim'
 "Plugin 'taglist.vim' " ctags
 "Plugin 'snippetsEmu' " snippets
