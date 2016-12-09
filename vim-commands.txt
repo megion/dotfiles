@@ -116,6 +116,9 @@ R refresh tree
 :NERDTreeProjectLoad <name>
 :NERDTreeProjectLoadFromCWD
 
+=========== NERDcommenter
+[count]<leader>c<space> Toggle comment uncomment lines 
+
 =========== tmux
 prefix + " split by vertical
 prerix + % split by horizontal
