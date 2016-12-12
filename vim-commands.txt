@@ -48,6 +48,9 @@ yw Yank word
 p Insert after current cursor position
 P Insert before cuposition
 
+i<space><esc> Insert space before cursor
+a<space><esc> Insert space after cursor
+
 r Replace current symbol
 R Replace consecutive symbols
 s Remove current symbol and input to insertion mode
@@ -128,6 +131,7 @@ prefix + up,down,left,right Change pane
 
 ========== Ack
 :Ack ctrl+rw Search word under cursor
+:s%/foo/bar/gc Find 'foo' and replace on 'bar' with confirmation
 
 ========== Ack quickfix window
 o Open file 
