@@ -138,3 +138,9 @@ o Open file
 go To preview file, stay focus in quickfix
 t Open in new tab
 T Open in new tab without move it
+
+========== Compilation
+:make Build code
+:cope Open window compiler output
+:cn :cp Go to next,prev compiler error
+
