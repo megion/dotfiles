@@ -149,7 +149,7 @@ set background=dark    " Setting dark mode
 "let g:solarized_termcolors=256
 colorscheme solarized "gruvbox 
 set colorcolumn=120
-highlight ColorColumn ctermbg=darkgray
+"highlight ColorColumn ctermbg=darkgray
 let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
@@ -160,21 +160,19 @@ au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
 " open new tab
 nnoremap <F4> :tabnew<CR>
-inoremap <F4> :tabnew<CR>
-vnoremap <F4> :tabnew<CR>
 
 " open nerdtree
 nnoremap <F3> :NERDTreeToggle<CR>
-inoremap <F3> :NERDTreeToggle<CR>
-vnoremap <F3> :NERDTreeToggle<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>
 
 " toggle highlight search
 nnoremap <F2> :set hlsearch!<CR>
-inoremap <F2> :set hlsearch!<CR>
-vnoremap <F2> :set hlsearch!<CR>
+
+" reload all buffers
+nnoremap <F12> :checktime<CR>
+set autoread
 
 " Read additional .vimrc file in current directory
 set exrc

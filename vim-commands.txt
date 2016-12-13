@@ -72,6 +72,7 @@ gD Go to global decalartion
 :b 1 Select buffer 1
 :ls Show list buffers
 :bd 1 Remove buffer 1
+:bufdo e Update all buffers
 
 =========== Windows
 :new Split window
