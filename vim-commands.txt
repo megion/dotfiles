@@ -27,6 +27,9 @@ ma Create bookmark with name 'a'
 ctrl-o Move cursor to back
 ctrl-i Move cursor to next
 
+gg Go to beginnig of file
+G Go to end file
+
 ========== Code
 :ab sout std::cout<< [Create abbreviation for 'sout']
 ~ Conver text to upper case
@@ -44,6 +47,7 @@ dw Remove word
 y Copy (yank)
 yy Copy line
 yw Yank word
+yaw Yank word include leading and traling whitespace
 
 p Insert after current cursor position
 P Insert before cuposition
@@ -93,6 +97,13 @@ n Go to next finded word
 N Go to back finded word
 shift * Search current word in file
 
+=========== Search and replace the word under the cursor
+1) Put the cursor on foo.
+2) Press * to search for the next occurrence.
+3) Type ciw (change inner word) then bar then press Escape.
+4) Press n (move to next occurrence) then . (repeat change).
+5) Repeat last step. 
+
 =========== Tabs
 :tabnew Open new tab
 gt Go to next tab
@@ -107,6 +118,7 @@ ctrl-w F Open file in new window
 :bf Go to back after 'gf' command
 :Vex Open file manager in vertical window
 :Sex Open file manager in horizontal window 
+[I show lines with current word on cursor
 
 ===========NERDtree
 cd change CWD to selected tree node 
