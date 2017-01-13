@@ -48,12 +48,10 @@ y Copy (yank)
 yy Copy line
 yw Yank word
 yaw Yank word include leading and traling whitespace
+yiw Copy current word (excluding surround white space)
 
 p Insert after current cursor position
 P Insert before cuposition
-
-i<space><esc> Insert space before cursor
-a<space><esc> Insert space after cursor
 
 r Replace current symbol
 R Replace consecutive symbols
@@ -156,4 +154,11 @@ T Open in new tab without move it
 :make Build code
 :cope Open window compiler output
 :cn :cp Go to next,prev compiler error
+
+========== Replace text under cursor
+Put the cursor on foo.
+Press * to search for the next occurrence.
+Type ciw (change inner word) then bar then press Escape.
+Press n (move to next occurrence) then . (repeat change).
+Repeat last step.
 
