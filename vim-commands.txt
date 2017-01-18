@@ -88,6 +88,8 @@ ctrl-w r Rotate window
 ctrl-w K Move current window top
 ctrl-w _ Maximaze current window
 ctrl-w = Equal windows size
+ctrl-w - or + Vertical resize current window 
+ctrl-w < or > Horizontal resize current window 
 
 =========== Search
 /step Search 'step' word
