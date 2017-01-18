@@ -75,6 +75,8 @@ gD Go to global decalartion
 :ls Show list buffers
 :bd 1 Remove buffer 1
 :bufdo e Update all buffers
+:edit %:h Open buffer up level (for example may be used go up level when
+navigation by object tree (fugitive git plugin)
 
 =========== Windows
 :new Split window

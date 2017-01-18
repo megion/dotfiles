@@ -106,26 +106,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Add plugins here
-Plugin 'morhetz/gruvbox' " gruvbox colorscheme
-Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
-"Plugin 'dracula/vim'
+"Plugin 'morhetz/gruvbox' " gruvbox colorscheme
+"Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
 "Plugin 'taglist.vim' " ctags
 "Plugin 'snippetsEmu' " snippets
-"Plugin 'project.tar.gz'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'ternjs/tern_for_vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdtree-project-plugin'
-Plugin 'jlanzarotta/bufexplorer'
-"Plugin 'romainl/Apprentice'
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'KeitaNakamura/neodark.vim'
-"Plugin 'junegunn/seoul256.vim'
-"Plugin 'sjl/badwolf'
-"Plugin 'jonathanfilip/vim-lucius'
-"Plugin 'xolox/vim-session'
-"Plugin 'xolox/vim-misc'
 Plugin 'mileszs/ack.vim'
 "Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
@@ -148,17 +138,12 @@ syntax enable
 
 "colorscheme gruvbox
 set background=dark    " Setting dark mode
-"let g:solarized_termcolors=256
 colorscheme solarized "gruvbox 
+call togglebg#map("<F9>")
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
 let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
-
-" open buf explorer
-" default key: <leader>be
-" when bufexplorer opend, select buf and type 'o' for open
-"nnoremap <silent> <F5> :BufExplorer<CR>
 
 " open new tab
 nnoremap <F4> :tabnew<CR>
@@ -175,6 +160,10 @@ nnoremap <F2> :set hlsearch!<CR>
 " reload all buffers
 nnoremap <F12> :checktime<CR>
 set autoread
+
+" fugitive git plugin
+" delete fugitive buffer automatical
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Read additional .vimrc file in current directory
 set exrc
