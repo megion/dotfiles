@@ -159,6 +159,8 @@ nnoremap <F2> :set hlsearch!<CR>
 
 " reload all buffers
 nnoremap <F12> :checktime<CR>
+
+nnoremap <F5> :make!<CR>
 set autoread
 
 " fugitive git plugin
