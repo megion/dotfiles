@@ -126,6 +126,10 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
+" tells eclim to register its completion to vim's omni complete which
+" YouCompleteMe will automatically detect
+let g:EclimCompletionMethod = 'omnifunc'
+
 set ignorecase
 set smartcase
 set smartindent
