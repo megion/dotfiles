@@ -157,6 +157,8 @@ nnoremap <F3> :NERDTreeToggle<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>
+" eclim java search 
+noremap <Leader>z :JavaSearchContext<cr>
 
 " toggle highlight search
 nnoremap <F2> :set hlsearch!<CR>
