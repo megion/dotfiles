@@ -9,5 +9,7 @@ osgi.instance.area.default=@user.home/workspaces/eclim1
 nailgun.server.port=9091
 
 # increase heap size
--Xmx256M
+-Xmx4048m
+
+#-consoleLog
 

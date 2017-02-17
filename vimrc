@@ -158,7 +158,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 " search current word
 noremap <Leader>a :Ack <cword><cr>
 " eclim java search 
-noremap <Leader>z :JavaSearchContext<cr>
+"noremap <Leader>z :JavaSearchContext<cr>
 
 " toggle highlight search
 nnoremap <F2> :set hlsearch!<CR>
@@ -167,6 +167,9 @@ nnoremap <F2> :set hlsearch!<CR>
 nnoremap <F12> :checktime<CR>
 
 nnoremap <F5> :make!<CR>
+
+nnoremap <leader>z :YcmCompleter GoTo<CR>
+
 set autoread
 
 " fugitive git plugin
