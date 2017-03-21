@@ -81,6 +81,7 @@ navigation by object tree (fugitive git plugin)
 =========== Windows
 :new Split window
 :vne Split new vertical window
+ctrl-w x Exchange current window with next window
 ctrl-w<h,j,k,l> Switch window
 ctrl-w ctrl-w Cicle switch window
 :sp Split current window for same buffer
