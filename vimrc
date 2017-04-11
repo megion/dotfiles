@@ -191,3 +191,6 @@ set secure
 set diffopt+=iwhite
 set diffexpr=""
 
+" use only for vim-X11
+set clipboard=unnamedplus
+
