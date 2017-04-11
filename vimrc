@@ -120,6 +120,7 @@ Plugin 'mileszs/ack.vim'
 "Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
+Plugin 'Chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -159,7 +160,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 " search current word
 noremap <Leader>a :Ack <cword><cr>
 " eclim java search 
-"noremap <Leader>z :JavaSearchContext<cr>
+"noremap <Leader>b :JavaSearchContext<cr>
 
 " toggle highlight search
 nnoremap <F2> :set hlsearch!<CR>
@@ -171,6 +172,11 @@ nnoremap <F5> :make!<CR>
 
 nnoremap <leader>z :YcmCompleter GoTo<CR>
 
+nnoremap <F6> :Autoformat<CR>
+let g:autoformat_verbosemode=1
+let g:formatdef_html_custom='"html-beautify"'
+let g:formatters_html = ['html_custom']
+
 set autoread
 
 " fugitive git plugin
@@ -181,4 +187,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 set exrc
 set secure
 
+" vimdiff - hide break lines diff
+set diffopt+=iwhite
+set diffexpr=""
 
