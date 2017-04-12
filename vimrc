@@ -174,7 +174,7 @@ nnoremap <leader>z :YcmCompleter GoTo<CR>
 
 nnoremap <F6> :Autoformat<CR>
 let g:autoformat_verbosemode=1
-let g:formatdef_html_custom='"html-beautify"'
+let g:formatdef_html_custom='"html-beautify -w 120"'
 let g:formatters_html = ['html_custom']
 
 set autoread
