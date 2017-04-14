@@ -167,3 +167,13 @@ Type ciw (change inner word) then bar then press Escape.
 Press n (move to next occurrence) then . (repeat change).
 Repeat last step.
 
+========== Folding
+zo Open current fold
+zO Recursive open current fold
+zc Close current fold
+zC Recursively close current fold
+za Toggle current fold
+zA Recursively toggle current fold
+zM Close all folds
+zR Open all folds
+
