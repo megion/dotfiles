@@ -122,6 +122,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
+"Plugin 'LucHermitte/lh-vim-lib'
+"Plugin 'LucHermitte/VimFold4C'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -198,10 +200,11 @@ set clipboard=unnamedplus
 " code fold
 let g:javascript_plugin_flow = 1
 set foldmethod=syntax
+set foldlevelstart=3
 "set foldlevelstart=0
 "let javaScript_fold=1
 "inoremap <F7> <C-O>za
 "nnoremap <F7> za
 "onoremap <F7> <C-C>za
 "vnoremap <F7> zf
-
+let c_no_comment_fold = 1
