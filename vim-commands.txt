@@ -67,6 +67,7 @@ gd Go to variable declaration
 gD Go to global decalartion
 [I Show all lines where exist word under cursor
 :%!python -m json.tool - Format json current file
+> Indent selected text to right by one level
 
 =========== Buffers (views)
 :e file1.txt Open buffer 1
@@ -93,6 +94,7 @@ ctrl-w _ Maximaze current window
 ctrl-w = Equal windows size
 ctrl-w - or + Vertical resize current window 
 ctrl-w < or > Horizontal resize current window 
+:vertical resize +10
 
 =========== Search
 /step Search 'step' word
@@ -166,14 +168,4 @@ Press * to search for the next occurrence.
 Type ciw (change inner word) then bar then press Escape.
 Press n (move to next occurrence) then . (repeat change).
 Repeat last step.
-
-========== Folding
-zo Open current fold
-zO Recursive open current fold
-zc Close current fold
-zC Recursively close current fold
-za Toggle current fold
-zA Recursively toggle current fold
-zM Close all folds
-zR Open all folds
 

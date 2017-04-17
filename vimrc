@@ -122,8 +122,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'LucHermitte/lh-vim-lib'
-"Plugin 'LucHermitte/VimFold4C'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -174,11 +172,15 @@ nnoremap <F12> :checktime<CR>
 nnoremap <F5> :make!<CR>
 
 nnoremap <leader>z :YcmCompleter GoTo<CR>
+nnoremap <leader>t :vertical resize +10<CR>
 
 nnoremap <F6> :Autoformat<CR>
+vnoremap <F6> :Autoformat<CR>
 let g:autoformat_verbosemode=1
 let g:formatdef_html_custom='"html-beautify -w 120"'
 let g:formatters_html = ['html_custom']
+"nnoremap <leader>gq :%!html-beautify -w 40<CR>
+vnoremap <leader>gq :!html-beautify -w 40<CR>
 
 set autoread
 
@@ -200,11 +202,9 @@ set clipboard=unnamedplus
 " code fold
 let g:javascript_plugin_flow = 1
 set foldmethod=syntax
-set foldlevelstart=3
+set foldlevelstart=20
 "set foldlevelstart=0
 "let javaScript_fold=1
-"inoremap <F7> <C-O>za
-"nnoremap <F7> za
-"onoremap <F7> <C-C>za
-"vnoremap <F7> zf
 let c_no_comment_fold = 1
+
+
