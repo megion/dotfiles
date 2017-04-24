@@ -109,15 +109,12 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 "Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
 "Plugin 'taglist.vim' " ctags
-"Plugin 'snippetsEmu' " snippets
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'ternjs/tern_for_vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdtree-project-plugin'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mileszs/ack.vim'
-"Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
@@ -177,7 +174,7 @@ nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <F6> :Autoformat<CR>
 vnoremap <F6> :Autoformat<CR>
 let g:autoformat_verbosemode=1
-let g:formatdef_html_custom='"html-beautify -w 120"'
+let g:formatdef_html_custom='"html-beautify -w 40"'
 let g:formatters_html = ['html_custom']
 "nnoremap <leader>gq :%!html-beautify -w 40<CR>
 vnoremap <leader>gq :!html-beautify -w 40<CR>
@@ -206,5 +203,4 @@ set foldlevelstart=20
 "set foldlevelstart=0
 "let javaScript_fold=1
 let c_no_comment_fold = 1
-
 
