@@ -131,6 +131,7 @@ shift-t change CWD to selected node and open in tabnew
 i Open file in horizontal split window
 I Toggle hidden file
 s Open file in vertical split window
+go Open selected file, but leave cursor in the NERDTree
 m Show menu
 R refresh tree
 :NERDTreeProjectSave <name>
