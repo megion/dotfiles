@@ -117,6 +117,7 @@ gT Go to prev tab
 
 ========== Navigations
 gf Go to file on current cursor position
+123G go to file line number
 gF Open file in same window
 ctrl-w gF Open file in new tab
 ctrl-w F Open file in new window

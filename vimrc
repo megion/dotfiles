@@ -131,13 +131,16 @@ filetype plugin indent on    " required
 let g:EclimCompletionMethod = 'omnifunc'
 
 set ignorecase
-set smartcase
-set smartindent
+"set smartcase
+"set smartindent
+let g:autoindent=1 
+"set autoindent
 set number
 set tabstop=4 " count of space which show tab
 set softtabstop=4 " count of space which show tab when it added
 set shiftwidth=4 " count of space add by commands '>>' and '<<'
-set noexpandtab
+"set noexpandtab
+let g:expandtab=1
 syntax enable
 
 "colorscheme gruvbox
