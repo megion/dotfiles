@@ -171,3 +171,5 @@ Type ciw (change inner word) then bar then press Escape.
 Press n (move to next occurrence) then . (repeat change).
 Repeat last step.
 
+==========
+sudo -E vim README.txt

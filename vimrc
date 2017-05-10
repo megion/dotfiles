@@ -124,23 +124,12 @@ Plugin 'pangloss/vim-javascript'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 
 " tells eclim to register its completion to vim's omni complete which
 " YouCompleteMe will automatically detect
 let g:EclimCompletionMethod = 'omnifunc'
 
-set ignorecase
-"set smartcase
-"set smartindent
-let g:autoindent=1 
-"set autoindent
-set number
-set tabstop=4 " count of space which show tab
-set softtabstop=4 " count of space which show tab when it added
-set shiftwidth=4 " count of space add by commands '>>' and '<<'
-"set noexpandtab
-let g:expandtab=1
 syntax enable
 
 "colorscheme gruvbox
@@ -206,4 +195,14 @@ set foldlevelstart=20
 "set foldlevelstart=0
 "let javaScript_fold=1
 let c_no_comment_fold = 1
+
+set ignorecase
+"set smartcase
+"set smartindent
+"set autoindent
+set number
+set tabstop=4 " count of space which show tab
+set softtabstop=4 " count of space which show tab when it added
+set shiftwidth=4 " count of space add by commands '>>' and '<<'
+set expandtab
 
