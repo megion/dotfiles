@@ -119,6 +119,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mbbill/undotree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -163,6 +164,7 @@ nnoremap <F5> :make!<CR>
 nnoremap <leader>z :YcmCompleter GoTo<CR>
 nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <leader>g :vertical resize -10<CR>
+nnoremap <F7> :UndotreeToggle<CR>
 
 nnoremap <F6> :Autoformat<CR>
 vnoremap <F6> :Autoformat<CR>
