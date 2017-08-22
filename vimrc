@@ -119,7 +119,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'mbbill/undotree'
+Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
