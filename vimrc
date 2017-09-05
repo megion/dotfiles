@@ -106,7 +106,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Add plugins here
-"Plugin 'morhetz/gruvbox' " gruvbox colorscheme
+Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 "Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
 "Plugin 'taglist.vim' " ctags
 Plugin 'Valloric/YouCompleteMe'
@@ -119,7 +119,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -133,8 +133,8 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 syntax enable
 
-"colorscheme gruvbox
 set background=dark    " Setting dark mode
+"colorscheme gruvbox
 colorscheme solarized "gruvbox 
 call togglebg#map("<F9>")
 set colorcolumn=120
