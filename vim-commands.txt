@@ -172,4 +172,12 @@ Press n (move to next occurrence) then . (repeat change).
 Repeat last step.
 
 ==========
-sudo -E vim README.txt
+sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
+# start smb
+systemctl restart smb nmb
+==========
+svn commands 
+==========
+svn diff > myfile.diff
+svn merge -c 144136,144988,145102 https://myrep/branches/my-branch
+:diffupdate # update diff

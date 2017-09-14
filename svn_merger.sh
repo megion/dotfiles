@@ -15,6 +15,10 @@ MINE=${3}
 MERGED=${4}
 WCPATH=${5}
 
+THEIRS_TITLE=${THEIRS}-THEIRS
+MINE_TITLE=${MINE}-MINE
+MERGED_TITLE=${MERGED}-MERGED
+
 ##########
 echo BASE: $BASE
 echo THEIRS: $THEIRS
@@ -22,4 +26,4 @@ echo MINE: $MINE
 echo MERGED: $MERGED
 echo WCPATH: $WCPATH
 
-vimdiff $MINE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c "setl stl=MERGED%20{'$MERGED'} | wincmd W | setl stl=THEIRS%20{'$THEIRS'} | wincmd W | setl stl=MINE%20{'$MINE}"
+vimdiff $MINE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c "let &l:stl = '${MERGED_TITLE}' | wincmd W | let &l:stl = '${THEIRS_TITLE}' | wincmd W | let &l:stl = '${MINE_TITLE}'"
