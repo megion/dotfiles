@@ -175,6 +175,7 @@ Repeat last step.
 sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
 # start smb
 systemctl restart smb nmb
+systemctl restart nginx.service
 ==========
 svn commands 
 ==========

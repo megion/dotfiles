@@ -119,6 +119,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/xml.vim'
 "Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
@@ -198,6 +199,9 @@ set foldlevelstart=20
 "set foldlevelstart=0
 "let javaScript_fold=1
 let c_no_comment_fold = 1
+
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=indent
 
 set ignorecase
 "set smartcase
