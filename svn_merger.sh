@@ -26,4 +26,5 @@ echo MINE: $MINE
 echo MERGED: $MERGED
 echo WCPATH: $WCPATH
 
-vimdiff $MINE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c "let &l:stl = '${MERGED_TITLE}' | wincmd W | let &l:stl = '${THEIRS_TITLE}' | wincmd W | let &l:stl = '${MINE_TITLE}'"
+# vimx -d -> vimdiff for support X11
+vimx -d $MINE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c "let &l:stl = '${MERGED_TITLE}' | wincmd W | let &l:stl = '${THEIRS_TITLE}' | wincmd W | let &l:stl = '${MINE_TITLE}'"

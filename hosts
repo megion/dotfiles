@@ -1,0 +1,14 @@
+# 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+# ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+127.0.0.1		izadorozhny5.artgroup.local localhost
+::1		localhost6.localdomain6 localhost6
+
+127.0.0.1 sp.hcs-dev.ru
+
+95.213.229.207 pgf-ppa
+95.213.229.207 pgf-agr
+95.213.229.207 pgf-fs
+95.213.229.207 pgf-nsi
+95.213.229.207 pgf-eb
+
