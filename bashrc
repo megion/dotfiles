@@ -27,6 +27,10 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GRADLE_HOME/bin:$JAVA_HOME/bin
 
 export PATH
 
+# run init solarized color
+# git clone https://github.com/mavnn/mintty-colors-solarized.git 
+$HOME/mintty-colors-solarized/sol.dark
+
 #export SVN_EDITOR='\
 	#vim -c "4,\$y" \
 	#-c "below new" \

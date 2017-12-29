@@ -136,7 +136,11 @@ syntax enable
 
 set background=dark    " Setting dark mode
 "colorscheme gruvbox
+" for mintty-colors-solarized
+let g:solarized_termtrans=1
 colorscheme solarized "gruvbox 
+"let g:solarized_contrast = "high" 
+ 
 call togglebg#map("<F9>")
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
@@ -212,7 +216,6 @@ set tabstop=4 " count of space which show tab
 set softtabstop=4 " count of space which show tab when it added
 set shiftwidth=4 " count of space add by commands '>>' and '<<'
 set expandtab
-
 
 " copies just the filename to the clipboard
 nmap ,cs :let @+=expand("%")<CR>
