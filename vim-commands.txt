@@ -172,6 +172,8 @@ Press n (move to next occurrence) then . (repeat change).
 Repeat last step.
 
 ==========
+nginx
+==========
 cp /home/ilya/dotfiles/sp.hcs-dev.ru.conf /etc/nginx/conf.d/
 sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
 # also edit /etc/nginx/nginx.conf and /etc/hosts
@@ -179,13 +181,37 @@ sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
 # The solution is to add the ports you want to bind on to the list 
 semanage port -a -t http_port_t  -p tcp 18085
 systemctl start nginx.service
+# add permissions for nginx process read project files
+chmod +rx /home/ilya
+# if You may have Security-Enhanced Linux running, so add rule for that
+chcon -Rt httpd_sys_content_t /home/ilya/workspaces/lanit-hcs
 
-# start smb
-systemctl restart smb nmb
-systemctl restart nginx.service
 ==========
 svn commands 
 ==========
 svn diff > myfile.diff
 svn merge -c 144136,144988,145102 https://myrep/branches/my-branch
 :diffupdate # update diff
+
+===================================
+install smb
+===================================
+sudo firewall-cmd --add-service=samba --permanent
+sudo firewall-cmd --reload
+
+# smbd_anon_write 	Allow guest write
+# samba_export_all_ro 	Allow read without samba_share_t
+# samba_export_all_rw 	Allow read/write without samba_share_t 
+setsebool -P samba_enable_home_dirs on
+
+# Add user access to samba with pdbedit
+pdbedit -a ilya 
+smbpasswd -a ilya
+
+systemctl restart smb nmb
+
+===================================
+run forticlient
+===================================
+./64bit/forticlientsslvpn_cli --server ssl.dom.gosuslugi.ru:9443 --vpnuser mylogin 
+

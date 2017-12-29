@@ -213,3 +213,9 @@ set softtabstop=4 " count of space which show tab when it added
 set shiftwidth=4 " count of space add by commands '>>' and '<<'
 set expandtab
 
+
+" copies just the filename to the clipboard
+nmap ,cs :let @+=expand("%")<CR>
+" copies the filename including its full path to the clipboard
+nmap ,cl :let @+=expand("%:p")<CR>
+
