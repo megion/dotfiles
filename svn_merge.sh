@@ -3,7 +3,7 @@
 # utilites for edit svn conflicts
 # 
 # set property:
-# merge-tool-cmd = /home/ilya/dotfiles/svn_merger.sh
+# merge-tool-cmd = /home/ilya/dotfiles/svn_merge.sh
 # in file ~/.subversion/config
 ############################
 

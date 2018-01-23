@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# vimx -d -> vimdiff for support X11
+vimx -d $*
