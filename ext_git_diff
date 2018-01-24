@@ -1,2 +1,0 @@
-#!/bin/bash
-[ $# -eq 7 ] && ext_git_merge "$2" "$5"

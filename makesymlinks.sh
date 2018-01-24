@@ -8,15 +8,16 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-bindir=~/.local/bin             # bin directory
+bindir=~/bin             # bin directory
 files="vimrc tmux.conf"    # list of files/folders to symlink in homedir
 svnConfigFile="svn_config"
 
-# git config --global merge.tool ext_git_merge
-# git config --global mergetool.ext_git_merge.cmd 'ext_git_merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+# git config --global merge.conflictstyle diff3
+# git config --global merge.tool 'my-git-merge'
+# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
 # git config --global mergetool.trustExitCode false
-# git config --global diff.external ext_git_diff
-gitFiles="ext_git_diff ext_git_merge" # list of git executable files
+# git config --global diff.external my-git-diff.sh
+gitFiles="my-git-diff.sh my-git-merge.sh" # list of git executable files
 
 ##########
 
