@@ -142,7 +142,7 @@ colorscheme solarized "gruvbox
 "let g:solarized_contrast = "high" 
  
 call togglebg#map("<F9>")
-set colorcolumn=120
+set colorcolumn=80
 "highlight ColorColumn ctermbg=darkgray
 let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
