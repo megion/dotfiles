@@ -8,10 +8,17 @@
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
-bin_dir=~/bin                     # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
+bindir=~/bin             # bin directory
 files="vimrc tmux.conf bashrc"    # list of files/folders to symlink in homedir
-#bin_files="diffconflicts.sh"    
+svnConfigFile="svn_config"
+
+# git config --global merge.conflictstyle diff3
+# git config --global merge.tool 'my-git-merge'
+# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+# git config --global mergetool.trustExitCode false
+# git config --global diff.external my-git-diff.sh
+gitFiles="my-git-diff.sh my-git-merge.sh" # list of git executable files
 
 ##########
 
@@ -20,9 +27,8 @@ echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
 mkdir -p $olddir
 echo "done"
 
-# create bin_dir in homedir
-echo -n "Creating $bin_dir in ~ ..."
-mkdir -p $bin_dir
+echo -n "Creating $bindir ..."
+mkdir -p $bindir
 echo "done"
 
 # change to the dotfiles directory
@@ -34,15 +40,20 @@ echo "done"
 # then create symlinks from the homedir to any files in the 
 # ~/dotfiles directory specified in $files
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
 
-#for file in $bin_files; do
-    #echo "Creating symlink to $file in home bin directory."
-    #ln -s $dir/$file $bin_dir/$file
-#done
+# process svn config file
+mv ~/.subversion/config ~/dotfiles_old/$svnConfigFile 
+echo "Creating symlink $dir/$svnConfigFile to ~/.subversion/config"
+ln -s $dir/$svnConfigFile ~/.subversion/config
 
+# process git files 
+for file in $gitFiles; do
+    mv $bindir/$file ~/dotfiles_old/
+    echo "Creating symlink $dir/$file to $bindir/$file"
+    ln -s $dir/$file $bindir/$file
+done
 
