@@ -10,6 +10,7 @@ fi
 
 # User specific aliases and functions
 
+# set following ENV in .bash_profile file
 #export JAVA_HOME=$HOME/development/jdk1.8.0_112
 #export GRADLE_HOME=$HOME/development/gradle-2.14.1
 #export HIVE_HOME=$HOME/frameworks/apache-hive-1.2.1-bin

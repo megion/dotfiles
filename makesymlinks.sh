@@ -10,7 +10,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 bindir=~/bin             # bin directory
-files="vimrc tmux.conf bashrc"    # list of files/folders to symlink in homedir
+files="vimrc tmux.conf bashrc ackrc"    # list of files/folders to symlink in homedir
 svnConfigFile="svn_config"
 
 # git config --global merge.conflictstyle diff3
