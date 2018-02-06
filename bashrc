@@ -24,8 +24,10 @@ fi
 # git clone https://github.com/mavnn/mintty-colors-solarized.git 
 #$HOME/mintty-colors-solarized/sol.dark
 
-git config --global merge.tool vimdiff
 git config --global merge.conflictstyle diff3
-git config --global mergetool.prompt false 
+git config --global merge.tool 'my-git-merge'
+git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+git config --global mergetool.trustExitCode false 
 git config --global mergetool.keepBackup false
+git config --global diff.external my-git-diff.sh
 
