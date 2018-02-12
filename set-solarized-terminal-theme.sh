@@ -14,11 +14,26 @@
 ############################
 
 
-cd ~/dotfiles/set-solarized-terminal-theme.sh
 ########## Variables
+gnomeThemeDir=~/workspaces/configs/gnome-terminal-colors-solarized
+profile=my_solarized
+scheme=${1}
 
-cd ~/workspaces/configs/gnome-terminal-colors-solarized
-./install.sh -s dark -p my_solarized --skip-dircolors
+cd $gnomeThemeDir
+#./install.sh -s $scheme -p $profile --skip-dircolors
+
+
+case "$OSTYPE" in
+  linux*)   os="LINUX" ;;
+  darwin*)  os="OSX" ;; 
+  win*)     os="Windows" ;;
+  cygwin*)  os="Cygwin" ;;
+  bsd*)     os="BSD" ;;
+  solaris*) os="SOLARIS" ;;
+  *)        os="unknown: $OSTYPE" ;;
+esac
+
+echo $os
 
 
 
