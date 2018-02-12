@@ -32,3 +32,6 @@ git config --global mergetool.trustExitCode false
 git config --global mergetool.keepBackup false
 #git config --global diff.external my-git-diff.sh
 
+# tmux settings see https://github.com/tmux-plugins/tpm
+#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
