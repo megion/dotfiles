@@ -30,7 +30,7 @@ git config --global merge.tool 'my-git-merge'
 git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
 git config --global mergetool.trustExitCode false 
 git config --global mergetool.keepBackup false
-git config --global diff.external my-git-diff.sh
+#git config --global diff.external my-git-diff.sh
 
 # tmux settings see https://github.com/tmux-plugins/tpm
 #git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

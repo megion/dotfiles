@@ -9,7 +9,8 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-bindir=~/bin             # bin directory
+bindir=~/bin                      # bin directory
+svnConfigDir=~/.subversion/config # svn config directory
 files="vimrc tmux.conf bashrc ackrc"    # list of files/folders to symlink in homedir
 svnConfigFile="svn_config"
 
@@ -31,6 +32,10 @@ echo -n "Creating $bindir ..."
 mkdir -p $bindir
 echo "done"
 
+echo -n "Creating $svnConfigDir ..."
+mkdir -p $svnConfigDir
+echo "done"
+
 # change to the dotfiles directory
 echo -n "Changing to the $dir directory ..."
 cd $dir
@@ -46,9 +51,9 @@ for file in $files; do
 done
 
 # process svn config file
-mv ~/.subversion/config ~/dotfiles_old/$svnConfigFile 
-echo "Creating symlink $dir/$svnConfigFile to ~/.subversion/config"
-ln -s $dir/$svnConfigFile ~/.subversion/config
+mv $svnConfigDir ~/dotfiles_old/$svnConfigFile 
+echo "Creating symlink $dir/$svnConfigFile to $svnConfigDir"
+ln -s $dir/$svnConfigFile $svnConfigDir
 
 # process git files 
 for file in $gitFiles; do
