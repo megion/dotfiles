@@ -1,0 +1,13 @@
+#!/bin/bash
+############################
+#
+############################
+
+tmux set -g @colors-solarized 'light'
+~/dotfiles/set-solarized-terminal-theme.sh light >/dev/null 2>&1 
+tmux source-file ~/.tmux.conf >/dev/null 2>&1
+~/dotfiles/vim-servers-theme.sh light >/dev/null 2>&1
+  
+
+
+

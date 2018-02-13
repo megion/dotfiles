@@ -4,6 +4,9 @@
 # linux - gnome terminal
 # cygwin - mintty
 
+# Usage: ./set-solarized-terminal-theme.sh dark<light>
+
+
 # 1. Gnome termial initial steps:
 #mkdir ~/workspaces/configs
 #cd ~/workspaces/configs
@@ -19,10 +22,6 @@ gnomeThemeDir=~/workspaces/configs/gnome-terminal-colors-solarized
 profile=my_solarized
 scheme=${1}
 
-cd $gnomeThemeDir
-#./install.sh -s $scheme -p $profile --skip-dircolors
-
-
 case "$OSTYPE" in
   linux*)   os="LINUX" ;;
   darwin*)  os="OSX" ;; 
@@ -33,7 +32,18 @@ case "$OSTYPE" in
   *)        os="unknown: $OSTYPE" ;;
 esac
 
-echo $os
+echo "OS '$os'"
+
+if [ $os == "LINUX" ]; then
+	echo "use gnome theme"
+    cd $gnomeThemeDir
+    #./install.sh -h
+    ./install.sh -s $scheme -p $profile --skip-dircolors
+elif [ $os == "Cygwin" ]; then
+	echo "use Cygwin theme"
+else 
+	echo "not supported OS"
+fi
 
 
 
