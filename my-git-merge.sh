@@ -18,7 +18,7 @@ REMOTE_TITLE=${REMOTE}
 MERGED_TITLE=${MERGED}
 
 # vimx -d -> vimdiff for support X11
-vimx -d $LOCAL $BASE $REMOTE -c ":bo sp $MERGED" -c ":diffthis" -c \
+vimxs -d $LOCAL $BASE $REMOTE -c ":bo sp $MERGED" -c ":diffthis" -c \
     "let &l:stl = '${MERGED_TITLE}' \
     | wincmd W | let &l:stl = '${REMOTE_TITLE}' \
     | wincmd W | let &l:stl = '${BASE_TITLE}' \

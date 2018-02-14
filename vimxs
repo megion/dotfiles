@@ -1,0 +1,6 @@
+#!/bin/bash
+############################
+# run vimx as server for remote control
+############################
+
+vimx --servername myvim-server "${@}" 

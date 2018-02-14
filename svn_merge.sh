@@ -28,7 +28,7 @@ echo MERGED: $MERGED
 echo WCPATH: $WCPATH
 
 # vimx -d -> vimdiff for support X11
-vimx -d $MINE $BASE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c \
+vimxs -d $MINE $BASE $THEIRS -c ":bo sp $MERGED" -c ":diffthis" -c \
     "let &l:stl = '${MERGED_TITLE}' \
     | wincmd W | let &l:stl = '${THEIRS_TITLE}' \
     | wincmd W | let &l:stl = '${BASE_TITLE}' \

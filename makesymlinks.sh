@@ -1,6 +1,5 @@
 #!/bin/bash
 ############################
-# .make.sh
 # This script creates symlinks from the home directory to any desired
 # dotfiles in ~/dotfiles
 ############################
@@ -11,15 +10,19 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 bindir=~/bin                      # bin directory
 svnConfigDir=~/.subversion/config # svn config directory
-files="vimrc tmux.conf bashrc ackrc"    # list of files/folders to symlink in homedir
+files="vimrc tmux.conf bashrc ackrc" # list of files to symlink in homedir
 svnConfigFile="svn_config"
 
 # git config --global merge.conflictstyle diff3
 # git config --global merge.tool 'my-git-merge'
-# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE"\
+# "$LOCAL" "$REMOTE" "$MERGED"'
 # git config --global mergetool.trustExitCode false
 # git config --global diff.external my-git-diff.sh
-gitFiles="my-git-diff.sh my-git-merge.sh" # list of git executable files
+
+# add secure_path="......:/home/ilya/bin" by run sudo visudo
+# for view this files by sudo
+binFiles="my-git-diff.sh my-git-merge.sh vimxs" # list of executable files
 
 ##########
 
@@ -56,7 +59,7 @@ echo "Creating symlink $dir/$svnConfigFile to $svnConfigDir"
 ln -s $dir/$svnConfigFile $svnConfigDir
 
 # process git files 
-for file in $gitFiles; do
+for file in $binFiles; do
     mv $bindir/$file ~/dotfiles_old/
     echo "Creating symlink $dir/$file to $bindir/$file"
     ln -s $dir/$file $bindir/$file
