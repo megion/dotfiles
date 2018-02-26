@@ -6,15 +6,15 @@
 
 # Usage: ./set-solarized-terminal-theme.sh dark<light>
 
-
-# 1. Gnome termial initial steps:
 #mkdir ~/workspaces/configs
 #cd ~/workspaces/configs
+
+# 1. Gnome termial initial steps:
 #git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git 
 
 # 2. Mintty termial initial steps:
 # git clone https://github.com/megion/mintty-colors-solarized.git 
-# cd mintty-colors-solarized 
+# git clone https://github.com/seebi/dircolors-solarized.git
 
 ############################
 
