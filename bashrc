@@ -35,3 +35,12 @@ git config --global mergetool.keepBackup false
 # tmux settings see https://github.com/tmux-plugins/tpm
 #git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+
+## Use a long listing format ##
+alias ll='ls -la'
+
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+
