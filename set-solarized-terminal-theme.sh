@@ -22,6 +22,7 @@
 ########## Variables
 gnomeThemeDir=~/workspaces/configs/gnome-terminal-colors-solarized
 minttyThemeDir=~/workspaces/configs/mintty-colors-solarized
+dircolorsDir=~/workspaces/configs/dircolors-solarized
 profile=my_solarized
 scheme=${1}
 
@@ -43,6 +44,8 @@ elif [ $os == "Cygwin" ]; then
 	#echo "use Cygwin theme"
     cd $minttyThemeDir
     ./set-theme.sh $scheme
+    cd $dircolorsDir
+    eval "$(dircolors $dircolorsDir/dircolors.ansi-$scheme)"
 else 
 	echo "not supported OS"
 fi
