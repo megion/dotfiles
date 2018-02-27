@@ -171,6 +171,11 @@ nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <leader>g :vertical resize -10<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 
+let g:ycm_filetype_blacklist = {
+            \ 'java' : 1,
+            \ 'scala' : 1
+            \}
+
 nnoremap <F6> :Autoformat<CR>
 vnoremap <F6> :Autoformat<CR>
 let g:autoformat_verbosemode=1

@@ -215,3 +215,8 @@ run forticlient
 ===================================
 ./64bit/forticlientsslvpn_cli --server ssl.dom.gosuslugi.ru:9443 --vpnuser mylogin 
 
+==================================
+amq
+==================================
+JAVA_MAX_MEM=2048M JAVA_MAX_PERM_MEM=1024 ./bin/amq
+
