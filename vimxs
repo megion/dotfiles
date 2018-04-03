@@ -4,3 +4,4 @@
 ############################
 
 vimx --servername myvim-server "${@}" 
+exit $?
