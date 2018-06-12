@@ -17,3 +17,29 @@ git clone git://github.com/megion/dotfiles ~/dotfiles
 cd ~/dotfiles
 ./makesymlinks.sh
 ```
+
+Configure tmux
+--------------
+
+``` bash
+# tmux settings see https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# rum tmux and type `prefix + I` to install plugins
+```
+
+Configure solarized color
+-------------------------
+
+``` bash
+mkdir ~/workspaces/configs
+cd ~/workspaces/configs
+
+# 1. Gnome termial initial steps:
+git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git 
+# create gnome terminal profile `my_solarized`
+
+# 2. Mintty termial initial steps:
+git clone https://github.com/megion/mintty-colors-solarized.git 
+git clone https://github.com/seebi/dircolors-solarized.git
+```

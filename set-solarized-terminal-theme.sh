@@ -10,7 +10,8 @@
 #cd ~/workspaces/configs
 
 # 1. Gnome termial initial steps:
-#git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git 
+# git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git 
+# create gnome terminal profile `my_solarized`
 
 # 2. Mintty termial initial steps:
 # git clone https://github.com/megion/mintty-colors-solarized.git 

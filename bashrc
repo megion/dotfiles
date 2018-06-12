@@ -23,19 +23,12 @@ fi
 #PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GRADLE_HOME/bin:$JAVA_HOME/bin:$MAVEN_HOME/bin
 #export PATH
 
-# run init solarized color
-# git clone https://github.com/mavnn/mintty-colors-solarized.git 
-#$HOME/mintty-colors-solarized/sol.dark
-
 git config --global merge.conflictstyle diff3
 git config --global merge.tool 'my-git-merge'
 git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
 git config --global mergetool.trustExitCode false 
 git config --global mergetool.keepBackup false
 #git config --global diff.external my-git-diff.sh
-
-# tmux settings see https://github.com/tmux-plugins/tpm
-#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Colorize the ls output ##
 alias ls='ls --color=auto'
