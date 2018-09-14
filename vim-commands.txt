@@ -210,6 +210,11 @@ smbpasswd -a ilya
 
 systemctl restart smb nmb
 
+# temporary disable SELinux (turn on after reboot). 
+# Folder '/home/ilya/workspaces/lanit-hcs' was added to SELinux so it is 
+# not accessable in samba
+setenforce Permissive
+
 ===================================
 run forticlient
 ===================================
@@ -224,3 +229,11 @@ JAVA_MAX_MEM=2048M JAVA_MAX_PERM_MEM=1024 ./bin/amq
 psql
 ==================================
 psql -h 95.213.229.207 -p 21054 -U hcs_ppa_rw hcsppadb
+
+=================================
+XML
+=================================
+dit delete inner tag
+cit change inner tag
+yit copy inner tag
+vit select inner tag
