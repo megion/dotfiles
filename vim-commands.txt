@@ -179,6 +179,7 @@ sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
 # also edit /etc/nginx/nginx.conf and /etc/hosts
 # SELinux in enforcing mode http is only allowed to bind to the listed ports.
 # The solution is to add the ports you want to bind on to the list 
+setsebool -P httpd_can_network_connect 1
 semanage port -a -t http_port_t  -p tcp 18085
 systemctl start nginx.service
 # add permissions for nginx process read project files
