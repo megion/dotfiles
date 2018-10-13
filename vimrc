@@ -24,7 +24,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/xml.vim'
 Plugin 'mustache/vim-mustache-handlebars'
-"Plugin 'ternjs/tern_for_vim'
+"Plugin 'vim-scripts/XML-Folding'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
