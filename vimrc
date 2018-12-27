@@ -62,10 +62,10 @@ let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
 " open new tab
-nnoremap <F4> :tabnew<CR>
+nnoremap tn :tabnew<CR>
 
 " open nerdtree
-nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>
