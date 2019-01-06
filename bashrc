@@ -11,17 +11,21 @@ fi
 # User specific aliases and functions
 
 # set following ENV in .bash_profile file
+#============================================================
 #export JAVA_HOME=$HOME/development/jdk1.8.0_112
 #export GRADLE_HOME=$HOME/development/gradle-2.14.1
-export MAVEN_HOME=$HOME/development/apache-maven-3.5.3
+#export MAVEN_HOME=$HOME/development/apache-maven-3.5.3
 
 #export HIVE_HOME=$HOME/frameworks/apache-hive-1.2.1-bin
 #export HADOOP_HOME=$HOME/frameworks/hadoop-2.6.1
 #export HADOOP_USER_CLASSPATH_FIRST=true
 #export SPARK_HOME=$HOME/frameworks/spark-1.6.0-bin-hadoop2.6
 
-#PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GRADLE_HOME/bin:$JAVA_HOME/bin:$MAVEN_HOME/bin
-PATH=$PATH:$MAVEN_HOME/bin
+#PATH=$PATH:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+#============================================================
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
 export PATH
 
 git config --global merge.conflictstyle diff3
