@@ -182,8 +182,6 @@ sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
 setsebool -P httpd_can_network_connect 1
 semanage port -a -t http_port_t  -p tcp 18085
 systemctl start nginx.service
-# add permissions for nginx process read project files
-chmod +rx /home/ilya
 # if You may have Security-Enhanced Linux running, so add rule for that
 chcon -Rt httpd_sys_content_t /home/ilya/workspaces/lanit-hcs
 
