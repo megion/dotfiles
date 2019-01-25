@@ -135,9 +135,6 @@ s Open file in vertical split window
 go Open selected file, but leave cursor in the NERDTree
 m Show menu
 R refresh tree
-:NERDTreeProjectSave <name>
-:NERDTreeProjectLoad <name>
-:NERDTreeProjectLoadFromCWD
 
 =========== NERDcommenter
 [count]<leader>c<space> Toggle comment uncomment lines 
@@ -146,7 +143,10 @@ R refresh tree
 prefix + " split by vertical
 prerix + % split by horizontal
 prefix ctrl+up,down,left,right resize current pane
-prefix + } swap current pane whith next pane ('{' prev pane)
+/change
+
+:q
+exit
 prefix + up,down,left,right Change pane
 
 ========== Ack
