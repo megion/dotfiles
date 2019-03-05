@@ -71,7 +71,8 @@ noremap <Leader>a :Ack <cword><cr>
 " reload all buffers
 nnoremap ct :checktime<CR>
 
-nnoremap <F5> :make!<CR>
+" run build command
+noremap <Leader>b :make!<CR>
 
 nnoremap <leader>z :YcmCompleter GoTo<CR>
 "nnoremap <leader>z :YcmCompleter GoToDefi<CR>

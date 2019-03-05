@@ -236,3 +236,9 @@ dit delete inner tag
 cit change inner tag
 yit copy inner tag
 vit select inner tag
+
+======================
+video card settings
+add to /etc/udev/rules.d/30-radeon-pm.rules
+======================
+KERNEL=="card0", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"

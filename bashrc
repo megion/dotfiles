@@ -21,12 +21,12 @@ fi
 #export HADOOP_USER_CLASSPATH_FIRST=true
 #export SPARK_HOME=$HOME/frameworks/spark-1.6.0-bin-hadoop2.6
 
-#PATH=$PATH:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+#export JAVA_OPTS="-Xmx4G"
+#export GRADLE_OPTS="-Xmx4G"
+
+#export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+
 #============================================================
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
 
 git config --global merge.conflictstyle diff3
 git config --global merge.tool 'my-git-merge'
