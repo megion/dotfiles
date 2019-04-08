@@ -242,3 +242,21 @@ video card settings
 add to /etc/udev/rules.d/30-radeon-pm.rules
 ======================
 KERNEL=="card0", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
+
+
+======================
+ssl
+======================
+nginx:
+-----------
+mkdir /etc/nginx/ssl
+chown root:root /etc/nginx/ssl
+chmod 700 /etc/nginx/ssl
+
+cd /etc/nginx/ssl
+openssl req -new -x509 -days 9999 -nodes -newkey rsa:2048 -out cert.pem -keyout cert.key
+
+jboss
+-----------
+/home/ilya/development/jdk1.8.0_112/bin/keytool -genkeypair -alias appserver -storetype jks -keyalg RSA -keysize 2048 -keypass password1 -keystore /home/ilya/development/ui-spweb/jboss-eap-6.4/standalone/configuration/identity.jks -storepass password1 -dname "CN=appserver,OU=Sales,O=Systems Inc,L=Raleigh,ST=NC,C=US" -validity 730 -v
+
