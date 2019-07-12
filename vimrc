@@ -37,12 +37,12 @@ let g:EclimCompletionMethod = 'omnifunc'
 " disable Syntastic Java diagnostics - YouCompleteMe Java Semantic Completion
 let g:syntastic_java_checkers = []
 " disable ycm completer for java and scala
-let g:ycm_filetype_blacklist = {
-            \ 'java' : 1,
-            \ 'scala' : 1
-            \}
+"let g:ycm_filetype_blacklist = {
+            "\ 'java' : 1,
+            "\ 'scala' : 1
+            "\}
 " enable all files for ycm
-"let g:ycm_filetype_blacklist = {}
+let g:ycm_filetype_blacklist = {}
 
 syntax enable
 

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:1.7">
+<server xmlns="urn:jboss:domain:1.8">
+
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.connector"/>
@@ -25,8 +26,19 @@
         <extension module="org.jboss.as.webservices"/>
         <extension module="org.jboss.as.weld"/>
     </extensions>
+
+    <system-properties>
+        <property name="jboss.as.management.blocking.timeout" value="600"/>
+    </system-properties>
+
+
     <management>
         <security-realms>
+            <security-realm name="ejb-security-realm">
+                <server-identities>
+                    <secret value="ZWpiMTIzIUAj"/>
+                </server-identities>
+            </security-realm>
             <security-realm name="ManagementRealm">
                 <authentication>
                     <local default-user="$local" skip-group-loading="true"/>
@@ -51,7 +63,7 @@
                 <json-formatter name="json-formatter"/>
             </formatters>
             <handlers>
-                <file-handler name="file" formatter="json-formatter" relative-to="jboss.server.data.dir" path="audit-log.log"/>
+                <file-handler name="file" formatter="json-formatter" path="audit-log.log" relative-to="jboss.server.data.dir"/>
             </handlers>
             <logger log-boot="true" log-read-only="false" enabled="false">
                 <handlers>
@@ -77,6 +89,7 @@
             </role-mapping>
         </access-control>
     </management>
+
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:1.5">
             <console-handler name="CONSOLE">
@@ -94,7 +107,7 @@
                 <append value="true"/>
             </periodic-rotating-file-handler>
             <logger category="com.arjuna">
-                <level name="WARN"/>
+                <level name="ERROR"/>
             </logger>
             <logger category="org.apache.tomcat.util.modeler">
                 <level name="WARN"/>
@@ -110,6 +123,12 @@
             </logger>
             <logger category="jacorb.config">
                 <level name="ERROR"/>
+            </logger>
+            <logger category="ru.lanit.hcs.security.ejb.interceptor" use-parent-handlers="true">
+                <level name="ERROR"/>
+            </logger>
+            <logger category="ru.lanit.hcs.metrics.propagation" use-parent-handlers="true">
+                <level name="FATAL"/>
             </logger>
             <root-logger>
                 <level name="INFO"/>
@@ -127,17 +146,526 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:datasources:1.2">
             <datasources>
-                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
-                    <driver>h2</driver>
+                <datasource jndi-name="java:jboss/datasources/houseSphinxDS" pool-name="houseSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/mapSphinxDS" pool-name="mapSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/publicSphinxDS" pool-name="publicSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/fiasSphinxDS" pool-name="fiasSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/organizationRegistrySphinxDS" pool-name="organizationRegistrySphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/lawDocumentSphinxDS" pool-name="lawDocumentSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/instructionSphinxDS" pool-name="instructionSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/privateForumSphinxDS" pool-name="privateForumSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/crpRpkrSphinxDS" pool-name="crpRpkrSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/crpKprSphinxDS" pool-name="crpKprSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/egrpSphinxDS" pool-name="egrpSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/rosreestrSphinxDS" pool-name="rosreestrSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/crpKrDataSphinxDS" pool-name="crpKrDataSphinxDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://127.0.0.1:9306/mysql41?characterEncoding=utf8&amp;maxAllowedPacket=1073741824&amp;useUnicode=true&amp;connectTimeout=3000&amp;autoReconnect=true</connection-url>
+                    <driver>mysql</driver>
+                    <transaction-isolation>TRANSACTION_READ_UNCOMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <flush-strategy>EntirePool</flush-strategy>
+                    </pool>
+                </datasource>
+                <datasource jta="true" jndi-name="java:jboss/mytest" pool-name="mytest" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://95.213.229.207:21054/postgres</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>postgresql</driver>
                     <security>
-                        <user-name>sa</user-name>
-                        <password>sa</password>
+                        <user-name>hcs_eb_rw</user-name>
+                        <password>hcs_eb_rw</password>
                     </security>
                 </datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcshmds" pool-name="hcshmds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcshmdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_hm_rw</user-name>
+                        <password>hcs_hm_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsagrds" pool-name="hcsagrds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsagrdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_agr_rw</user-name>
+                        <password>hcs_agr_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsebds" pool-name="hcsebds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsebdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_eb_rw</user-name>
+                        <password>hcs_eb_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsnsids" pool-name="hcsnsids" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsnsidb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_nsi_rw</user-name>
+                        <password>hcs_nsi_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsnsiods" pool-name="hcsnsiods" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsnsiodb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_nsio_rw</user-name>
+                        <password>hcs_nsio_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsppads" pool-name="hcsppads" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsppadb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_ppa_rw</user-name>
+                        <password>hcs_ppa_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsejds" pool-name="hcsejds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsejdb
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_ej_rw</user-name>
+                        <password>hcs_ej_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsords" pool-name="hcsords" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsordb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_or_rw</user-name>
+                        <password>hcs_or_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsprds" pool-name="hcsprds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsprdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_pr_rw</user-name>
+                        <password>hcs_pr_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsnotifds" pool-name="hcsnotifds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsnotifdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_notif_rw</user-name>
+                        <password>hcs_notif_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsrrds" pool-name="hcsrrds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsrrdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_rr_rw</user-name>
+                        <password>hcs_rr_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsvtds" pool-name="hcsvtds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsvtdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresqlXA</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_vt_rw</user-name>
+                        <password>hcs_vt_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcscrpds" pool-name="hcscrpds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcscrpdb
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <driver>postgresqlXA</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_crp_rw</user-name>
+                        <password>hcs_crp_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsfsds" pool-name="hcsfsds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsfsdb
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>10</min-pool-size>
+                        <max-pool-size>100</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_fs_rw</user-name>
+                        <password>hcs_fs_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcslcsds" pool-name="hcslcsds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcslcsdb
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>10</min-pool-size>
+                        <max-pool-size>100</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_lcs_rw</user-name>
+                        <password>hcs_lcs_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/hcsidxds" pool-name="hcsidxds" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="ServerName">
+                        95.213.229.207
+                    </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber">
+                        21254
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        hcsidxdb
+                    </xa-datasource-property>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>10</min-pool-size>
+                        <max-pool-size>100</max-pool-size>
+                    </xa-pool>
+                    <security>
+                        <user-name>hcs_idx_rw</user-name>
+                        <password>hcs_idx_rw</password>
+                    </security>
+                    <timeout>
+                        <blocking-timeout-millis>5000</blocking-timeout-millis>
+                    </timeout>
+                </xa-datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresql" module="org.postgresql.jdbc">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresqlXA" module="org.postgresql.jdbc">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="mysql" module="com.mysql">
+                        <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
+                        <xa-datasource-class>com.mysql.cj.jdbc.MysqlXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
             </datasources>
@@ -146,6 +674,10 @@
             <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:1.2">
+            <global-modules>
+                <module name="org.apache.commons.codec" slot="main"/>
+                <module name="org.jboss.resteasy.resteasy-jaxrs" slot="main"/>
+            </global-modules>
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
             <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
             <annotation-property-replacement>false</annotation-property-replacement>
@@ -158,10 +690,15 @@
                 <stateful default-access-timeout="5000" cache-ref="simple"/>
                 <singleton default-access-timeout="5000"/>
             </session-bean>
+            <mdb>
+                <resource-adapter-ref resource-adapter-name="activemq-rar.rar"/>
+                <bean-instance-pool-ref pool-name="mdb-strict-max-pool-hcs"/>
+            </mdb>
             <pools>
                 <bean-instance-pools>
                     <strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
                     <strict-max-pool name="mdb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
+                    <strict-max-pool name="mdb-strict-max-pool-hcs" max-pool-size="20" instance-acquisition-timeout="5"/>
                 </bean-instance-pools>
             </pools>
             <caches>
@@ -247,20 +784,308 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:naming:1.4">
             <bindings>
-				<simple name="java:global/oiosaml-j.home" value="/home/ilya/development/ui-spweb/oiosaml.java-config.https"/>
-<!--hazelcast voshod: 217.107.108.157:5701-->
-<!--hazelcast selectel: 95.213.229.207:5701-->
-                <simple name="java:global/hcs.hazelcast.serverAddress" value="95.213.229.207:5701"/>
+                <simple name="java:global/hcs.metrics.addresses" value="95.213.229.207:30183"/>
+                <simple name="java:global/hcs.metrics.username" value="suim"/>
+                <simple name="java:global/hcs.metrics.password" value="admin123!@#"/>
+                <simple name="java:global/ppaext.integration.auto.testing.enabled" value="false" type="boolean"/>
+                <simple name="java:global/extbus.endpoint.base.url" value="https://api.dom.gosuslugi.ru"/>
+                <simple name="java:global/ppaext.integration.dev.mode" value="true" type="boolean"/>
+                <simple name="java:global/ppa.settings.rso.check" value="true" type="boolean"/>
+                <simple name="java:global/ppa.settings.auth.check" value="true" type="boolean"/>
                 <simple name="java:global/ppa.settings.nSess1" value="20" type="int"/>
+                <simple name="java:global/ppa.settings.operator.auto.approve" value="true" type="boolean"/>
+                <simple name="java:global/agr.license.check" value="false" type="boolean"/>
+                <simple name="java:global/agr.license.check.region" value="false" type="boolean"/>
+                <simple name="java:global/agr.rso.async.refresh.house.threshold" value="500" type="int"/>
+                <simple name="java:global/agr.rso.async.refresh.retry.count" value="2" type="int"/>
+                <simple name="java:global/hcs.hazelcast.serverAddress" value="95.213.229.207:5701"/>
                 <simple name="java:global/hcs.hazelcast.cookieSecure" value="false" type="boolean"/>
+                <simple name="java:global/crypto.secret.key.file" value="/home/ilya/keys/secret.key"/>
+                <simple name="java:global/oiosaml-j.home" value="/home/ilya/development/ui-spweb/oiosaml.java-config"/>
+                <simple name="java:global/ro.settings.rsio" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.inspection" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.licence" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.managementAgreement" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.rentAgreement" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.ppa" value="CREATE_AND_UPDATE"/>
+                <simple name="java:global/ro.settings.egrUpdate.startDate" value="2015.09.23"/>
+                <simple name="java:global/ro.settings.egrUpdate.attemptsCount" value="3" type="int"/>
+                <simple name="java:global/ro.settings.egrUpdate.timeBetweenAttempts" value="1800" type="int"/>
+                <simple name="java:global/ppa.org.agreement.signing.last.date" value="2016.06.01"/>
+                <simple name="java:global/fs.riak-cs.endpoint" value="riak.dev.lanit.ru"/>
+                <simple name="java:global/fs.riak-cs.proxyhost" value="95.213.229.207"/>
+                <simple name="java:global/fs.riak-cs.proxyport" value="12080" type="int"/>
+                <simple name="java:global/fs.riak-cs.protocol" value="http"/>
+                <simple name="java:global/fs.riak-cs.accesskey" value="CTEQFNFDGUJGFGDKZQX-"/>
+                <simple name="java:global/fs.riak-cs.secretkey" value="pXsJtyGmEIvmjNKNCSZZO__R0jcR49p6JgkOSw=="/>
+                <simple name="java:global/fs.riak-cs.maxcontentsize" value="1073741824" type="int"/>
+                <simple name="java:global/fs.riak-cs.maxchunksize" value="5242880" type="int"/>
+                <simple name="java:global/fs.crypto.sign.server" value="http://95.213.229.207:13180"/>
+                <simple name="java:global/fs.crypto.compute.hash.path" value="/digester/rest/digester/computeHash"/>
+                <simple name="java:global/fs.crypto.compute.hash.remote.service" value="ejb:lanit-crypto-digester-app/crypto-digester-bean/DigesterBean!ru.lanit.security.crypto.api.Digester"/>
+                <simple name="java:global/fs.antivirus.host" value="95.213.229.207"/>
+                <simple name="java:global/fs.antivirus.port" value="1344" type="int"/>
+                <simple name="java:global/fs.antivirus.enabled" value="false" type="boolean"/>
+                <simple name="java:global/fs.antivirus.type" value="drw"/>
+                <simple name="java:global/fs.thumbnail.processing.quality" value="ULTRA_QUALITY"/>
+                <simple name="java:global/fs.thumbnail.size" value="100" type="int"/>
+                <simple name="java:global/extbus.dev.mode" value="true" type="boolean"/>
+                <simple name="java:global/extbus.fail.on.bad.signature" value="false" type="boolean"/>
+                <simple name="java:global/extbus.fail.on.bad.certificate" value="false" type="boolean"/>
+                <simple name="java:global/crp.publish.additional.contrib.work" value="true" type="boolean"/>
+                <simple name="java:global/crp.publish.balance.info" value="true" type="boolean"/>
+                <simple name="java:global/crp.publish.decision.message" value="true" type="boolean"/>
+                <simple name="java:global/crp.publish.decision.capital.repair" value="true" type="boolean"/>
+                <simple name="java:global/crp.include.decisions.in.accounts" value="true" type="boolean"/>
+                <simple name="java:global/crp.publish.report.rapkr.mapkr" value="true" type="boolean"/>
+                <simple name="java:global/bills.payment.document.service.tariff.load" value="false" type="boolean"/>
+                <simple name="java:global/fs.crypto.create.signature.remote.service" value="ejb:lanit-crypto-signer-app/crypto-signer-bean/SignerBean!ru.lanit.security.crypto.api.Signer"/>
+                <simple name="java:global/fs.crypto.create.signature.path" value="/signer/rest/signer/sign/li-key"/>
+                <simple name="java:global/lcs.daily.license.xls.organization.cabinet.base.href" value="https://lk.dom.gosuslugi.ru/organization-cabinet/"/>
+                <simple name="java:global/notif.stand.address" value="localhost"/>
+                <simple name="java:global/notif.stand.address.person" value="http://54.76.42.99:60280"/>
+                <simple name="java:global/spell.checking.license.key" value="RSWEBJAVADEVMODE"/>
+                <simple name="java:global/agr.management.async.refresh.house.threshold" value="200" type="int"/>
+                <simple name="java:global/agr.management.async.refresh.retry.count" value="2" type="int"/>
+                <simple name="java:global/ro.settings.subsystem.workAgreement" value="FORBIDDEN"/>
+                <simple name="java:global/agr.rso.async.approve.draft.count" value="400" type="int"/>
+                <simple name="java:global/agr.regulation.check.license" value="true" type="boolean"/>
+                <simple name="java:global/ro.settings.subsystem.rsoAgreement" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.capitalRepair" value="FORBIDDEN"/>
+                <simple name="java:global/ro.settings.subsystem.indices" value="FORBIDDEN"/>
+                <simple name="java:global/agr.rso.export.count" value="1000" type="int"/>
+                <simple name="java:global/agr.rso.async.approve.draft.job.count" value="10" type="int"/>
+                <simple name="java:global/agr.rso.async.approve.multi.job.threshold" value="1000" type="int"/>
+                <simple name="java:global/fs.antivirus.recheck.emulation" value="true" type="boolean"/>
+                <simple name="java:global/bills.payment.document.max.invoice.count" value="200" type="int"/>
+                <simple name="java:global/bills.payment.document.max.withdraw.count" value="200" type="int"/>
+                <simple name="java:global/bills.payment.receiver.select.enabled" value="true" type="boolean"/>
+                <simple name="java:global/bills.accepted.notification.max.excel.count" value="1000" type="int"/>
+                <simple name="java:global/agr.rate.tariff.batch.size" value="1000" type="int"/>
+                <simple name="java:global/hm.account.max.close.count" value="400" type="int"/>
+                <simple name="java:global/nsi.settings.rzis.exportElementsNumber" value="100" type="int"/>
+                <simple name="java:global/hm.settings.rights.async.threshold" value="1000" type="int"/>
+                <simple name="java:global/hm.settings.export.devices.batch.size" value="5000" type="int"/>
+                <simple name="java:global/agr.rso.synchronize.timeout" value="60" type="int"/>
+                <simple name="java:global/ppa.settings.contact.info.check" value="2016.06.01"/>
+                <simple name="java:global/ppa.settings.aoss.enabled" value="false" type="boolean"/>
+                <simple name="java:global/fs.batch-size.convert" value="100" type="int"/>
+                <simple name="java:global/fs.batch-size.avcheck" value="100" type="int"/>
+                <simple name="java:global/fs.batch-size.signature" value="100" type="int"/>
+                <simple name="java:global/fs.batch-size.thumbnail" value="100" type="int"/>
+                <simple name="java:global/lcs.auto.approve.applications" value="false" type="boolean"/>
+                <simple name="java:global/public.stand.address" value="https://sp.hcs-dev.ru:18085"/>
+                <simple name="java:global/fs.batch-size.digest" value="100" type="int"/>
+                <simple name="java:global/rc.odn.date" value="31.12.2017"/>
+                <simple name="java:global/ro.settings.smev3.egr.makePrimaryLoad" value="true" type="boolean"/>
+                <simple name="java:global/ro.settings.smev3.egr.startLoadDate" value="2018.06.07"/>
+                <simple name="java:global/ro.settings.smev3.egr.receiveResponsePeriod" value="3" type="int"/>
+                <simple name="java:global/ro.settings.smev3.egr.repeatableCount" value="10" type="int"/>
+                <simple name="java:global/ro.settings.smev3.egrp.makePrimaryLoad" value="true" type="boolean"/>
+                <simple name="java:global/ro.settings.smev3.egrp.startLoadDate" value="2018.06.07"/>
+                <simple name="java:global/ppa.settings.egrp.autoblock" value="false" type="boolean"/>
+                <simple name="java:global/fs.dedublication.enabled" value="false" type="boolean"/>
+                <simple name="java:global/fs.errorRetryCount.digest" value="10" type="int"/>
+                <simple name="java:global/fs.errorRetryCount.convert" value="3" type="int"/>
+                <simple name="java:global/fs.antivirus.timeout.minutes" value="20" type="int"/>
+                <simple name="java:global/fs.crypto.version" value="2.0"/>
+                <simple name="java:global/fs.crypto.sign.key" value="li-key"/>
+                <simple name="java:global/fs.crypto.v2.sign.server" value="http://95.213.229.207:20280/sign-service"/>
+                <simple name="java:global/fs.crypto.v2.compute.hash.path" value="/digest?algId=GOST3411"/>
+                <simple name="java:global/fs.crypto.v2.create.signature.path" value="/sign/cms/detached"/>
+                <simple name="java:global/fs.crypto.v2.xapi.key" value="T6r6n03hPPwxZhLurdF0ssTg7jUww6zE"/>
+                <simple name="java:global/dev.mode" value="true" type="boolean"/>
+                <simple name="java:global/suim.metrics.enable" value="false" type="boolean"/>
+                <simple name="java:global/personregistry.settings.maxRecords" value="10" type="int"/>
             </bindings>
             <remote-naming/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:pojo:1.0"/>
         <subsystem xmlns="urn:jboss:domain:remoting:1.2">
             <connector name="remoting-connector" socket-binding="remoting" security-realm="ApplicationRealm"/>
+            <outbound-connections>
+                <remote-outbound-connection name="remote-ejb-connection" outbound-socket-binding-ref="remote-ejb" username="ejb" security-realm="ejb-security-realm">
+                    <properties>
+                        <property name="SASL_POLICY_NOANONYMOUS" value="false"/>
+                        <property name="SSL_ENABLED" value="false"/>
+                        <property name="SASL_DISALLOWED_MECHANISMS" value="JBOSS-LOCAL-USER"/>
+                    </properties>
+                </remote-outbound-connection>
+                <remote-outbound-connection name="remote-ejb-connection-ext" outbound-socket-binding-ref="remote-ejb" username="ejb" security-realm="ejb-security-realm">
+                    <properties>
+                        <property name="SASL_POLICY_NOANONYMOUS" value="false"/>
+                        <property name="SSL_ENABLED" value="false"/>
+                        <property name="SASL_DISALLOWED_MECHANISMS" value="JBOSS-LOCAL-USER"/>
+                    </properties>
+                </remote-outbound-connection>
+                <remote-outbound-connection name="remote-ejb-connection-signature" outbound-socket-binding-ref="remote-ejb-sign" username="ejb" security-realm="ejb-security-realm">
+                    <properties>
+                        <property name="SASL_POLICY_NOANONYMOUS" value="false"/>
+                        <property name="SSL_ENABLED" value="false"/>
+                    </properties>
+                </remote-outbound-connection>
+            </outbound-connections>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:resource-adapters:1.1"/>
+        <subsystem xmlns="urn:jboss:domain:resource-adapters:1.1">
+            <resource-adapters>
+                <resource-adapter id="activemq-rar.rar">
+                    <archive>
+                        activemq-rar.rar
+                    </archive>
+                    <transaction-support>XATransaction</transaction-support>
+                    <config-property name="ServerUrl">
+                        tcp://localhost:61616?jms.rmIdFromConnectionId=true
+                    </config-property>
+                    <config-property name="UserName">
+                        admin
+                    </config-property>
+                    <config-property name="Password">
+                        admin
+                    </config-property>
+                    <connection-definitions>
+                        <connection-definition class-name="org.apache.activemq.ra.ActiveMQManagedConnectionFactory" jndi-name="java:/HCSConnectionFactory" enabled="true" pool-name="HCSConnectionFactory">
+                            <xa-pool>
+                                <min-pool-size>1</min-pool-size>
+                                <max-pool-size>10</max-pool-size>
+                            </xa-pool>
+                            <recovery>
+                                <recover-credential>
+                                    <user-name>defaultPassword</user-name>
+                                    <password>defaultUser</password>
+                                </recover-credential>
+                            </recovery>
+                        </connection-definition>
+                    </connection-definitions>
+                    <admin-objects>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/GeoCoordMDBQueue" use-java-context="true" pool-name="GeoCoordMDBQueue">
+                            <config-property name="PhysicalName">
+                                GeoCoordMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/NsiMDBQueue" use-java-context="true" pool-name="NsiMDBQueue">
+                            <config-property name="PhysicalName">
+                                NsiMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/IdsMDBQueue" use-java-context="true" pool-name="IdsMDBQueue">
+                            <config-property name="PhysicalName">
+                                IdsMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/AgreementsMDBQueue" use-java-context="true" pool-name="AgreementsMDBQueue">
+                            <config-property name="PhysicalName">
+                                AgreementsMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/TariffExportMDBQueue" use-java-context="true" pool-name="TariffExportMDBQueue">
+                            <config-property name="PhysicalName">
+                                TariffExportMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/EventManagerMDBQueue" use-java-context="true" pool-name="EventManagerMDBQueue">
+                            <config-property name="PhysicalName">
+                                EventManagerMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/HmMDBQueue" use-java-context="true" pool-name="HmMDBQueue">
+                            <config-property name="PhysicalName">
+                                HmMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/VolumeQualityMDBQueue" use-java-context="true" pool-name="VolumeQualityMDBQueue">
+                            <config-property name="PhysicalName">
+                                VolumeQualityMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/PpaExtMDBQueue" use-java-context="true" pool-name="PpaExtMDBQueue">
+                            <config-property name="PhysicalName">
+                                PpaExtMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/CapitalRepairMDBQueue" use-java-context="true" pool-name="CapitalRepairMDBQueue">
+                            <config-property name="PhysicalName">
+                                CapitalRepairMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/OrganizationRegistryMDBQueue" use-java-context="true" pool-name="OrganizationRegistryMDBQueue">
+                            <config-property name="PhysicalName">
+                                OrganizationRegistryMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/UserNotificationMDBQueue" use-java-context="true" pool-name="UserNotificationMDBQueue">
+                            <config-property name="PhysicalName">
+                                UserNotificationMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/AppealsMDBQueue" use-java-context="true" pool-name="AppealsMDBQueue">
+                            <config-property name="PhysicalName">
+                                AppealsMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/MonitoringMDBQueue" use-java-context="true" pool-name="MonitoringMDBQueue">
+                            <config-property name="PhysicalName">
+                                MonitoringMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/EventJournalMDBQueue" use-java-context="true" pool-name="EventJournalMDBQueue">
+                            <config-property name="PhysicalName">
+                                EventJournalMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/DeadLetterIncomingMDBQueue" use-java-context="true" pool-name="DeadLetterIncomingMDBQueue">
+                            <config-property name="PhysicalName">
+                                DeadLetterIncomingMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/JobManagerMDBQueue" use-java-context="true" pool-name="JobManagerMDBQueue">
+                            <config-property name="PhysicalName">
+                                JobManagerMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/NotificationMDBQueue" use-java-context="true" pool-name="NotificationMDBQueue">
+                            <config-property name="PhysicalName">
+                                NotificationMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/ExportRateConsumptionMDBQueue" use-java-context="true" pool-name="ExportRateConsumptionMDBQueue">
+                            <config-property name="PhysicalName">
+                                ExportRateConsumptionMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/LicenseMDBQueue" use-java-context="true" pool-name="LicenseMDBQueue">
+                            <config-property name="PhysicalName">
+                                LicenseMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/VotingMDBQueue" use-java-context="true" pool-name="VotingMDBQueue">
+                            <config-property name="PhysicalName">
+                                VotingMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/PpaMDBQueue" use-java-context="true" pool-name="PpaMDBQueue">
+                            <config-property name="PhysicalName">
+                                PpaMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/FileStoreMDBQueue" use-java-context="true" pool-name="FileStoreMDBQueue">
+                            <config-property name="PhysicalName">
+                                FileStoreMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/BillsMDBQueue" use-java-context="true" pool-name="BillsMDBQueue">
+                            <config-property name="PhysicalName">
+                                BillsMDBQueue
+                            </config-property>
+                        </admin-object>
+                        <admin-object class-name="org.apache.activemq.command.ActiveMQQueue" jndi-name="java:/queue/DeadLetterOutgoingMDBQueue" use-java-context="true" pool-name="DeadLetterOutgoingMDBQueue">
+                            <config-property name="PhysicalName">
+                                DeadLetterOutgoingMDBQueue
+                            </config-property>
+                        </admin-object>
+                    </admin-objects>
+                </resource-adapter>
+            </resource-adapters>
+        </subsystem>
         <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
         <subsystem xmlns="urn:jboss:domain:security:1.2">
             <security-domains>
@@ -284,6 +1109,18 @@
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
                 </security-domain>
+                <security-domain name="JASS-Security" cache-type="default">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:/jdbc/jta-hcs-ds-postgres"/>
+                            <module-option name="principalsQuery" value="select password from users.esia_users where username=?"/>
+                            <module-option name="rolesQuery" value="select role, 'Roles' from users.roles r join users.esia_users u on r.userid = u.userid where u.username =?"/>
+                            <module-option name="hashAlgorithm" value="MD5"/>
+                            <module-option name="hashEncoding" value="base64"/>
+                            <module-option name="unauthenticatedIdentity" value="guest"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:threads:1.1"/>
@@ -298,12 +1135,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:web:2.2" default-virtual-server="default-host" native="false">
             <connector name="http" protocol="HTTP/1.1" scheme="http" socket-binding="http"/>
-                <!-- Added manually /Welle -->
-            <connector name="https" scheme="https" protocol="HTTP/1.1" socket-binding="https" enable-lookups="false" secure="true">
-                <ssl name="foo-ssl" password="password1" protocol="TLSv1" key-alias="appserver"
-                    certificate-key-file="/home/ilya/development/ui-spweb/jboss-eap-6.4/standalone/configuration/identity.jks" />
-            </connector>
-            <virtual-server name="default-host" enable-welcome-root="true">
+            <virtual-server name="default-host" enable-welcome-root="false">
                 <alias name="localhost"/>
                 <alias name="example.com"/>
             </virtual-server>
@@ -321,6 +1153,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
     </profile>
+
     <interfaces>
         <interface name="management">
             <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
@@ -328,15 +1161,11 @@
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
-        <!-- TODO - only show this if the jacorb subsystem is added  -->
         <interface name="unsecure">
-            <!--
-              ~  Used for IIOP sockets in the standard configuration.
-              ~                  To secure JacORB you need to setup SSL 
-              -->
             <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
         </interface>
     </interfaces>
+
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-native" interface="management" port="${jboss.management.native.port:9999}"/>
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
@@ -350,5 +1179,137 @@
         <outbound-socket-binding name="mail-smtp">
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
+        <outbound-socket-binding name="remote-ejb" source-port="0" fixed-source-port="false">
+            <remote-destination host="localhost" port="5447"/>
+        </outbound-socket-binding>
+        <outbound-socket-binding name="remote-ejb-sign">
+            <remote-destination host="95.213.229.207" port="11447"/>
+        </outbound-socket-binding>
     </socket-binding-group>
+
+    <deployments>
+        <deployment name="bills-service-ear.ear" runtime-name="bills-service-ear.ear">
+            <content sha1="63a7640a13c66ea3eec3ca30a569f882e68178d6"/>
+        </deployment>
+        <deployment name="agreements-service-ear.ear" runtime-name="agreements-service-ear.ear">
+            <content sha1="9e8c715cee6123ce1d8e1a7df7af0ab0d643e3ee"/>
+        </deployment>
+        <deployment name="int-bus-bills-service-ear.ear" runtime-name="int-bus-bills-service-ear.ear">
+            <content sha1="088b5b3240c06c5beebb9a02a9b45b2e3e982a30"/>
+        </deployment>
+        <deployment name="int-bus-organization-registry-service-ear.ear" runtime-name="int-bus-organization-registry-service-ear.ear">
+            <content sha1="6d797259661971a8e98d467c994403cea7122060"/>
+        </deployment>
+        <deployment name="metrics-service-ear.ear" runtime-name="metrics-service-ear.ear">
+            <content sha1="46ba805a655746c79fba05d52905ea7332336dbe"/>
+        </deployment>
+        <deployment name="nsi-service-ear.ear" runtime-name="nsi-service-ear.ear">
+            <content sha1="c7dcf4bcccc5c53ebfb0fb747261c3dc6f072f20"/>
+        </deployment>
+        <deployment name="org-nsi-service-ear.ear" runtime-name="org-nsi-service-ear.ear">
+            <content sha1="7723700f95dca47bb8deed810e65f4a4f9886123"/>
+        </deployment>
+        <deployment name="ppa-service-ear.ear" runtime-name="ppa-service-ear.ear">
+            <content sha1="6a3de43c5bb18f54c0a4d636aa7ce6f9197330ee"/>
+        </deployment>
+        <deployment name="int-bus-home-management-service-ear.ear" runtime-name="int-bus-home-management-service-ear.ear">
+            <content sha1="890a3c6de2875177fde53f3ec6908c63d66b121c"/>
+        </deployment>
+        <deployment name="person-registry-service-ear.ear" runtime-name="person-registry-service-ear.ear">
+            <content sha1="be8c730fc7ad12fe69f29c7247ae30869462b716"/>
+        </deployment>
+        <deployment name="int-bus-person-registry-service-ear.ear" runtime-name="int-bus-person-registry-service-ear.ear">
+            <content sha1="d7accda21361aaac41c27e55092936a1c0ebc584"/>
+        </deployment>
+        <deployment name="organization-registry-service-ear.ear" runtime-name="organization-registry-service-ear.ear">
+            <content sha1="99e72c7270f19bfbd5e544366d0c886d3b4a8fe5"/>
+        </deployment>
+        <deployment name="int-bus-nsi-service-ear.ear" runtime-name="int-bus-nsi-service-ear.ear">
+            <content sha1="1957b48afa96bbd8304412f47074bb94eaad5c21"/>
+        </deployment>
+        <deployment name="int-bus-capital-repair-programs-service-ear.ear" runtime-name="int-bus-capital-repair-programs-service-ear.ear">
+            <content sha1="e6558a816ed02ad5a3b8eeaf70694fbac5a985c2"/>
+        </deployment>
+        <deployment name="capital-repair-programs-service-ear.ear" runtime-name="capital-repair-programs-service-ear.ear">
+            <content sha1="bf76417a464ae8116fc586bc612d758da83d71d2"/>
+        </deployment>
+        <deployment name="indices-service-ear.ear" runtime-name="indices-service-ear.ear">
+            <content sha1="6a57a4a6d6a4f54d69448aac3a7f83f9bb12af39"/>
+        </deployment>
+        <deployment name="int-bus-indices-service-ear.ear" runtime-name="int-bus-indices-service-ear.ear">
+            <content sha1="f680b9c4c17afee36281b547f38fea62100434ed"/>
+        </deployment>
+        <deployment name="int-bus-org-nsi-service-ear.ear" runtime-name="int-bus-org-nsi-service-ear.ear">
+            <content sha1="55c0ad3cf0d45474bc42837d4ef9ccfbeb94ecc1"/>
+        </deployment>
+        <deployment name="licenses-service-ear.ear" runtime-name="licenses-service-ear.ear">
+            <content sha1="7d7297bb9adb5d69c8b2ca88a3a560ab9fa9e36b"/>
+        </deployment>
+        <deployment name="int-bus-event-journal-service-ear.ear" runtime-name="int-bus-event-journal-service-ear.ear">
+            <content sha1="e8d55c38a3f95fbb5c3383700f3defd001f6e0f2"/>
+        </deployment>
+        <deployment name="event-journal-service-ear.ear" runtime-name="event-journal-service-ear.ear">
+            <content sha1="1c4f538255998482869467dfbc21b26022b4b986"/>
+        </deployment>
+        <deployment name="int-bus-filestore-service-ear.ear" runtime-name="int-bus-filestore-service-ear.ear">
+            <content sha1="b38406d99dbb94a0e62ecac0c7456e340b1392ff"/>
+        </deployment>
+        <deployment name="bills.war" runtime-name="bills.war">
+            <content sha1="93c939876bec6dd505df39dbbc5107650c5319de"/>
+        </deployment>
+        <deployment name="homemanagement.war" runtime-name="homemanagement.war">
+            <content sha1="0de93be878acdb8025da124b164ecbc11df793b8"/>
+        </deployment>
+        <deployment name="personregistry.war" runtime-name="personregistry.war">
+            <content sha1="6318787215d4f04250146bd2ed8478c3dd1728da"/>
+        </deployment>
+        <deployment name="nsi.war" runtime-name="nsi.war">
+            <content sha1="ee0ecbaea665f6f6c59ec977ef3dcc41b5161942"/>
+        </deployment>
+        <deployment name="organizationregistry.war" runtime-name="organizationregistry.war">
+            <content sha1="dc951244b69f693bbedae8072a060286440551ac"/>
+        </deployment>
+        <deployment name="agreements.war" runtime-name="agreements.war">
+            <content sha1="9a64364be9eec9d34787f90edf60667a45f05e05"/>
+        </deployment>
+        <deployment name="ext-ppa.war" runtime-name="ext-ppa.war">
+            <content sha1="a6416a62c766693c91748e503a31c5847f22421c"/>
+        </deployment>
+        <deployment name="sp-web.war" runtime-name="sp-web.war">
+            <content sha1="654a5a9ea0073af0fb1a280a788d71e535a1bf1b"/>
+        </deployment>
+        <deployment name="capital-repair-programs.war" runtime-name="capital-repair-programs.war">
+            <content sha1="be58ea402a1afb03cd072253a8b7489cefdd0a17"/>
+        </deployment>
+        <deployment name="orgnsi.war" runtime-name="orgnsi.war">
+            <content sha1="0abeeff4c4617d35d92473461298515bdf0f243f"/>
+        </deployment>
+        <deployment name="filestore.war" runtime-name="filestore.war">
+            <content sha1="db1b5c29c826ecf6d92297f3efe3fb7554e20017"/>
+        </deployment>
+        <deployment name="home-management-service-ear.ear" runtime-name="home-management-service-ear.ear">
+            <content sha1="923f84bc036c8c10e96344fc8a029df680c62a7f"/>
+        </deployment>
+        <deployment name="int-bus-agreements-service-ear.ear" runtime-name="int-bus-agreements-service-ear.ear">
+            <content sha1="e8593b04cea74c55e0fcc61cf70add80cad9d12a"/>
+        </deployment>
+        <deployment name="int-bus-ppa-service-ear.ear" runtime-name="int-bus-ppa-service-ear.ear">
+            <content sha1="3c5765af00843a8fb0557cd6f1350bdc477ded11"/>
+        </deployment>
+        <deployment name="filestore-service-ear.ear" runtime-name="filestore-service-ear.ear">
+            <content sha1="14b227d6ca05317e8f8d2e5a6339b34d289e10b9"/>
+        </deployment>
+        <deployment name="int-bus-licenses-service-ear.ear" runtime-name="int-bus-licenses-service-ear.ear">
+            <content sha1="d9cd15f041abd4dd053bad5bc82bf7bf65056528"/>
+        </deployment>
+        <deployment name="auth.war" runtime-name="auth.war">
+            <content sha1="56c7fb924554c23e75efaf80578c6bdc3bb6f64b"/>
+        </deployment>
+        <deployment name="ppa.war" runtime-name="ppa.war">
+            <content sha1="bed098f771fe0f0f53d762272d2c2ea7477dfd3b"/>
+        </deployment>
+        <deployment name="rosreestr-service-ear.ear" runtime-name="rosreestr-service-ear.ear">
+            <content sha1="7a3ec235f6b0ce725ed565103c0d77a339675197"/>
+        </deployment>
+    </deployments>
 </server>
