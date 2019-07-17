@@ -264,3 +264,11 @@ jboss deploy hcs
 ----------------
 add gradle.properties
 gradle applyEnv # add variables to jboss
+
+heroku
+----------------
+# create postgres database
+# create postgres user
+change postgres user password
+PGUSER=postgres PGPASSWORD=postgres heroku pg:pull AQUA nadinewest_development --app nadinewest-db-clone
+

@@ -2,33 +2,33 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 " Add plugins here
-"Plugin 'octol/vim-cpp-enhanced-highlight' " cpp syntax enhanced
-"Plugin 'taglist.vim' " ctags
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-scripts/vcscommand.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/xml.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-"Plugin 'vim-scripts/XML-Folding'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/vcscommand.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"Plug 'othree/xml.vim'
+"Plug 'mustache/vim-mustache-handlebars'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
+  \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" Initialize plugin system
+call plug#end()
 
 " tells eclim to register its completion to vim's omni complete which
 " YouCompleteMe will automatically detect
