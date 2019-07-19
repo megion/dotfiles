@@ -26,6 +26,9 @@ fi
 
 #export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"
+
 #============================================================
 
 git config --global merge.conflictstyle diff3
@@ -43,4 +46,5 @@ alias ll='ls -la'
 
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
+
 

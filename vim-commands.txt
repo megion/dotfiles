@@ -272,3 +272,7 @@ heroku
 change postgres user password
 PGUSER=postgres PGPASSWORD=postgres heroku pg:pull AQUA nadinewest_development --app nadinewest-db-clone
 
+nadinewest install:
+1. install rvm # see https://rvm.io/
+2. rvm install 2.5.1 # see '.ruby_version' file. Switch ruby: rvm use 2.5.1 or system
+
