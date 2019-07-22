@@ -1,16 +1,18 @@
 # GitLab.com
 Host gitlab.dks.lanit.ru
-  Preferredauthentications publickey
+  HostName gitlab.dks.lanit.ru
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/id_gitlab_rsa
-
-# NadineWest GitHub.com
-Host github-NadineWest
-  HostName github.com
-  Preferredauthentications publickey
-  IdentityFile ~/.ssh/nadinewest_id_rsa
 
 # megion GitHub.com
 Host github.com
   HostName github.com
-  PreferredAuthentications publickey
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa
+
+# NadineWest GitHub.com
+Host github-NadineWest.com
+  HostName github.com
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/nadinewest_id_rsa
+
