@@ -57,6 +57,8 @@ set colorcolumn=120
 let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
+let java_highlight_functions = 1
+
 " open new tab
 nnoremap tn :tabnew<CR>
 
@@ -75,6 +77,8 @@ nnoremap ct :checktime<CR>
 noremap <Leader>b :make!<CR>
 
 nnoremap <leader>z :YcmCompleter GoTo<CR>
+nnoremap <leader>j :YcmCompleter GoToReferences<CR>
+nnoremap <leader>i :YcmCompleter GoToImplementation<CR>
 "nnoremap <leader>z :YcmCompleter GoToDefi<CR>
 nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <leader>g :vertical resize -10<CR>
