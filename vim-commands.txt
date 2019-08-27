@@ -275,6 +275,7 @@ PGUSER=postgres PGPASSWORD=postgres heroku pg:pull AQUA nadinewest_development -
 =======
 nadinewest intall:
 1. dnf install libxml2-devel libpqxx-devel postgresql-devel ImageMagick-devel
+1.1 dnf install postgresql-contrib # for production mode
 2. install rvm # see https://rvm.io/
 3. rvm install 2.5.1 # see '.ruby_version' file. Switch ruby: rvm use 2.5.1 or system
 4. bundle _1.15.2_ install # run install command by specific verion of bundle
@@ -286,6 +287,14 @@ update customers set password_hash = '$2a$10$gl.q.D8ITs1CpsbQb3BOD.xUJV2.Wf9lZQV
 
 -- setting password for all users to 'password'
 update users set encrypted_password = '$2a$11$w4KMxTJGFtsps55M1/PZeeiui1Ubv8jKjyhB5ezHyLmfbuWq3Jvbi';
+
+# build and run in production
+sudo su postgres
+createdb -T nadinewest_development nadinewest_production;
+RAILS_ENV=production rake db:migrate
+
+RAILS_ENV=production bundle exec rake assets:precompile
+RAILS_SERVE_STATIC_FILES=true RAILS_ENV=production rails s
 
 =======
 multiply ssh:
