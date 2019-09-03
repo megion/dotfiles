@@ -18,6 +18,8 @@ Plug 'vim-scripts/vcscommand.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-haml'
 "Plug 'othree/xml.vim'
 "Plug 'mustache/vim-mustache-handlebars'
 
@@ -92,6 +94,12 @@ let g:formatdef_html_custom='"html-beautify -w 40"'
 let g:formatters_html = ['html_custom']
 "nnoremap <leader>gq :%!html-beautify -w 40<CR>
 vnoremap <leader>gq :!html-beautify -w 40<CR>
+
+nnoremap <leader>e :PrettierAsync<CR>
+vnoremap <Leader>e :PrettierAsync<CR>
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 set autoread
 
