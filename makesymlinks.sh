@@ -10,8 +10,9 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 bindir=~/bin                      # bin directory
 svnConfigDir=~/.subversion/config # svn config directory
-files="vimrc tmux.conf bashrc ackrc" # list of files to symlink in homedir
+files="vimrc tmux.conf bashrc ackrc prettierrc" # list of files to symlink in homedir
 svnConfigFile="svn_config"
+cocSettingsFile="coc-settings.json"
 
 # git config --global merge.conflictstyle diff3
 # git config --global merge.tool 'my-git-merge'
@@ -49,19 +50,20 @@ echo "done"
 # ~/dotfiles directory specified in $files
 for file in $files; do
     mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -sv $dir/$file ~/.$file
 done
 
 # process svn config file
 mv $svnConfigDir ~/dotfiles_old/$svnConfigFile 
-echo "Creating symlink $dir/$svnConfigFile to $svnConfigDir"
-ln -s $dir/$svnConfigFile $svnConfigDir
+ln -sv  $dir/$svnConfigFile $svnConfigDir
 
 # process git files 
 for file in $binFiles; do
     mv $bindir/$file ~/dotfiles_old/
-    echo "Creating symlink $dir/$file to $bindir/$file"
-    ln -s $dir/$file $bindir/$file
+    ln -sv $dir/$file $bindir/$file
 done
+
+# process cocSettingsFile
+mkdir -p ~/.vim
+ln -sfv $dir/$cocSettingsFile ~/.vim/$cocSettingsFile
 

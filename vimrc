@@ -8,18 +8,20 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " Add plugins here
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'Chiel92/vim-autoformat'
+"Plug 'Chiel92/vim-autoformat'
+Plug 'sbdchd/neoformat'
+Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-haml'
+"Plug 'SirVer/ultisnips'
+"Plug 'tpope/vim-haml'
 "Plug 'othree/xml.vim'
 "Plug 'mustache/vim-mustache-handlebars'
 
@@ -29,22 +31,27 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
   \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+" coc.nvim
+" run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
 " Initialize plugin system
 call plug#end()
 
 " tells eclim to register its completion to vim's omni complete which
 " YouCompleteMe will automatically detect
-let g:EclimCompletionMethod = 'omnifunc'
+"let g:EclimCompletionMethod = 'omnifunc'
 
 " disable Syntastic Java diagnostics - YouCompleteMe Java Semantic Completion
-let g:syntastic_java_checkers = []
+"let g:syntastic_java_checkers = []
 " disable ycm completer for java and scala
 "let g:ycm_filetype_blacklist = {
             "\ 'java' : 1,
             "\ 'scala' : 1
             "\}
 " enable all files for ycm
-let g:ycm_filetype_blacklist = {}
+"let g:ycm_filetype_blacklist = {}
 
 syntax enable
 
@@ -78,34 +85,201 @@ nnoremap ct :checktime<CR>
 " run build command
 noremap <Leader>b :make!<CR>
 
-nnoremap <leader>z :YcmCompleter GoTo<CR>
-nnoremap <leader>j :YcmCompleter GoToReferences<CR>
-nnoremap <leader>i :YcmCompleter GoToImplementation<CR>
+"nnoremap <leader>z :YcmCompleter GoTo<CR>
+"nnoremap <leader>j :YcmCompleter GoToReferences<CR>
+"nnoremap <leader>i :YcmCompleter GoToImplementation<CR>
 "nnoremap <leader>z :YcmCompleter GoToDefi<CR>
 nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <leader>g :vertical resize -10<CR>
 nnoremap <F7> :UndotreeToggle<CR>
 
 " plugin 'Chiel92/vim-autoformat' required install clang and astyle
-nnoremap <leader>f :Autoformat<CR>
-vnoremap <leader>f :Autoformat<CR>
-let g:autoformat_verbosemode=1
-let g:formatdef_html_custom='"html-beautify -w 40"'
-let g:formatters_html = ['html_custom']
+"nnoremap <leader>f :Autoformat<CR>
+"vnoremap <leader>f :Autoformat<CR>
+"let g:autoformat_verbosemode=1
+"let g:formatdef_html_custom='"html-beautify -w 40"'
+"let g:formatters_html = ['html_custom']
 "nnoremap <leader>gq :%!html-beautify -w 40<CR>
-vnoremap <leader>gq :!html-beautify -w 40<CR>
+"vnoremap <leader>gq :!html-beautify -w 40<CR>
 
 nnoremap <leader>e :PrettierAsync<CR>
 vnoremap <Leader>e :PrettierAsync<CR>
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsEditSplit="vertical"
+
+set statusline=%<%F%m%r%h%w\ %=[%l,%v]\ [%L]\ %=[%3p%%]
+set laststatus=2
+
+set statusline+=%#warningmsg#
+set statusline+=%{FugitiveStatusline()}
+set statusline+=%*
+
+" configure coc.nvim +++
+"
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>zzp` for current paragraph
+xmap <leader>z  <Plug>(coc-codeaction-selected)
+nmap <leader>z  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>zc  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of
+"languageserver.
+
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" configure coc.nvim ---
+
+autocmd StdinReadPre * let s:std_in=1
+" open a NERDTree automatically when vim starts up if no files were specified 
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" remove signcolumn 
+autocmd FileType tagbar,nerdtree setlocal signcolumn=no
 
 set autoread
 
 " fugitive git plugin
 " delete fugitive buffer automatical
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+"autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+"autocmd BufWritePre *.js Neoformat
+" Enable the Prettier fixer for the languages
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+" To have ALE run Prettier on save
+"let g:ale_fix_on_save = 1
+
+" To get correct comment highlighting
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" Disable completion for java
+autocmd FileType java let b:coc_suggest_disable = 1
 
 " Read additional .vimrc file in current directory
 set exrc
@@ -144,9 +318,3 @@ nmap ,cs :let @+=expand("%")<CR>
 " copies the filename including its full path to the clipboard
 nmap ,cl :let @+=expand("%:p")<CR>
 
-set statusline=%<%F%m%r%h%w\ %=[%l,%v]\ [%L]\ %=[%3p%%]
-set laststatus=2
-
-set statusline+=%#warningmsg#
-set statusline+=%{FugitiveStatusline()}
-set statusline+=%*
