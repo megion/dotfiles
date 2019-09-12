@@ -17,9 +17,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
 "Plug 'Chiel92/vim-autoformat'
 Plug 'sbdchd/neoformat'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'SirVer/ultisnips'
 "Plug 'tpope/vim-haml'
 "Plug 'othree/xml.vim'
@@ -33,8 +34,7 @@ Plug 'prettier/vim-prettier', {
 
 " coc.nvim
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
@@ -105,7 +105,7 @@ nnoremap <F7> :UndotreeToggle<CR>
 nnoremap <leader>e :PrettierAsync<CR>
 vnoremap <Leader>e :PrettierAsync<CR>
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
@@ -251,7 +251,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " configure coc.nvim ---
 
-autocmd StdinReadPre * let s:std_in=1
+"autocmd StdinReadPre * let s:std_in=1
 " open a NERDTree automatically when vim starts up if no files were specified 
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " open NERDTree automatically when vim starts up on opening a directory
@@ -269,8 +269,8 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "autocmd BufWritePre *.js Neoformat
 " Enable the Prettier fixer for the languages
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
+\   'javascript': ['prettier', 'eslint'],
+\   'css': ['prettier', 'eslint'],
 \}
 " To have ALE run Prettier on save
 "let g:ale_fix_on_save = 1
