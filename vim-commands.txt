@@ -270,6 +270,7 @@ heroku
 # create postgres database
 # create postgres user
 change postgres user password
+heroku login
 PGUSER=postgres PGPASSWORD=postgres heroku pg:pull AQUA nadinewest_development --app nadinewest-db-clone
 
 =======
@@ -295,6 +296,10 @@ RAILS_ENV=production rake db:migrate
 
 RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_SERVE_STATIC_FILES=true RAILS_ENV=production rails s
+
+# copy db from other server
+pg_dump -h 192.168.0.82 -U postgres -Fd -j 3 nadinewest_development2 -f /tmp/db_dump2 && \
+pg_restore --clean --create -U postgres -d nadinewest_development -j 3 /tmp/db_dump2
 
 =======
 multiply ssh:
