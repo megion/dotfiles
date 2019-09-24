@@ -33,7 +33,8 @@ Plug 'prettier/vim-prettier', {
   \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " coc.nvim
-" run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
+" dnf install ruby-devel
+" run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java coc-solargraph
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
@@ -215,9 +216,11 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+" TODO TAB is used for jump navigation, so it override <C-i> 'jump' 
+" forward to the next (newer) location
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
