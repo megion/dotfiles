@@ -44,7 +44,8 @@ git clone https://github.com/megion/mintty-colors-solarized.git
 git clone https://github.com/seebi/dircolors-solarized.git
 
 # Changing color sheme in mintty terminal works only by command:
-./set-solarized-terminal-theme.sh dark<light>
+~/dotfiles/set-solarized-terminal-theme.sh dark<light>
+
 
 # Unfortunately run `prefix + I` into tmux is not worked now for mintty.
 ```
