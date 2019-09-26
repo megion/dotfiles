@@ -23,6 +23,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'SirVer/ultisnips'
 "Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'othree/html5.vim'
 "Plug 'othree/xml.vim'
 "Plug 'mustache/vim-mustache-handlebars'
 
@@ -321,3 +323,5 @@ nmap ,cs :let @+=expand("%")<CR>
 " copies the filename including its full path to the clipboard
 nmap ,cl :let @+=expand("%:p")<CR>
 
+" highlighting jsx.erb file support
+autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
