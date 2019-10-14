@@ -1,1 +1,2 @@
 --type-add=cli:ext:cli
+--type-set=haml:ext:haml
