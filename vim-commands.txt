@@ -276,7 +276,7 @@ PGUSER=postgres PGPASSWORD=postgres heroku pg:pull AQUA nadinewest_development -
 =======
 nadinewest intall:
 1. dnf install libxml2-devel libpqxx-devel postgresql-devel ImageMagick-devel
-1.1 dnf install postgresql-contrib # for production mode
+1.1 dnf install postgresql-contrib
 2. install rvm # see https://rvm.io/
 3. rvm install 2.5.1 # see '.ruby_version' file. Switch ruby: rvm use 2.5.1 or system
 4. bundle _1.15.2_ install # run install command by specific verion of bundle
@@ -306,3 +306,9 @@ multiply ssh:
 ssh-add -l # list keys
 ssh-add -D # clean cached keys
 git clone git@github-NadineWest.com:NadineWest/web-common.git
+
+=========
+# run rails tests (example for nadinewest-web):
+export RAILS_ENV="test"
+bin/rake db:test:prepare --trace
+bundle exec rake test
