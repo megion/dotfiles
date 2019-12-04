@@ -43,6 +43,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Initialize plugin system
 call plug#end()
 
+" see nerdcommenter 
+filetype plugin on
+
 " tells eclim to register its completion to vim's omni complete which
 " YouCompleteMe will automatically detect
 "let g:EclimCompletionMethod = 'omnifunc'
