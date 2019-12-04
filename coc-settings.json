@@ -1,7 +1,7 @@
 {
     // disable java auto build
-    "java.autobuild.enabled": false,
-    "java.completion.enabled": false,
+    // "java.autobuild.enabled": false,
+    // "java.completion.enabled": false,
     "java.jdt.ls.vmargs": "-Xmx4G",
     "languageserver": {
         "ccls": {
