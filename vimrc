@@ -39,6 +39,7 @@ Plug 'prettier/vim-prettier', {
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java coc-solargraph
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
