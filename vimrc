@@ -40,6 +40,7 @@ Plug 'prettier/vim-prettier', {
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java coc-solargraph
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 
 " Initialize plugin system
 call plug#end()
@@ -330,3 +331,6 @@ nmap ,cl :let @+=expand("%:p")<CR>
 
 " highlighting jsx.erb file support
 autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
+
+" https://github.com/JamshedVesuna/vim-markdown-preview
+"let vim_markdown_preview_github=1 " use grip
