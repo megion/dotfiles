@@ -22,6 +22,6 @@ printf -- "----------------------------------------\n"
 for line in $lines; do
     watcher_count=$(echo $line | sed -e 's/.*://')
     pid=$(echo $line | sed -e 's/\/proc\/\([0-9]*\)\/.*/\1/')
-    cmdline=$(ps --columns 120 -o command -h -p $pid) 
+    cmdline=$(ps -o command -h -p $pid) 
     printf "%8d  %7d  %s\n" "$watcher_count" "$pid" "$cmdline"
 done
