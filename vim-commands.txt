@@ -185,6 +185,7 @@ systemctl start nginx.service
 # if You may have Security-Enhanced Linux running, so add rule for that
 chcon -Rt httpd_sys_content_t /home/ilya/workspaces/lanit-hcs
 
+
 ==========
 svn commands 
 ==========
@@ -312,3 +313,17 @@ git clone git@github-NadineWest.com:NadineWest/web-common.git
 export RAILS_ENV="test"
 bin/rake db:test:prepare --trace
 bundle exec rake test
+
+
+==========
+postgres (rbs)
+==========
+semanage fcontext -a -t postgresql_db_t "/u01/rbs(/.*)?"
+restorecon -R -v /u01
+sudo chown -R postgres:postgres /u01
+
+
+==========
+artemis (rbs)
+==========
+./development/apache-artemis-2.10.1/broker/bin/artemis-service start
