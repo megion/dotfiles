@@ -112,7 +112,7 @@ nnoremap <F7> :UndotreeToggle<CR>
 "vnoremap <leader>gq :!html-beautify -w 40<CR>
 
 nnoremap <leader>e :PrettierAsync<CR>
-vnoremap <Leader>e :PrettierAsync<CR>
+vnoremap <leader>e :PrettierAsync<CR>
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -332,5 +332,6 @@ nmap ,cl :let @+=expand("%:p")<CR>
 " highlighting jsx.erb file support
 autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
 
-" https://github.com/JamshedVesuna/vim-markdown-preview
-"let vim_markdown_preview_github=1 " use grip
+" save file
+map fw :w<CR>
+map fwq :wq<CR>
