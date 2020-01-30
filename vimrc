@@ -25,6 +25,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'othree/html5.vim'
+Plug 'ianks/vim-tsx'
 "Plug 'othree/xml.vim'
 "Plug 'mustache/vim-mustache-handlebars'
 
@@ -37,7 +38,8 @@ Plug 'prettier/vim-prettier', {
 
 " coc.nvim
 " dnf install ruby-devel
-" run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java coc-solargraph
+" run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
+" coc-solargraph coc-tslint-plugin coc-angular
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
