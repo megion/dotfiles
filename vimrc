@@ -26,6 +26,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-rails'
 Plug 'othree/html5.vim'
 Plug 'ianks/vim-tsx'
+Plug 'editorconfig/editorconfig-vim'
 "Plug 'othree/xml.vim'
 "Plug 'mustache/vim-mustache-handlebars'
 
