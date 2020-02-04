@@ -8,27 +8,22 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " Add plugins here
-"Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
-"Plug 'Chiel92/vim-autoformat'
-Plug 'sbdchd/neoformat'
 Plug 'dense-analysis/ale'
-Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
-Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'SirVer/ultisnips'
-"Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
 Plug 'othree/html5.vim'
-Plug 'ianks/vim-tsx'
 Plug 'editorconfig/editorconfig-vim'
-"Plug 'othree/xml.vim'
-"Plug 'mustache/vim-mustache-handlebars'
+
+"to highlight tsx
+Plug 'HerringtonDarkholme/yats.vim'
+" highlight js
+Plug 'pangloss/vim-javascript'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
