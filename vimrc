@@ -179,6 +179,8 @@ nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
+" Fix problem
+nnoremap fi :CocFix<CR>
 
 " Use K to show documentation in preview window
 nnoremap K :call <SID>show_documentation()<CR>

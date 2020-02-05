@@ -175,7 +175,8 @@ Repeat last step.
 nginx
 ==========
 cp /home/ilya/dotfiles/sp.hcs-dev.ru.conf /etc/nginx/conf.d/
-sudo -E vimx /etc/nginx/conf.d/sp.hcs-dev.ru.conf
+sudo --preserve-env=HOME vimxs /etc/nginx/conf.d/sp.hcs-dev.ru.conf
+
 # also edit /etc/nginx/nginx.conf and /etc/hosts
 # SELinux in enforcing mode http is only allowed to bind to the listed ports.
 # The solution is to add the ports you want to bind on to the list 
