@@ -14,6 +14,6 @@
                 }
             }
         }
-    }
-    // "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "js", "jsx"],
-}
+    
+},
+"java.errors.incompleteClasspath.severity": "ignore"

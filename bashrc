@@ -37,6 +37,7 @@ git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL"
 git config --global mergetool.trustExitCode false 
 git config --global mergetool.keepBackup false
 #git config --global diff.external my-git-diff.sh
+git config --global core.excludesfile $HOME/.gitignore
 
 ## Colorize the ls output ##
 alias ls='ls --color=auto'
