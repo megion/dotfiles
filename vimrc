@@ -198,6 +198,9 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+xmap ff  <Plug>(coc-format)
+nmap ff  <Plug>(coc-format)
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
