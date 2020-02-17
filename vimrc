@@ -39,6 +39,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
+Plug 'vhdirk/vim-cmake'
 
 " Initialize plugin system
 call plug#end()
