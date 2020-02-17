@@ -1,20 +1,20 @@
 {
-    // disable java auto build
-    // "java.autobuild.enabled": false,
-    // "java.completion.enabled": false,
-    "java.jdt.ls.vmargs": "-Xmx4G",
-    "java.format.enabled": true,
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                }
-            }
+  // disable java auto build
+  // "java.autobuild.enabled": false,
+  // "java.completion.enabled": false,
+  "java.jdt.ls.vmargs": "-Xmx4G",
+  "java.format.enabled": true,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
         }
-    },
-    "java.errors.incompleteClasspath.severity": "ignore"
+      }
+    }
+  },
+  "java.errors.incompleteClasspath.severity": "ignore"
 }
