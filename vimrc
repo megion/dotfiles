@@ -24,6 +24,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -46,20 +47,6 @@ call plug#end()
 
 " see nerdcommenter 
 filetype plugin on
-
-" tells eclim to register its completion to vim's omni complete which
-" YouCompleteMe will automatically detect
-"let g:EclimCompletionMethod = 'omnifunc'
-
-" disable Syntastic Java diagnostics - YouCompleteMe Java Semantic Completion
-"let g:syntastic_java_checkers = []
-" disable ycm completer for java and scala
-"let g:ycm_filetype_blacklist = {
-            "\ 'java' : 1,
-            "\ 'scala' : 1
-            "\}
-" enable all files for ycm
-"let g:ycm_filetype_blacklist = {}
 
 syntax enable
 
@@ -339,3 +326,5 @@ autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
 " save file
 map fw :w<CR>
 map fwq :wq<CR>
+
+let g:lsp_cxx_hl_use_text_props = 1
