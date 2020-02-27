@@ -29,14 +29,13 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
-  \ 'branch': 'release/1.x',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
   \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " coc.nvim
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
-" coc-solargraph coc-tslint-plugin coc-angular
+" coc-solargraph coc-tslint-plugin coc-angular coc-clangd
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
@@ -61,7 +60,6 @@ set colorcolumn=120
 let g:ackhighlight = 1
 au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
-let java_highlight_functions = 1
 
 " open new tab
 nnoremap tn :tabnew<CR>
@@ -328,3 +326,13 @@ map fw :w<CR>
 map fwq :wq<CR>
 
 let g:lsp_cxx_hl_use_text_props = 1
+
+" java highlighting 
+"let java_comment_strings=1
+let java_highlight_functions=1
+"let java_highlight_java_lang_ids=1
+"let java_highlight_functions = 1
+"let java_highlight_all = 1
+
+" TODO: not work
+"let mapleader=","
