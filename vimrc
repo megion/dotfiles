@@ -24,6 +24,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+
+" improve highlight cxx
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -31,6 +33,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
   \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
 
 " coc.nvim
 " dnf install ruby-devel
@@ -43,6 +46,8 @@ Plug 'vhdirk/vim-cmake'
 
 " Initialize plugin system
 call plug#end()
+
+set encoding=utf-8
 
 " see nerdcommenter 
 filetype plugin on

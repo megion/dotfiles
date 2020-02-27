@@ -1,7 +1,4 @@
 {
-  // disable java auto build
-  // "java.autobuild.enabled": false,
-  // "java.completion.enabled": false,
   "java.jdt.ls.vmargs": "-Xmx4G",
   "java.format.enabled": true,
   "languageserver": {
