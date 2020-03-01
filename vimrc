@@ -14,7 +14,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'othree/html5.vim'
 Plug 'editorconfig/editorconfig-vim'
 
@@ -40,9 +40,10 @@ Plug 'prettier/vim-prettier', {
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
 " coc-solargraph coc-tslint-plugin coc-angular coc-clangd
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
-Plug 'vhdirk/vim-cmake'
+"Plug 'vhdirk/vim-cmake'
 
 " Initialize plugin system
 call plug#end()
