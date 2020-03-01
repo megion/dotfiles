@@ -14,7 +14,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'othree/html5.vim'
 Plug 'editorconfig/editorconfig-vim'
 
