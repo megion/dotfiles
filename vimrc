@@ -8,8 +8,8 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " Add plugins here
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
@@ -342,3 +342,13 @@ let java_highlight_functions=1
 
 " TODO: not work
 "let mapleader=","
+
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+  "autocmd!
+  "autocmd VimEnter * :Vexplore
+"augroup END
