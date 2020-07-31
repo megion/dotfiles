@@ -47,6 +47,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+" add debug support
+Plug 'puremourning/vimspector'
+
 " Initialize plugin system
 call plug#end()
 
@@ -77,6 +80,9 @@ nnoremap tt :NERDTreeToggle<CR>
 
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
+
+" open vertical diff
+nnoremap di :Gvdiffsplit<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>
@@ -357,3 +363,5 @@ let java_highlight_functions=1
   "autocmd!
   "autocmd VimEnter * :Vexplore
 "augroup END
+
+let g:vimspector_enable_mappings = 'HUMAN'
