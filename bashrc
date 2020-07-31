@@ -29,6 +29,10 @@ fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #export PATH="$PATH:$HOME/.rvm/bin"
 
+# to avoid error: FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed -
+# JavaScript heap out of memory
+#export NODE_OPTIONS="--max-old-space-size=8192"
+
 #============================================================
 
 git config --global merge.conflictstyle diff3

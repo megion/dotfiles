@@ -1,3 +1,4 @@
 --type-add=cli:ext:cli
 --type-set=haml:ext:haml
 --noignore-dir=node_modules
+--type-set=gradle:ext:gradle

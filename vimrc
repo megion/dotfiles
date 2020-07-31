@@ -44,6 +44,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 "Plug 'vhdirk/vim-cmake'
+" fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Initialize plugin system
 call plug#end()
@@ -72,6 +74,9 @@ nnoremap tn :tabnew<CR>
 
 " open nerdtree
 nnoremap tt :NERDTreeToggle<CR>
+
+" find file in tree
+nnoremap tf :NERDTreeFind<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>

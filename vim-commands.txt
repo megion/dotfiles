@@ -328,3 +328,14 @@ sudo chown -R postgres:postgres /u01
 artemis (rbs)
 ==========
 ./development/apache-artemis-2.10.1/broker/bin/artemis-service start
+
+==========
+rbs
+==========
+# run single test
+./gradlew :payment-orders-service-impl:test --debug --tests "ru.lanit.rbs.paymentorders.impl.service.algorithm.A_PD_17_Test"
+
+./gradlew :tests:test --debug --tests "ru.lanit.rbs.tests.paymentorders.impl.PaymentOrderApprovalActionsTest.whenPersistPaymentOrderWorkConfirmDocument_thenCreateFirstVersion_thenNextVersion"
+
+# run liquibase
+./gradlew update -Prbs_core_db_url=jdbc:postgresql://localhost:25432 -Prbs_core_db_password=postgres

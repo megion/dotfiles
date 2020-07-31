@@ -1,25 +1,4 @@
 {
-  "java.jdt.ls.vmargs": "-Xmx4G",
-  "java.format.enabled": true,
-  "languageserver": {
-    "cquery": {
-      "command": "cquery",
-      "args": ["--log-file=/tmp/cq.log"],
-      "filetypes": ["c", "cpp"],
-      "rootPatterns": [
-        "compile_flags.txt",
-        "compile_commands.json",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ],
-      "initializationOptions": {
-        "cacheDirectory": "/tmp/cquery",
-        "highlight": { "enabled": true },
-        "emitInactiveRegions": true
-      }
-    }
-  },
-  "java.errors.incompleteClasspath.severity": "ignore",
-  "coc.preferences.extensionUpdateCheck": "never"
+  "java.jdt.ls.vmargs": "-Xmx6G",
+  "java.format.enabled": true
 }
