@@ -81,8 +81,6 @@ nnoremap tt :NERDTreeToggle<CR>
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
 
-" open vertical diff
-nnoremap di :Gvdiffsplit<CR>
 
 " search current word
 noremap <Leader>a :Ack <cword><cr>
@@ -335,6 +333,11 @@ nmap ,cs :let @+=expand("%")<CR>
 " copies the filename including its full path to the clipboard
 nmap ,cl :let @+=expand("%:p")<CR>
 
+" open vertical diff
+nmap ,vd :Gvdiffsplit<CR>
+" open git status
+nmap ,st :Gstatus<CR>
+
 " highlighting jsx.erb file support
 autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
 
@@ -365,3 +368,17 @@ let java_highlight_functions=1
 "augroup END
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+function! JavaStartDebugCallback(err, port)
+  execute "cexpr! 'Java debug started on port: " . a:port . "'"
+  call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
+endfunction
+
+function JavaStartDebug()
+  call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
+endfunction
+
+nmap <F1> :call JavaStartDebug()<CR>
+
+map + :exe "resize " . (winheight(0) * 3/2)<CR>
+map - :exe "resize " . (winheight(0) * 2/3)<CR>
