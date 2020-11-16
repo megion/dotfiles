@@ -1,4 +1,5 @@
 {
+  "suggest.timeout":  10000,
   "java.jdt.ls.vmargs": "-Xmx6G",
   "java.format.enabled": true
 }

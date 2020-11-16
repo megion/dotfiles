@@ -30,7 +30,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
   \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
