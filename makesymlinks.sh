@@ -10,7 +10,7 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 bindir=~/bin                      # bin directory
 svnConfigDir=~/.subversion/config # svn config directory
-files="vimrc tmux.conf bashrc ackrc prettierrc gitignore" # list of files to symlink in homedir
+files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in homedir
 svnConfigFile="svn_config"
 cocSettingsFile="coc-settings.json"
 

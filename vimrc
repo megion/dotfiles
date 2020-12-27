@@ -31,9 +31,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json',
-  \ 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 
 " coc.nvim
@@ -111,8 +109,9 @@ nnoremap <F7> :UndotreeToggle<CR>
 "nnoremap <leader>gq :%!html-beautify -w 40<CR>
 "vnoremap <leader>gq :!html-beautify -w 40<CR>
 
+nmap <Leader>e <Plug>(Prettier)
 nnoremap <leader>e :PrettierAsync<CR>
-vnoremap <leader>e :PrettierAsync<CR>
+vnoremap <leader>e :PrettierPartial<CR>
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -284,10 +283,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 "autocmd BufWritePre *.js Neoformat
 " Enable the Prettier fixer for the languages
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'css': ['prettier', 'eslint'],
-\}
+"let g:ale_fixers = {
+"\   'javascript': ['prettier', 'eslint'],
+"\   'css': ['prettier', 'eslint'],
+"\}
 " To have ALE run Prettier on save
 "let g:ale_fix_on_save = 1
 
@@ -383,3 +382,6 @@ nmap <F1> :call JavaStartDebug()<CR>
 
 map + :exe "resize " . (winheight(0) * 3/2)<CR>
 map - :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" disable auto-insert line breaks, but will keep line wrapping
+set tw=0

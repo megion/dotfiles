@@ -340,3 +340,10 @@ rbs
 
 # run liquibase
 ./gradlew update -Prbs_core_db_url=jdbc:postgresql://localhost:25432 -Prbs_core_db_password=postgres
+
+
+==========
+vpns
+==========
+sudo openvpn --cd ~/development/i.zadorozhny-rbs --config ~/development/i.zadorozhny-rbs/i.zadorozhny-rbs.ovpn
+udo openfortivpn -c ~/development/openforti.config
