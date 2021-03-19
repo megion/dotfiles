@@ -5,6 +5,9 @@
 
 ### Section for authentication and authorization customizations.
 [auth]
+store-passwords=yes
+store-auth-creds=yes
+password-stores=gnome-keyring
 
 ### Section for configuring external helper applications.
 [helpers]

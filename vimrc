@@ -2,6 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set background=light    " Setting dark mode
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -9,12 +11,17 @@ call plug#begin('~/.vim/plugged')
 
 " Add plugins here
 Plug 'preservim/nerdcommenter'
+
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'PhilRunninger/nerdtree-visual-selection'
+"Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree-project-plugin'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
-"Plug 'dense-analysis/ale'
 Plug 'othree/html5.vim'
 Plug 'editorconfig/editorconfig-vim'
 
@@ -30,7 +37,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
+  \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 
@@ -49,17 +56,33 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " add debug support
 Plug 'puremourning/vimspector'
 
+" vim fold
+Plug 'pseewald/vim-anyfold'
+
+"Plug 'tpope/vim-obsession'
+"Plug 'dhruvasagar/vim-prosession'
+
 " Initialize plugin system
 call plug#end()
 
 set encoding=utf-8
+"set guifont=SourceCodePro\ Nerd\ Font\ 10
 
 " see nerdcommenter 
 filetype plugin on
 
-syntax enable
+"syntax enable
+filetype plugin indent on " required
+syntax on                 " required
 
-set background=dark    " Setting dark mode
+autocmd Filetype * AnyFoldActivate               " activate for all filetypes
+" or
+"autocmd Filetype <your-filetype> AnyFoldActivate " activate for a specific filetype
+
+"set foldlevel=0  " close all folds
+" or
+set foldlevel=99 " Open all folds
+
 " for mintty-colors-solarized
 let g:solarized_termtrans=1
 colorscheme solarized "gruvbox
@@ -79,6 +102,13 @@ nnoremap tt :NERDTreeToggle<CR>
 
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
+
+
+" Automatically save the current session whenever vim is closed
+"autocmd VimLeave * mksession! ~/.vim/shutdown_session.vim
+nnoremap tl :NERDTreeProjectLoadFromCWD<CR>
+"let g:nerdtree_poject_name = 'my_default_project' 
+nnoremap ts :NERDTreeProjectSave my_default_project<CR>
 
 
 " search current word
@@ -309,14 +339,15 @@ set clipboard=unnamedplus
 
 " code fold
 let g:javascript_plugin_flow = 1
-set foldmethod=syntax
-set foldlevelstart=20
+"set foldmethod=syntax
+"set foldlevelstart=20
 "set foldlevelstart=0
-"let javaScript_fold=1
-let c_no_comment_fold = 1
+let javaScript_fold=1
+"let c_no_comment_fold = 1
 
-let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=indent
+"let g:xml_syntax_folding=1
+"au FileType xml,html,xhtml setlocal foldmethod=indent
+"autocmd Syntax xml,html,xhtml setlocal foldmethod=indent
 
 set ignorecase
 "set smartcase
@@ -385,3 +416,6 @@ map - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " disable auto-insert line breaks, but will keep line wrapping
 set tw=0
+
+set diffopt=vertical
+
