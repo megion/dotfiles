@@ -1,6 +1,12 @@
 #!/bin/bash
 ############################
+Need implements next:
+1. when vim open read gnome terminal background color
+2. define $scheme by background color
+3. call `~/dotfiles/vim-servers-theme.sh $scheme >/dev/null 2>&1`
 
+1. add vim function return $scheme `dark` or `light`
+by gnome terminal background color
 ############################
 
 

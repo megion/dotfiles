@@ -419,3 +419,5 @@ set tw=0
 
 set diffopt=vertical
 
+nmap ;s :source ~/dotfiles/demo.vim<CR>
+

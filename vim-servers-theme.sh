@@ -19,9 +19,3 @@ for instance in $(vimx --serverlist); do
         echo "NO background"
     fi
 done
-
-
-
-
-
-

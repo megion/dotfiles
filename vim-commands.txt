@@ -346,4 +346,4 @@ rbs
 vpns
 ==========
 sudo openvpn --cd ~/development/i.zadorozhny-rbs --config ~/development/i.zadorozhny-rbs/i.zadorozhny-rbs.ovpn
-udo openfortivpn -c ~/development/openforti.config
+sudo openfortivpn -c ~/development/openforti.config

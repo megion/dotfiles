@@ -59,3 +59,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export YVM_DIR=/home/ilya/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/ilya/.sdkman"
+[[ -s "/home/ilya/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ilya/.sdkman/bin/sdkman-init.sh"
