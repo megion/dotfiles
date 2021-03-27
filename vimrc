@@ -62,6 +62,8 @@ Plug 'pseewald/vim-anyfold'
 "Plug 'tpope/vim-obsession'
 "Plug 'dhruvasagar/vim-prosession'
 
+"Plug 'eslint/eslint'
+
 " Initialize plugin system
 call plug#end()
 
