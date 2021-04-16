@@ -14,6 +14,9 @@ files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in hom
 svnConfigFile="svn_config"
 cocSettingsFile="coc-settings.json"
 
+autostartDir=~/.config/autostart
+termialAutostartFile="terminal.desktop"
+
 # git config --global merge.conflictstyle diff3
 # git config --global merge.tool 'my-git-merge'
 # git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE"\
@@ -67,3 +70,6 @@ done
 mkdir -p ~/.vim
 ln -sfv $dir/$cocSettingsFile ~/.vim/$cocSettingsFile
 
+
+# process autostart configs
+ln -sv  $dir/$termialAutostartFile $autostartDir

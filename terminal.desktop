@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GnomeTerminal
+Comment=GnomeTerminal
+Exec=gnome-terminal --full-screen
+StartupNotify=false
+Terminal=false
