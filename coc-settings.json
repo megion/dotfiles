@@ -13,5 +13,11 @@
             "path": "/usr/lib/jvm/java-11-openjdk",
             "default": true
         }
+    ],
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "8e89409bcf7aa09bc34b6c1b2aea60f742b1b82ae1bf341294b98a9e6e5583ae",
+            "allowed": false
+        }
     ]
 }
