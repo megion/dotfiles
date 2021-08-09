@@ -16,7 +16,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 "Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree-project-plugin'
+"Plug 'scrooloose/nerdtree-project-plugin'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'mileszs/ack.vim'
@@ -44,7 +44,7 @@ Plug 'prettier/vim-prettier', {
 " coc.nvim
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
-" coc-solargraph coc-tslint-plugin coc-angular coc-clangd
+" coc-solargraph coc-eslint coc-angular coc-clangd
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -420,3 +420,7 @@ map - :exe "resize " . (winheight(0) * 2/3)<CR>
 set tw=0
 
 set diffopt=vertical
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP

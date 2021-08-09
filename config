@@ -8,7 +8,7 @@ Host gitlab.dks.lanit.ru
 Host github.com
   HostName github.com
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_github
 
 # NadineWest GitHub.com
 Host github-NadineWest.com
