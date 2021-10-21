@@ -105,14 +105,6 @@ nnoremap tt :NERDTreeToggle<CR>
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
 
-
-" Automatically save the current session whenever vim is closed
-"autocmd VimLeave * mksession! ~/.vim/shutdown_session.vim
-nnoremap tl :NERDTreeProjectLoadFromCWD<CR>
-"let g:nerdtree_poject_name = 'my_default_project' 
-nnoremap ts :NERDTreeProjectSave my_default_project<CR>
-
-
 " search current word
 noremap <Leader>a :Ack <cword><cr>
 " eclim java search
@@ -207,8 +199,6 @@ nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
-" Fix problem
-nnoremap fi :CocFix<CR>
 
 " Use K to show documentation in preview window
 nnoremap K :call <SID>show_documentation()<CR>
@@ -407,7 +397,7 @@ function! JavaStartDebugCallback(err, port)
   call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
 endfunction
 
-function JavaStartDebug()
+function! JavaStartDebug()
   call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
 endfunction
 
@@ -424,3 +414,7 @@ set diffopt=vertical
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
+
+" Fix problem
+nnoremap fi :CocFix<CR>
+nnoremap fp :CocCommand eslint.executeAutofix<CR>

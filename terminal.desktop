@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=GnomeTerminal
-Comment=GnomeTerminal
-Exec=gnome-terminal --full-screen
+Name=Terminal
+Comment=Terminal
+Exec=xfce4-terminal --maximize
 StartupNotify=false
 Terminal=false

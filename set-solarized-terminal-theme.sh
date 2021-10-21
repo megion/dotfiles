@@ -22,6 +22,7 @@
 
 ########## Variables
 gnomeThemeDir=~/workspaces/configs/gnome-terminal-colors-solarized
+xfce4ThemeDir=~/workspaces/configs/xfce4-terminal-colors-solarized
 minttyThemeDir=~/workspaces/configs/mintty-colors-solarized
 dircolorsDir=~/workspaces/configs/dircolors-solarized
 profile=my_solarized
@@ -38,6 +39,8 @@ case "$OSTYPE" in
 esac
 
 if [ $os == "LINUX" ]; then
+    #echo "~/dotfiles/xfce4-terminalrc-$scheme"
+    cp ~/dotfiles/xfce-terminalrc-$scheme ~/.config/xfce4/terminal/terminalrc
 	#echo "use gnome theme"
     cd $gnomeThemeDir
     ./install.sh -s $scheme -p $profile --skip-dircolors
