@@ -33,6 +33,8 @@ fi
 # JavaScript heap out of memory
 #export NODE_OPTIONS="--max-old-space-size=8192"
 
+#export TERM=screen-256color
+
 #============================================================
 
 git config --global merge.conflictstyle diff3
@@ -53,13 +55,44 @@ alias ll='ls -la'
 alias l.='ls -d .* --color=auto'
 
 alias gnome-terminal='gnome-terminal --full-screen'
+alias xfce4-terminal='gnome-terminal --maximize'
+alias tmux='TERM=screen-256color tmux -2'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/ilya/.sdkman"
 [[ -s "/home/ilya/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ilya/.sdkman/bin/sdkman-init.sh"
 
-# Start tmux automatically
-# If not running interactively, do not do anything
-[[ $- != *i* ]] && return
-# Otherwise start tmux
-[[ -z "$TMUX" ]] && exec ~/dotfiles/tmux-session.sh
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
+dircolorsDir=~/workspaces/configs/dircolors-solarized
+eval `dircolors $dircolorsDir/dircolors.256dark`
+#eval `dircolors $dircolorsDir/dircolors.ansi-light`
+
+# TMUX config
+if [ -z "$TMUX" ]; then
+    #base_session="${USER}_session"
+    base_session="work"
+    # Create a new session if it doesn't exist
+    tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
+    send-keys -t ${session}:forty 'sudo openfortivpn -c ~/development/openforti.config' C-m \; \
+    new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
+    send-keys 'sudo docker-compose up --build' C-m \; \
+    new-window -n hcs -c ~/workspaces/hcs \; \
+    send-keys 'vimxs' C-m \;
+
+    #client_cnt=$(tmux list-clients | wc -l)
+    # Are there any clients connected already?
+    #if [ $client_cnt -ge 1 ]; then
+        #client_id=0
+        #session_name=$base_session"-"$client_id
+        #while [ $(tmux has-session -t $session_name 2>& /dev/null; echo $?) -ne 1 ]; do
+            #client_id=$((client_id+1))
+            #session_name=$base_session"-"$client_id
+        #done
+        #tmux new-session -d -t $base_session -s $session_name
+        #tmux -2 attach-session -t $session_name \; set-option destroy-unattached
+    #else
+        #tmux -2 attach-session -t $base_session
+    #fi
+
+    tmux -2 attach-session -t $base_session
+fi
