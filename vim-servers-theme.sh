@@ -10,7 +10,7 @@
 scheme=${1}
 
 for instance in $(vimx --serverlist); do
-    echo "set background=$scheme for '$instance'"
+    #echo "set background=$scheme for '$instance'"
     if [ $scheme == "dark" ]; then
         vimx --servername $instance --remote-send $'\e:set background=dark\n'
     elif [ $scheme == "light" ]; then
