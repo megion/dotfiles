@@ -41,6 +41,7 @@ esac
 
 if [ $os == "LINUX" ]; then
     #echo "~/dotfiles/xfce4-terminalrc-$scheme"
+    rm ~/.config/xfce4/terminal/terminalrc
     cp ~/dotfiles/xfce-terminalrc-$scheme ~/.config/xfce4/terminal/terminalrc
 	#echo "use gnome theme"
     cd $gnomeThemeDir

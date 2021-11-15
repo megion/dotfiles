@@ -302,16 +302,6 @@ set autoread
 " delete fugitive buffer automatical
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-"autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
-"autocmd BufWritePre *.js Neoformat
-" Enable the Prettier fixer for the languages
-"let g:ale_fixers = {
-"\   'javascript': ['prettier', 'eslint'],
-"\   'css': ['prettier', 'eslint'],
-"\}
-" To have ALE run Prettier on save
-"let g:ale_fix_on_save = 1
-
 " To get correct comment highlighting
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
@@ -325,9 +315,6 @@ set secure
 " vimdiff - hide break lines diff
 set diffopt+=iwhite
 set diffexpr=""
-
-" use only for vim-X11
-set clipboard=unnamedplus
 
 " code fold
 let g:javascript_plugin_flow = 1
@@ -418,3 +405,7 @@ vnoremap <leader>p "_dP
 " Fix problem
 nnoremap fi :CocFix<CR>
 nnoremap fp :CocCommand eslint.executeAutofix<CR>
+
+" use only for vim-X11
+"set clipboard=unnamed
+set clipboard=unnamedplus
