@@ -33,7 +33,6 @@ MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 TabActivityColor=#dc322f
-FontName=Inconsolata LGC Medium 11
+FontName=Inconsolata LGC Medium 10
 ColorBoldIsBright=FALSE
-ColorBoldUseDefault=FALSE
 
