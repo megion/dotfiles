@@ -10,7 +10,7 @@ set background=light    " Setting dark mode
 call plug#begin('~/.vim/plugged')
 
 " Add plugins here
-Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdcommenter'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -63,6 +63,11 @@ Plug 'pseewald/vim-anyfold'
 "Plug 'dhruvasagar/vim-prosession'
 
 "Plug 'eslint/eslint'
+"
+" jsx commentary support
+Plug 'tpope/vim-commentary'
+Plug 'suy/vim-context-commentstring'
+
 
 " Initialize plugin system
 call plug#end()
