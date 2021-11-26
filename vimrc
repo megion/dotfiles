@@ -2,7 +2,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set background=light    " Setting dark mode
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -67,6 +66,7 @@ Plug 'pseewald/vim-anyfold'
 " jsx commentary support
 Plug 'tpope/vim-commentary'
 Plug 'suy/vim-context-commentstring'
+Plug 'vim-syntastic/syntastic'
 
 
 " Initialize plugin system
@@ -91,8 +91,9 @@ autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 set foldlevel=99 " Open all folds
 
 " for mintty-colors-solarized
-let g:solarized_termtrans=1
+" let g:solarized_termtrans=1
 colorscheme solarized "gruvbox
+set background=dark   " Setting dark mode
 
 call togglebg#map("<F9>")
 set colorcolumn=120
@@ -420,3 +421,23 @@ set clipboard=unnamedplus
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_java_checkers = ['checkstyle']
+let g:syntastic_java_checkstyle_classpath = '/home/ilya/development/checkstyle-8.27-all.jar'
+let g:syntastic_java_checkstyle_conf_file = '/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml'
+
+let g:syntastic_java_checkstyle_post_args =
+    \ ["-p", "/home/ilya/dotfiles/checkstyle.properties"]
+
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": ["java"] }
