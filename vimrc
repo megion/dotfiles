@@ -90,18 +90,6 @@ autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 " or
 set foldlevel=99 " Open all folds
 
-" for mintty-colors-solarized
-" let g:solarized_termtrans=1
-colorscheme solarized "gruvbox
-set background=dark   " Setting dark mode
-
-call togglebg#map("<F9>")
-set colorcolumn=120
-"highlight ColorColumn ctermbg=darkgray
-let g:ackhighlight = 1
-au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
-
-
 " open new tab
 nnoremap tn :tabnew<CR>
 
@@ -441,3 +429,15 @@ let g:syntastic_java_checkstyle_post_args =
 let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": ["java"] }
+
+" for mintty-colors-solarized
+" let g:solarized_termtrans=1
+colorscheme solarized "gruvbox
+set background=dark   " Setting dark mode
+
+set colorcolumn=120
+"highlight ColorColumn ctermbg=darkgray
+" let g:ackhighlight = 1
+" au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
+
+set background=dark   " Setting dark mode
