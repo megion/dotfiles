@@ -54,9 +54,9 @@ alias ll='ls -la'
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
 
-alias gnome-terminal='gnome-terminal --full-screen'
-alias xfce4-terminal='gnome-terminal --maximize'
-alias tmux='TERM=screen-256color tmux -2'
+# alias gnome-terminal='gnome-terminal --full-screen'
+# alias xfce4-terminal='gnome-terminal --maximize'
+# alias tmux='TERM=screen-256color tmux -2'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/ilya/.sdkman"

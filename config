@@ -2,7 +2,7 @@
 Host gitlab.dks.lanit.ru
   HostName gitlab.dks.lanit.ru
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_gitlab_rsa
+  IdentityFile ~/.ssh/id_gitlab
 
 # megion GitHub.com
 Host github.com

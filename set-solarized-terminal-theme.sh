@@ -41,11 +41,10 @@ esac
 
 if [ $os == "LINUX" ]; then
     #echo "~/dotfiles/xfce4-terminalrc-$scheme"
-    rm ~/.config/xfce4/terminal/terminalrc
     cp ~/dotfiles/xfce-terminalrc-$scheme ~/.config/xfce4/terminal/terminalrc
 	#echo "use gnome theme"
-    cd $gnomeThemeDir
-    ./install.sh -s $scheme -p $profile --skip-dircolors
+    # cd $gnomeThemeDir
+    # ./install.sh -s $scheme -p $profile --skip-dircolors
 elif [ $os == "Cygwin" ]; then
 	#echo "use Cygwin theme"
     cd $minttyThemeDir
@@ -56,7 +55,7 @@ fi
 
 # see https://github.com/seebi/dircolors-solarized
 # export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
-#export TERM=screen-256color       # for a tmux -2 session (also for screen)
+# export TERM=screen-256color       # for a tmux -2 session (also for screen)
 
 #cd $dircolorsDir
 if [ $scheme == "light" ]; then

@@ -3,5 +3,5 @@
 # run vimx as server for remote control
 ############################
 
-vimx --servername MYVIM-SERVER "${@}" 
+vim --servername MYVIM-SERVER "${@}" 
 exit $?

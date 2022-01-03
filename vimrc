@@ -17,7 +17,10 @@ Plug 'PhilRunninger/nerdtree-visual-selection'
 "Plug 'ryanoasis/vim-devicons'
 "Plug 'scrooloose/nerdtree-project-plugin'
 
+" solarized theme
 Plug 'altercation/vim-colors-solarized'
+Plug 'overcache/NeoSolarized'
+
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
@@ -194,14 +197,16 @@ nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
-nnoremap K :call <SID>show_documentation()<CR>
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -432,12 +437,13 @@ let g:syntastic_mode_map = {
 
 " for mintty-colors-solarized
 " let g:solarized_termtrans=1
-colorscheme solarized "gruvbox
 set background=dark   " Setting dark mode
+" colorscheme solarized
+colorscheme NeoSolarized
+set hlsearch
+
 
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
 " let g:ackhighlight = 1
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
-
-set background=dark   " Setting dark mode
