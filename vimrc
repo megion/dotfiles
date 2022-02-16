@@ -345,7 +345,7 @@ nmap ,cl :let @+=expand("%:p")<CR>
 " open vertical diff
 nmap ,vd :Gvdiffsplit<CR>
 " open git status
-nmap ,st :Gstatus<CR>
+map zz :Git<CR>
 
 " highlighting jsx.erb file support
 autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
