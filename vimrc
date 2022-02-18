@@ -441,3 +441,6 @@ set colorcolumn=120
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
 set background=dark   " Setting dark mode
+
+" replace selection with default buffer without overwriting the buffer
+vnoremap p "_dP
