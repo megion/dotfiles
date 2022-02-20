@@ -13,7 +13,7 @@ Installation
 ------------
 
 ``` bash
-git clone git://github.com/megion/dotfiles ~/dotfiles
+git clone git@github.com:megion/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./makesymlinks.sh
 ```
@@ -35,13 +35,13 @@ Configure solarized color
 mkdir ~/workspaces/configs
 cd ~/workspaces/configs
 
-# 1. Gnome termial initial steps:
-git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git 
-# create gnome terminal profile `my_solarized`
+# 1. Dircolors solarized initial steps:
+git clone https://github.com/seebi/dircolors-solarized.git ~/workspaces/configs/dircolors-solarized
+
+# 3. Gnome teriminal. Create terminal profile `my_solarized`
 
 # 2. Mintty termial initial steps:
 git clone https://github.com/megion/mintty-colors-solarized.git 
-git clone https://github.com/seebi/dircolors-solarized.git
 
 # Changing color sheme in mintty terminal works only by command:
 ~/dotfiles/set-solarized-terminal-theme.sh dark<light>

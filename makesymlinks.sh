@@ -73,3 +73,7 @@ ln -sfv $dir/$cocSettingsFile ~/.vim/$cocSettingsFile
 
 # process autostart configs
 ln -sv  $dir/$termialAutostartFile $autostartDir
+
+# process i3-wm config
+mkdir -p ~/.i3
+ln -sfv $dir/.i3/config ~/.i3/config
