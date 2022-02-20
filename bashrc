@@ -58,14 +58,6 @@ alias l.='ls -d .* --color=auto'
 # alias xfce4-terminal='gnome-terminal --maximize'
 # alias tmux='TERM=screen-256color tmux -2'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="/home/ilya/.sdkman"
-# [[ -s "/home/ilya/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ilya/.sdkman/bin/sdkman-init.sh"
-
-export QT_STYLE_OVERRIDE=adwaita
-# export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_QPA_PLATFORMTHEME='gnome'
-
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
 dircolorsDir=~/workspaces/configs/dircolors-solarized
 eval `dircolors $dircolorsDir/dircolors.256dark`
