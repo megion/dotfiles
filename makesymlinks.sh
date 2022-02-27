@@ -70,10 +70,22 @@ done
 mkdir -p ~/.vim
 ln -sfv $dir/$cocSettingsFile ~/.vim/$cocSettingsFile
 
-
 # process autostart configs
-ln -sv  $dir/$termialAutostartFile $autostartDir
+ln -sfv  $dir/$termialAutostartFile $autostartDir
 
 # process i3-wm config
-mkdir -p ~/.i3
-ln -sfv $dir/.i3/config ~/.i3/config
+mkdir -p ~/.config/i3
+ln -sfv $dir/i3/config ~/.config/i3/config
+
+# process polybar config
+mkdir -p ~/.config/polybar
+ln -sfv $dir/polybar/config ~/.config/polybar/config
+ln -sfv $dir/polybar/launch.sh ~/.config/polybar/launch.sh
+
+# process i3status config
+mkdir -p ~/.config/i3status
+ln -sfv $dir/i3status/config ~/.config/i3status/config
+
+# process pulse audio config
+mkdir -p ~/.config/pulse
+ln -sfv $dir/pulse/client.conf ~/.config/pulse/client.conf

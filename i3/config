@@ -41,10 +41,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up l
-set $down k
-set $left j
-set $right semicolon
+set $up k
+set $down j
+set $left h
+set $right l
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
@@ -64,6 +64,11 @@ bindsym Mod1+d exec --no-startup-id dmenu_run
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
+# bindsym Control+$left focus left
+# bindsym Control+$down focus down
+# bindsym Control+$up focus up
+# bindsym Control+$right focus right
+
 bindsym Mod1+$left focus left
 bindsym Mod1+$down focus down
 bindsym Mod1+$up focus up
@@ -88,7 +93,7 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod1+h split h
+bindsym Mod1+semicolon split h
 
 # split in vertical orientation
 bindsym Mod1+v split v
@@ -134,16 +139,16 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym Mod1+1 workspace number $ws1
-bindsym Mod1+2 workspace number $ws2
-bindsym Mod1+3 workspace number $ws3
-bindsym Mod1+4 workspace number $ws4
-bindsym Mod1+5 workspace number $ws5
-bindsym Mod1+6 workspace number $ws6
-bindsym Mod1+7 workspace number $ws7
-bindsym Mod1+8 workspace number $ws8
-bindsym Mod1+9 workspace number $ws9
-bindsym Mod1+0 workspace number $ws10
+bindsym Control+1 workspace number $ws1
+bindsym Control+2 workspace number $ws2
+bindsym Control+3 workspace number $ws3
+bindsym Control+4 workspace number $ws4
+bindsym Control+5 workspace number $ws5
+bindsym Control+6 workspace number $ws6
+bindsym Control+7 workspace number $ws7
+bindsym Control+8 workspace number $ws8
+bindsym Control+9 workspace number $ws9
+bindsym Control+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace number $ws1
@@ -156,6 +161,13 @@ bindsym Mod1+Shift+7 move container to workspace number $ws7
 bindsym Mod1+Shift+8 move container to workspace number $ws8
 bindsym Mod1+Shift+9 move container to workspace number $ws9
 bindsym Mod1+Shift+0 move container to workspace number $ws10
+
+workspace $ws1 output DisplayPort-1
+workspace $ws2 output DisplayPort-1
+workspace $ws3 output DisplayPort-1
+workspace $ws4 output DisplayPort-1
+workspace $ws5 output DisplayPort-1
+workspace $ws6 output DisplayPort-1
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
@@ -208,3 +220,19 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
+
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+default_border pixel
+
+# exec --no-startup-id setxkbmap gb,us -option 'grp:alt_shift_toggle'
+# for_window [class="Google-chrome-stable"] move to workspace $ws2
+
+# volume master {
+#         format = " %volume"
+#         format_muted = ""
+#         device = "default"
+#         mixer =  "Master"
+#         mixer_idx = 0
+# }

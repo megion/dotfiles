@@ -42,14 +42,12 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
-
 " coc.nvim
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
 " coc-solargraph coc-eslint coc-angular coc-clangd
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'christoomey/vim-tmux-navigator'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 "Plug 'vhdirk/vim-cmake'
 " fuzzy finder
@@ -71,6 +69,9 @@ Plug 'tpope/vim-commentary'
 Plug 'suy/vim-context-commentstring'
 Plug 'vim-syntastic/syntastic'
 
+Plug 'mhinz/vim-grepper'
+
+" Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
@@ -103,7 +104,7 @@ nnoremap tt :NERDTreeToggle<CR>
 nnoremap tf :NERDTreeFind<CR>
 
 " search current word
-noremap <Leader>a :Ack <cword><cr>
+" noremap <Leader>a :Ack <cword><cr>
 " eclim java search
 "noremap <Leader>b :JavaSearchContext<cr>
 
@@ -442,8 +443,9 @@ set background=dark   " Setting dark mode
 colorscheme NeoSolarized
 set hlsearch
 
-
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
 " let g:ackhighlight = 1
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
+
+nnoremap <Leader>a :Grepper -tool ag -cword -noprompt<cr>
