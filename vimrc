@@ -71,7 +71,7 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'mhinz/vim-grepper'
 
-" Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
