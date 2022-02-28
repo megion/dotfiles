@@ -132,7 +132,7 @@ nnoremap <F7> :UndotreeToggle<CR>
 "vnoremap <leader>gq :!html-beautify -w 40<CR>
 
 nmap <Leader>e <Plug>(Prettier)
-nnoremap <leader>e :PrettierAsync<CR>
+nnoremap <leader>e :Prettier<CR>
 vnoremap <leader>e :PrettierPartial<CR>
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile

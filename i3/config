@@ -110,7 +110,7 @@ bindsym Mod1+e layout toggle split
 bindsym Mod1+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
+# bindsym Mod1+space focus mode_toggle
 
 # focus the parent container
 bindsym Mod1+a focus parent
@@ -236,3 +236,5 @@ default_border pixel
 #         mixer =  "Master"
 #         mixer_idx = 0
 # }
+
+bindsym Mod4+space exec $HOME/dotfiles/i3-keyboard-layout.sh cycle us ru
