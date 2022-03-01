@@ -168,6 +168,9 @@ workspace $ws3 output DisplayPort-1
 workspace $ws4 output DisplayPort-1
 workspace $ws5 output DisplayPort-1
 workspace $ws6 output DisplayPort-1
+workspace $ws7 output DisplayPort-1
+workspace $ws8 output DisplayPort-1
+workspace $ws9 output DisplayPort-1
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
