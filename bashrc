@@ -71,7 +71,7 @@ if [ -z "$TMUX" ]; then
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
     send-keys -t ${session}:forty 'sudo openfortivpn -c ~/development/openforti.config' C-m \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo docker-compose up --build' C-m \; \
+    send-keys 'sudo docker compose up --build' C-m \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \;
 
