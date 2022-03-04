@@ -79,7 +79,7 @@ ln -sfv $dir/i3/config ~/.config/i3/config
 
 # process polybar config
 mkdir -p ~/.config/polybar
-ln -sfv $dir/polybar/config ~/.config/polybar/config
+ln -sfv $dir/polybar/config.ini ~/.config/polybar/config.ini
 ln -sfv $dir/polybar/launch.sh ~/.config/polybar/launch.sh
 
 # process i3status config
