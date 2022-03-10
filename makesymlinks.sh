@@ -89,3 +89,6 @@ ln -sfv $dir/i3status/config ~/.config/i3status/config
 # process pulse audio config
 mkdir -p ~/.config/pulse
 ln -sfv $dir/pulse/client.conf ~/.config/pulse/client.conf
+
+# process .Xresources config
+ln -sfv $dir/Xresources ~/.Xresources

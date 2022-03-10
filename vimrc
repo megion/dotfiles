@@ -103,6 +103,9 @@ nnoremap tt :NERDTreeToggle<CR>
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
 
+let NERDTreeChDirMode=3
+let g:netrw_keepdir=0
+
 " search current word
 " noremap <Leader>a :Ack <cword><cr>
 " eclim java search
@@ -448,4 +451,5 @@ set colorcolumn=120
 " let g:ackhighlight = 1
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
-nnoremap <Leader>a :Grepper -tool ag -cword -noprompt<cr>
+nnoremap <Leader>a :Grepper -highlight -tool git -cword -noprompt -cd ./<cr>
+" let g:grepper = { 'dir': 'cwd' }

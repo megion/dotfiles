@@ -241,3 +241,5 @@ default_border pixel
 # }
 
 bindsym Mod4+space exec $HOME/dotfiles/i3-keyboard-layout.sh cycle us ru
+
+for_window [title="^Skype$" floating] move scratchpad
