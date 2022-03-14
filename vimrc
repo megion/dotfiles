@@ -451,5 +451,5 @@ set colorcolumn=120
 " let g:ackhighlight = 1
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
-nnoremap <Leader>a :Grepper -highlight -tool git -cword -noprompt -cd ./<cr>
+nnoremap <Leader>a :Grepper -highlight -tool grep -cword -noprompt<cr>
 " let g:grepper = { 'dir': 'cwd' }
