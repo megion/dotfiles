@@ -21,8 +21,8 @@ fi
 #export HADOOP_USER_CLASSPATH_FIRST=true
 #export SPARK_HOME=$HOME/frameworks/spark-1.6.0-bin-hadoop2.6
 
-#export JAVA_OPTS="-Xmx4G"
-#export GRADLE_OPTS="-Xmx4G"
+# export JAVA_OPTS="-Xmx16G"
+export GRADLE_OPTS="-Xmx16G"
 
 #export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
@@ -37,9 +37,9 @@ fi
 
 #============================================================
 
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
-export QT_AUTO_SCREEN_SCALE_FACTOR=2
+# export GDK_SCALE=2
+# export GDK_DPI_SCALE=0.5
+# export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 git config --global merge.conflictstyle diff3
 git config --global merge.tool 'my-git-merge'
@@ -67,6 +67,9 @@ dircolorsDir=~/workspaces/configs/dircolors-solarized
 eval `dircolors $dircolorsDir/dircolors.256dark`
 #eval `dircolors $dircolorsDir/dircolors.ansi-light`
 
+source ~/dotfiles/bash_prompt.sh
+# sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn
+
 # TMUX config
 if [ -z "$TMUX" ]; then
     #base_session="${USER}_session"
@@ -74,10 +77,14 @@ if [ -z "$TMUX" ]; then
     # Create a new session if it doesn't exist
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
     send-keys -t ${session}:forty 'sudo openfortivpn -c ~/development/openforti.config' C-m \; \
+    split-window -h \; \
+    send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' C-m \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo docker compose up --build' C-m \; \
+    send-keys 'sudo sv restart docker && sudo docker compose up --build' C-m \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
-    send-keys 'vimxs' C-m \;
+    send-keys 'vimxs' C-m \; \
+    split-window -h \; \
+    resize-pane -R 40 \;
 
     #client_cnt=$(tmux list-clients | wc -l)
     # Are there any clients connected already?
