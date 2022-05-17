@@ -21,8 +21,8 @@ fi
 #export HADOOP_USER_CLASSPATH_FIRST=true
 #export SPARK_HOME=$HOME/frameworks/spark-1.6.0-bin-hadoop2.6
 
-# export JAVA_OPTS="-Xmx16G"
-export GRADLE_OPTS="-Xmx16G"
+# export JAVA_OPTS="-Xmx4G"
+export GRADLE_OPTS="-Xmx3G"
 
 #export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
@@ -80,10 +80,10 @@ if [ -z "$TMUX" ]; then
     split-window -h \; \
     send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' C-m \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo sv restart docker && sudo docker compose up --build' C-m \; \
+    send-keys 'sudo sv restart docker && sudo docker-compose up --build' C-m \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \; \
-    split-window -h \; \
+    split-window -h -c ~/workspaces/hcs \; \
     resize-pane -R 40 \;
 
     #client_cnt=$(tmux list-clients | wc -l)

@@ -243,3 +243,8 @@ default_border pixel
 bindsym Mod4+space exec $HOME/dotfiles/i3-keyboard-layout.sh cycle us ru
 
 for_window [title="^Skype$" floating] move scratchpad
+
+bindsym Print exec --no-startup-id xfce4-screenshooter
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
