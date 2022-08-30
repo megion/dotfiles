@@ -84,7 +84,7 @@ if [ -z "$TMUX" ]; then
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 40 \;
+    resize-pane -R 60 \;
 
     #client_cnt=$(tmux list-clients | wc -l)
     # Are there any clients connected already?
