@@ -20,6 +20,8 @@ Plug 'PhilRunninger/nerdtree-visual-selection'
 " solarized theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'overcache/NeoSolarized'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/edge'
 
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
@@ -79,6 +81,7 @@ call plug#end()
 
 set encoding=utf-8
 "set guifont=SourceCodePro\ Nerd\ Font\ 10
+
 
 " see nerdcommenter 
 filetype plugin on
@@ -308,6 +311,15 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" autocmd ColorScheme * hi CocMenuSel ctermbg=black ctermfg=Blue
+" doautocmd ColorScheme
+
+" autocmd VimEnter,ColorScheme * hi! link CocMenuSel PMenuSel
+" autocmd VimEnter,ColorScheme * hi! link CocSearch Identifier
+
+" Link color definition for menu highlighting
+" highlight! link CocMenuSel PmenuSel
+
 " configure coc.nvim ---
 
 "autocmd StdinReadPre * let s:std_in=1
@@ -459,8 +471,22 @@ let g:syntastic_mode_map = {
 " for mintty-colors-solarized
 " let g:solarized_termtrans=1
 set background=dark   " Setting dark mode
+" colorscheme gruvbox-material
+" colorscheme edge
 " colorscheme solarized
 colorscheme NeoSolarized
+" hi CocSearch ctermfg=12 guifg=#18A3FF
+" hi CocMenuSel ctermbg=108 guibg=#13354A 
+" highlight CocMenuSel ctermbg=19 guibg=#222222
+" highlight CocMenuSel ctermbg=19 guibg=#222222
+" let g:solarized_termcolors=256
+" see https://github.com/overcache/NeoSolarized
+" set termguicolors
+" highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+" highlight CocHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+" highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
+" highlight clear CocMenuSel
+" highlight link CocMenuSel WildMenu
 set hlsearch
 
 set colorcolumn=120
