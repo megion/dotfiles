@@ -41,6 +41,7 @@ export GRADLE_OPTS="-Xmx4G"
 # export GDK_DPI_SCALE=0.5
 # export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
+git config --global core.editor "vimxs"
 git config --global merge.conflictstyle diff3
 git config --global merge.tool 'my-git-merge'
 git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
