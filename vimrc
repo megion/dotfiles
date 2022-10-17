@@ -55,6 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lock
 "Plug 'vhdirk/vim-cmake'
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " add debug support
 Plug 'puremourning/vimspector'
@@ -475,19 +476,26 @@ set background=dark   " Setting dark mode
 " colorscheme edge
 " colorscheme solarized
 colorscheme NeoSolarized
+" hi CocMenuSel ctermbg=237 guibg=#8b0a46
 " hi CocSearch ctermfg=12 guifg=#18A3FF
 " hi CocMenuSel ctermbg=108 guibg=#13354A 
 " highlight CocMenuSel ctermbg=19 guibg=#222222
 " highlight CocMenuSel ctermbg=19 guibg=#222222
 " let g:solarized_termcolors=256
 " see https://github.com/overcache/NeoSolarized
-" set termguicolors
 " highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
 " highlight CocHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
 " highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
 " highlight clear CocMenuSel
 " highlight link CocMenuSel WildMenu
 set hlsearch
+
+
+":highlight CocFloating ctermbg=254 ctermfg=241
+hi CocFloating ctermbg=254 ctermfg=241
+hi CocMenuSel ctermfg=234 ctermbg=245
+autocmd ColorScheme * hi CocFloating ctermbg=254 ctermfg=241
+autocmd ColorScheme * hi CocMenuSel ctermfg=234 ctermbg=245
 
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
@@ -502,4 +510,4 @@ nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"

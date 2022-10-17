@@ -66,4 +66,4 @@ fi
 
 #eval `dircolors $dircolorsDir/dircolors.256dark`
 
-
+# source ./fzf_default_opts.sh $scheme
