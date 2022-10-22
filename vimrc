@@ -502,7 +502,9 @@ set colorcolumn=120
 " let g:ackhighlight = 1
 " au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
-nnoremap <Leader>a :Grepper -highlight -tool grep -cword -noprompt<cr>
+" nnoremap <Leader>a :Grepper -highlight -tool grep -cword -noprompt<cr>
+" nnoremap <Leader>a :Rg <cword><cr>
+noremap <Leader>a /<C-R><C-W><cr> :Rg <C-R><C-W><cr>
 " let g:grepper = { 'dir': 'cwd' }
 
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -511,3 +513,8 @@ inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg -g '!{node_modules,build,dist,release}' --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)

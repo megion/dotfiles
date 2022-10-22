@@ -63,7 +63,8 @@ alias l.='ls -d .* --color=auto'
 # alias xfce4-terminal='gnome-terminal --maximize'
 # alias tmux='TERM=screen-256color tmux -2'
 
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
+# export TERM=screen-256color       # for a tmux -2 session (also for screen)
+export LESS_TERMCAP_so=$'\E[30;43m'
 dircolorsDir=~/workspaces/configs/dircolors-solarized
 eval `dircolors $dircolorsDir/dircolors.256dark`
 #eval `dircolors $dircolorsDir/dircolors.ansi-light`
