@@ -48,8 +48,8 @@ Plug 'prettier/vim-prettier', {
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
 " coc-solargraph coc-eslint coc-angular coc-clangd
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 "Plug 'vhdirk/vim-cmake'
