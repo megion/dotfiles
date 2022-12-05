@@ -1,7 +1,8 @@
 #!/bin/bash
 ############################
-# run vimx as server for remote control
-############################
+# run vimx as server for remote control ############################
 
-vim --servername MYVIM-SERVER "${@}" 
+# nvr --servername MYVIM-SERVER "${@}" 
+nvim --listen MYVIM-SERVER "${@}"
+# nvr --listen ~/.cache/nvim/server.pipe "${@}"
 exit $?
