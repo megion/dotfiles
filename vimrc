@@ -20,6 +20,7 @@ Plug 'PhilRunninger/nerdtree-visual-selection'
 " solarized theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'overcache/NeoSolarized'
+Plug 'romainl/flattened'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/edge'
 
@@ -108,7 +109,7 @@ nnoremap tt :NERDTreeToggle<CR>
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
 
-let NERDTreeChDirMode=3
+" let NERDTreeChDirMode=3
 let g:netrw_keepdir=0
 
 " search current word
@@ -118,9 +119,6 @@ let g:netrw_keepdir=0
 
 " reload all buffers
 nnoremap ct :checktime<CR>
-
-" run build command
-noremap <Leader>b :make!<CR>
 
 "nnoremap <leader>z :YcmCompleter GoTo<CR>
 "nnoremap <leader>j :YcmCompleter GoToReferences<CR>
@@ -312,15 +310,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" autocmd ColorScheme * hi CocMenuSel ctermbg=black ctermfg=Blue
-" doautocmd ColorScheme
-
-" autocmd VimEnter,ColorScheme * hi! link CocMenuSel PMenuSel
-" autocmd VimEnter,ColorScheme * hi! link CocSearch Identifier
-
-" Link color definition for menu highlighting
-" highlight! link CocMenuSel PmenuSel
-
 " configure coc.nvim ---
 
 "autocmd StdinReadPre * let s:std_in=1
@@ -331,6 +320,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " remove signcolumn 
 autocmd FileType tagbar,nerdtree setlocal signcolumn=no
 
+" fix for https://github.com/christoomey/vim-tmux-navigator/issues/205
+let g:NERDTreeMapJumpPrevSibling=""
+let g:NERDTreeMapJumpNextSibling=""
+
 set autoread
 
 " fugitive git plugin
@@ -338,7 +331,7 @@ set autoread
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " To get correct comment highlighting
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Disable completion for java
 "autocmd FileType java let b:coc_suggest_disable = 1
@@ -352,18 +345,18 @@ set diffopt+=iwhite
 set diffexpr=""
 
 " code fold
-let g:javascript_plugin_flow = 1
+" let g:javascript_plugin_flow = 1
 "set foldmethod=syntax
 "set foldlevelstart=20
 "set foldlevelstart=0
-let javaScript_fold=1
+" let javaScript_fold=1
 "let c_no_comment_fold = 1
 
 "let g:xml_syntax_folding=1
 "au FileType xml,html,xhtml setlocal foldmethod=indent
 "autocmd Syntax xml,html,xhtml setlocal foldmethod=indent
 
-set ignorecase
+" set ignorecase
 "set smartcase
 "set smartindent
 "set autoindent
@@ -384,17 +377,17 @@ nmap ,vd :Gvdiffsplit<CR>
 map zz :Git<CR>
 
 " highlighting jsx.erb file support
-autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
+" autocmd BufRead,BufNewFile *jsx.erb set filetype=javascript
 
 " save file
 map fw :w<CR>
 map fwq :wq<CR>
 
-let g:lsp_cxx_hl_use_text_props = 1
+" let g:lsp_cxx_hl_use_text_props = 1
 
 " java highlighting 
 "let java_comment_strings=1
-let java_highlight_functions=1
+" let java_highlight_functions=1
 "let java_highlight_java_lang_ids=1
 "let java_highlight_functions = 1
 "let java_highlight_all = 1
@@ -437,7 +430,7 @@ set diffopt=vertical
 " without yanking it
 vnoremap <leader>p "_dP
 
-nnoremap fp :CocCommand eslint.executeAutofix<CR>
+" nnoremap fp :CocCommand eslint.executeAutofix<CR>
 
 " use only for vim-X11
 "set clipboard=unnamed
@@ -445,9 +438,9 @@ set clipboard=unnamedplus
 
 " mnemonic 'di' = 'debug inspect'
 " for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
+" nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -492,27 +485,32 @@ set hlsearch
 
 
 ":highlight CocFloating ctermbg=254 ctermfg=241
-hi CocFloating ctermbg=254 ctermfg=241
-hi CocMenuSel ctermfg=234 ctermbg=245
-autocmd ColorScheme * hi CocFloating ctermbg=254 ctermfg=241
-autocmd ColorScheme * hi CocMenuSel ctermfg=234 ctermbg=245
+" hi CocFloating ctermbg=254 ctermfg=241
+" hi CocMenuSel ctermfg=234 ctermbg=245
+" autocmd ColorScheme * hi CocFloating ctermbg=254 ctermfg=241
+" autocmd ColorScheme * hi CocMenuSel ctermfg=234 ctermbg=245
+
+" set 15 light
+highlight CocFloating ctermbg=8
+autocmd ColorScheme * hi CocFloating ctermbg=8
+
+highlight CocSearch ctermfg=4
+autocmd ColorScheme * hi CocSearch ctermfg=4
+
+" set 7 light
+highlight CocMenuSel ctermbg=0
+autocmd ColorScheme * hi CocMenuSel ctermbg=0
+
+" let g:solarized_termcolors=256
 
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
 " let g:ackhighlight = 1
-" au FileType qf setlocal colorcolumn= " set nocolorcolumn in quickfix window
 
 " nnoremap <Leader>a :Grepper -highlight -tool grep -cword -noprompt<cr>
 " nnoremap <Leader>a :Rg <cword><cr>
 noremap <Leader>a /<C-R><C-W><cr> :Rg <C-R><C-W><cr>
 " let g:grepper = { 'dir': 'cwd' }
-
-nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
