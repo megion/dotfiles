@@ -26,6 +26,28 @@
             "allowed": false
         }
     ],
+    "suggest.enableFloat": false,
+    "suggest.noselect": true,
+    "suggest.floatConfig": {
+        "border": true,
+        "winblend": 15,
+        "borderhighlight": "FloatBorder"
+      },
+      "hover.floatConfig": {
+        "border": true,
+        "winblend": 15,
+        "borderhighlight": "FloatBorder"
+      },
+      "signature.floatConfig": {
+        "border": true,
+        "winblend": 15,
+        "borderhighlight": "FloatBorder"
+      },
+      "diagnostic.floatConfig": {
+        "border": true,
+        "winblend": 15,
+        "borderhighlight": "FloatBorder"
+      },
     "eslint.autoFixOnSave": true,
     "java.format.settings.url": "/home/ilya/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }
