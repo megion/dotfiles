@@ -18,6 +18,16 @@ cd ~/dotfiles
 ./makesymlinks.sh
 ```
 
+Configure nvim
+--------------
+
+``` bash
+# install neovim
+sudo pacman -Syu neovim
+yay -Syu ttf-nerd-fonts-hack-complete-git
+pip3 install neovim-remote
+```
+
 Configure tmux
 --------------
 
