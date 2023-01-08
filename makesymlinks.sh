@@ -9,10 +9,9 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 bindir=~/bin                      # bin directory
-svnConfigDir=~/.subversion/config # svn config directory
+# svnConfigDir=~/.subversion/config # svn config directory
 files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in homedir
-svnConfigFile="svn_config"
-cocSettingsFile="coc-settings.json"
+# svnConfigFile="svn_config"
 
 autostartDir=~/.config/autostart
 termialAutostartFile="terminal.desktop"
@@ -39,9 +38,9 @@ echo -n "Creating $bindir ..."
 mkdir -p $bindir
 echo "done"
 
-echo -n "Creating $svnConfigDir ..."
-mkdir -p $svnConfigDir
-echo "done"
+# echo -n "Creating $svnConfigDir ..."
+# mkdir -p $svnConfigDir
+# echo "done"
 
 # change to the dotfiles directory
 echo -n "Changing to the $dir directory ..."
@@ -57,8 +56,8 @@ for file in $files; do
 done
 
 # process svn config file
-mv $svnConfigDir ~/dotfiles_old/$svnConfigFile 
-ln -sv  $dir/$svnConfigFile $svnConfigDir
+# mv $svnConfigDir ~/dotfiles_old/$svnConfigFile 
+# ln -sv  $dir/$svnConfigFile $svnConfigDir
 
 # process git files 
 for file in $binFiles; do
@@ -66,9 +65,10 @@ for file in $binFiles; do
     ln -sv $dir/$file $bindir/$file
 done
 
-# process cocSettingsFile
+# process nvim 
 mkdir -p ~/.config/nvim
-ln -sfv $dir/$cocSettingsFile ~/.config/nvim/$cocSettingsFile
+ln -sfv $dir/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
 
 # process autostart configs
 ln -sfv  $dir/$termialAutostartFile $autostartDir
