@@ -67,8 +67,8 @@ for file in $binFiles; do
 done
 
 # process cocSettingsFile
-mkdir -p ~/.vim
-ln -sfv $dir/$cocSettingsFile ~/.vim/$cocSettingsFile
+mkdir -p ~/.config/nvim
+ln -sfv $dir/$cocSettingsFile ~/.config/nvim/$cocSettingsFile
 
 # process autostart configs
 ln -sfv  $dir/$termialAutostartFile $autostartDir

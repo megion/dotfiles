@@ -26,7 +26,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -248,9 +248,23 @@ for_window [class="^.*"] border pixel 1
 #         mixer_idx = 0
 # }
 
+assign [class="Google"] → 2
+assign [class="Telegram"] 3
+assign [class="Skype"] 3
+exec i3-sensible-terminal
+exec google-chrome-stable
+exec telegram-desktop
+exec sh -c 'sleep 2; exec skypeforlinux'
+# for_window [class="Telegram"] move to workspace $ws3
+# for_window [class="Telegram"] move left
+
+# exec i3-msg 'workspace 1; exec i3-sensible-terminal; workspace 2; exec google-chrome-stable; workspace 3; exec telegram-desktop | skypeforlinux'
+# for_window [class="Skype"] move right
+# exec --no-startup-id i3-msg 'workspace 3; exec firefox; workspace 1'
+
 bindsym Mod4+space exec $HOME/dotfiles/i3-keyboard-layout.sh cycle us ru
 
-for_window [title="^Skype$" floating] move scratchpad
+# for_window [title="^Skype$" floating] move scratchpad
 
 bindsym Print exec --no-startup-id xfce4-screenshooter
 

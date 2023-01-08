@@ -43,8 +43,11 @@ export GRADLE_OPTS="-Xmx4G"
 
 git config --global core.editor "vimxs"
 git config --global merge.conflictstyle diff3
-git config --global merge.tool 'my-git-merge'
-git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+# git config --global merge.tool 'my-git-merge'
+git config --global merge.tool 'nvimdiff'
+# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+git config --global mergetool.nvimdiff.cmd 'vimxs -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"'
+git config --global mergetool.nvimdiff.trustExitCode false
 git config --global mergetool.trustExitCode false 
 git config --global mergetool.keepBackup false
 #git config --global diff.external my-git-diff.sh

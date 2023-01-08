@@ -41,18 +41,19 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'npm install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " coc.nvim
 " dnf install ruby-devel
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
-" coc-solargraph coc-eslint coc-angular coc-clangd
+" coc-solargraph coc-eslint coc-angular coc-clangd coc-prettier
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 "Plug 'vhdirk/vim-cmake'
 " fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -109,7 +110,7 @@ nnoremap tt :NERDTreeToggle<CR>
 " find file in tree
 nnoremap tf :NERDTreeFind<CR>
 
-" let NERDTreeChDirMode=3
+let g:NERDTreeChDirMode=3
 let g:netrw_keepdir=0
 
 " search current word
@@ -137,9 +138,11 @@ nnoremap <F7> :UndotreeToggle<CR>
 "nnoremap <leader>gq :%!html-beautify -w 40<CR>
 "vnoremap <leader>gq :!html-beautify -w 40<CR>
 
-nmap <Leader>e <Plug>(Prettier)
-nnoremap <leader>e :Prettier<CR>
-vnoremap <leader>e :PrettierPartial<CR>
+" nmap <Leader>e <Plug>(Prettier)
+" nnoremap <leader>e :Prettier<CR>
+" vnoremap <leader>e :PrettierPartial<CR>
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -500,6 +503,19 @@ autocmd ColorScheme * hi CocSearch ctermfg=4
 " set 7 light
 highlight CocMenuSel ctermbg=0
 autocmd ColorScheme * hi CocMenuSel ctermbg=0
+
+" highlight FgCocHintFloatBgCocInfoVirtualText ctermfg=10
+" autocmd ColorScheme * hi FgCocHintFloatBgCocInfoVirtualText ctermfg=10
+
+" set 14 light
+highlight FgCocHintFloatBgCocFloating ctermfg=10
+autocmd ColorScheme * hi FgCocHintFloatBgCocFloating ctermfg=10
+
+" set 14 light
+highlight DiagnosticHint ctermfg=10
+autocmd ColorScheme * hi DiagnosticHint ctermfg=10
+
+ 
 
 " let g:solarized_termcolors=256
 

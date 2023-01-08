@@ -26,28 +26,28 @@
             "allowed": false
         }
     ],
-    "suggest.enableFloat": false,
-    "suggest.noselect": true,
     "suggest.floatConfig": {
-        "border": true,
-        "winblend": 15,
-        "borderhighlight": "FloatBorder"
-      },
-      "hover.floatConfig": {
-        "border": true,
-        "winblend": 15,
-        "borderhighlight": "FloatBorder"
-      },
-      "signature.floatConfig": {
-        "border": true,
-        "winblend": 15,
-        "borderhighlight": "FloatBorder"
-      },
-      "diagnostic.floatConfig": {
-        "border": true,
-        "winblend": 15,
-        "borderhighlight": "FloatBorder"
-      },
+        "border": true
+    },
+    "hover.floatConfig": {
+        "border": true
+    },
+    "signature.floatConfig": {
+        "border": true
+    },
+    "diagnostic.floatConfig": {
+        "border": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
     "eslint.autoFixOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        { "language": "markdown", "autoFix": false },
+        { "language": "typescript", "autoFix": true },
+        { "language": "typescriptreact", "autoFix": true }
+    ],
     "java.format.settings.url": "/home/ilya/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }
