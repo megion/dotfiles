@@ -3,6 +3,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
+" set termguicolors
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -21,10 +23,11 @@ Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'altercation/vim-colors-solarized'
 Plug 'overcache/NeoSolarized'
 Plug 'romainl/flattened'
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/edge'
+Plug 'lifepillar/vim-solarized8'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/edge'
 
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/vcscommand.vim'
 Plug 'othree/html5.vim'
@@ -467,11 +470,12 @@ let g:syntastic_mode_map = {
 
 " for mintty-colors-solarized
 " let g:solarized_termtrans=1
-set background=dark   " Setting dark mode
+" set background=dark   " Setting dark mode
 " colorscheme gruvbox-material
 " colorscheme edge
-" colorscheme solarized
-colorscheme NeoSolarized
+" colorscheme solarized8
+" autocmd vimenter * ++nested colorscheme solarized8
+" colorscheme NeoSolarized
 " hi CocMenuSel ctermbg=237 guibg=#8b0a46
 " hi CocSearch ctermfg=12 guifg=#18A3FF
 " hi CocMenuSel ctermbg=108 guibg=#13354A 
@@ -518,6 +522,10 @@ autocmd ColorScheme * hi DiagnosticHint ctermfg=10
  
 
 " let g:solarized_termcolors=256
+" make terminal background transparent if set to 1 (default: 0).
+" fix bub: 
+" https://stackoverflow.com/questions/35801832/how-to-solve-the-conflict-with-the-color-of-dark-solarized-and-some-output
+let g:solarized_termtrans=1
 
 set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
@@ -530,5 +538,7 @@ noremap <Leader>a /<C-R><C-W><cr> :Rg <C-R><C-W><cr>
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   "rg -g '!{node_modules,build,dist,release}' --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
+  \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
+
+" source ./demo.vim

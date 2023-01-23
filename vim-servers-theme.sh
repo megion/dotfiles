@@ -19,6 +19,10 @@ for instance in $(nvr --serverlist); do
     #echo "set background=$scheme for '$instance'"
     if [ $scheme == "dark" ]; then
         nvr --servername $instance --remote-send $'\e:set background=dark\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme flattened_dark\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme solarized\n'
+        nvr --servername $instance --remote-send $'\e:colorscheme NeoSolarized\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme solarized8\n'
 
         nvr --servername $instance --remote-send $'\e:highlight CocFloating ctermbg=8\n'
         nvr --servername $instance --remote-send $'\e:autocmd ColorScheme * hi CocFloating ctermbg=8\n'
@@ -36,6 +40,11 @@ for instance in $(nvr --serverlist); do
         nvr --servername $instance --remote-send $'\e:autocmd ColorScheme * hi DiagnosticHint ctermfg=10\n'
     elif [ $scheme == "light" ]; then
         nvr --servername $instance --remote-send $'\e:set background=light\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme flattened_light\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme solarized\n'
+        nvr --servername $instance --remote-send $'\e:colorscheme NeoSolarized\n'
+        # nvr --servername $instance --remote-send $'\e:colorscheme solarized8\n'
+
         nvr --servername $instance --remote-send $'\e:highlight CocFloating ctermbg=15\n'
         nvr --servername $instance --remote-send $'\e:autocmd ColorScheme * hi CocFloating ctermbg=15\n'
 

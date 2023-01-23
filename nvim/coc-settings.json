@@ -2,7 +2,7 @@
     "suggest.timeout": 10000,
     "java.jdt.ls.vmargs": "-Xmx8G -javaagent:/home/ilya/development/lombok.jar -Xbootclasspath/a:/home/ilya/development/lombok.jar",
     "java.format.enabled": true,
-    "java.home": "/usr/lib/jvm/java-17-openjdk",
+    "java.home": "/usr/lib/jvm/java-19-openjdk",
     "java.configuration.runtimes": [
         {
             "name": "JavaSE-1.8",
@@ -13,8 +13,8 @@
             "path": "/usr/lib/jvm/java-11-openjdk"
         },
         {
-            "name": "JavaSE-17",
-            "path": "/usr/lib/jvm/java-17-openjdk",
+            "name": "JavaSE-19",
+            "path": "/usr/lib/jvm/java-19-openjdk",
             "default": true
         }
     ],
@@ -49,5 +49,6 @@
         { "language": "typescript", "autoFix": true },
         { "language": "typescriptreact", "autoFix": true }
     ],
-    "java.format.settings.url": "/home/ilya/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
+    "java.format.settings.url": "/home/ilya/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+    "angular.enable-strict-mode-prompt": false
 }

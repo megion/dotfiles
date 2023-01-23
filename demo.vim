@@ -17,4 +17,10 @@ function CheckClipboard()
    endif
 endfunction
 
-call CheckClipboard()
+function ReadTerminalBgColor()
+    "dark ColorBackground=#002b36
+    "light ColorBackground=#fdf6e3
+    vimgrep /ColorBackground/ ~/.config/xfce4/terminal/terminalrc
+endfunction
+
+call ReadTerminalBgColor()
