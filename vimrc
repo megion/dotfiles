@@ -44,9 +44,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'npm install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " coc.nvim
 " dnf install ruby-devel
