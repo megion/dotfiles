@@ -525,7 +525,7 @@ autocmd ColorScheme * hi DiagnosticHint ctermfg=10
 " https://stackoverflow.com/questions/35801832/how-to-solve-the-conflict-with-the-color-of-dark-solarized-and-some-output
 let g:solarized_termtrans=1
 
-set colorcolumn=120
+" set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
 " let g:ackhighlight = 1
 
@@ -540,3 +540,6 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
 
 " source ./demo.vim
+
+" disable brake long line
+autocmd FileType * set formatoptions-=t
