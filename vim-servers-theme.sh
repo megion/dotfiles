@@ -16,7 +16,7 @@ scheme=${1}
 # mycom=""
 
 for instance in $(nvr --serverlist); do
-    #echo "set background=$scheme for '$instance'"
+    echo "set background=$scheme for '$instance'"
     if [ $scheme == "dark" ]; then
         nvr --servername $instance --remote-send $'\e:set background=dark\n'
         # nvr --servername $instance --remote-send $'\e:colorscheme flattened_dark\n'
@@ -63,3 +63,5 @@ for instance in $(nvr --serverlist); do
         echo "NO background"
     fi
 done
+
+# exit 0 
