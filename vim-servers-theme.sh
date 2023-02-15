@@ -9,12 +9,11 @@
 
 scheme=${1}
 
-for instance in $(nvr --serverlist); do
-    # echo "set background=$scheme for '$instance'"
+for instance in $(vim --serverlist); do
     if [ $scheme == "dark" ]; then
-        nvr --servername $instance --remote-send $'\e:source ~/dotfiles/solarized-dark.vim\n'
+        vim --servername $instance --remote-send $'\e:source ~/dotfiles/solarized-dark.vim\n'
     elif [ $scheme == "light" ]; then
-        nvr --servername $instance --remote-send $'\e:source ~/dotfiles/solarized-light.vim\n'
+        vim --servername $instance --remote-send $'\e:source ~/dotfiles/solarized-light.vim\n'
     else 
         echo "NO background"
     fi

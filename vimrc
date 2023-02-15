@@ -468,7 +468,6 @@ let g:syntastic_mode_map = {
 
 set hlsearch
 
-" let g:solarized_termcolors=256
 " make terminal background transparent if set to 1 (default: 0).
 " fix bub: 
 " https://stackoverflow.com/questions/35801832/how-to-solve-the-conflict-with-the-color-of-dark-solarized-and-some-output
@@ -489,7 +488,6 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
-
 
 " disable brake long line
 autocmd FileType * set formatoptions-=t

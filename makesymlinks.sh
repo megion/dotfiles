@@ -68,6 +68,7 @@ done
 # process nvim 
 mkdir -p ~/.config/nvim
 ln -sfv $dir/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sfv $dir/nvim/coc-settings.json ~/.vim/coc-settings.json
 ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
 
 # process autostart configs
