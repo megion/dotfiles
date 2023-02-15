@@ -21,8 +21,8 @@ fi
 #export HADOOP_USER_CLASSPATH_FIRST=true
 #export SPARK_HOME=$HOME/frameworks/spark-1.6.0-bin-hadoop2.6
 
-export JAVA_OPTS="-Xmx8G"
-export GRADLE_OPTS="-Xmx4G"
+export JAVA_OPTS="-Xmx16G"
+export GRADLE_OPTS="-Xmx8G"
 
 #export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 

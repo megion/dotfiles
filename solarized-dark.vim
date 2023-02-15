@@ -7,6 +7,9 @@ colorscheme NeoSolarized
 highlight CocFloating ctermbg=8
 autocmd ColorScheme * hi CocFloating ctermbg=8
 
+" highlight CocSearch ctermfg=4
+" autocmd ColorScheme * hi CocSearch ctermfg=4
+
 highlight CocMenuSel ctermbg=0
 autocmd ColorScheme * hi CocMenuSel ctermbg=0
 

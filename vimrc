@@ -466,64 +466,15 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": ["java"] }
 
-" for mintty-colors-solarized
-" let g:solarized_termtrans=1
-" set background=dark   " Setting dark mode
-" colorscheme gruvbox-material
-" colorscheme edge
-" colorscheme solarized8
-" autocmd vimenter * ++nested colorscheme solarized8
-" colorscheme NeoSolarized
-" hi CocMenuSel ctermbg=237 guibg=#8b0a46
-" hi CocSearch ctermfg=12 guifg=#18A3FF
-" hi CocMenuSel ctermbg=108 guibg=#13354A 
-" highlight CocMenuSel ctermbg=19 guibg=#222222
-" highlight CocMenuSel ctermbg=19 guibg=#222222
-" let g:solarized_termcolors=256
-" see https://github.com/overcache/NeoSolarized
-" highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
-" highlight CocHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
-" highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
-" highlight clear CocMenuSel
-" highlight link CocMenuSel WildMenu
 set hlsearch
-
-
-":highlight CocFloating ctermbg=254 ctermfg=241
-" hi CocFloating ctermbg=254 ctermfg=241
-" hi CocMenuSel ctermfg=234 ctermbg=245
-" autocmd ColorScheme * hi CocFloating ctermbg=254 ctermfg=241
-" autocmd ColorScheme * hi CocMenuSel ctermfg=234 ctermbg=245
-
-" set 15 light
-highlight CocFloating ctermbg=8
-autocmd ColorScheme * hi CocFloating ctermbg=8
-
-highlight CocSearch ctermfg=4
-autocmd ColorScheme * hi CocSearch ctermfg=4
-
-" set 7 light
-highlight CocMenuSel ctermbg=0
-autocmd ColorScheme * hi CocMenuSel ctermbg=0
-
-" highlight FgCocHintFloatBgCocInfoVirtualText ctermfg=10
-" autocmd ColorScheme * hi FgCocHintFloatBgCocInfoVirtualText ctermfg=10
-
-" set 14 light
-highlight FgCocHintFloatBgCocFloating ctermfg=10
-autocmd ColorScheme * hi FgCocHintFloatBgCocFloating ctermfg=10
-
-" set 14 light
-highlight DiagnosticHint ctermfg=10
-autocmd ColorScheme * hi DiagnosticHint ctermfg=10
-
- 
 
 " let g:solarized_termcolors=256
 " make terminal background transparent if set to 1 (default: 0).
 " fix bub: 
 " https://stackoverflow.com/questions/35801832/how-to-solve-the-conflict-with-the-color-of-dark-solarized-and-some-output
 let g:solarized_termtrans=1
+
+source ~/dotfiles/solarized-light.vim
 
 " set colorcolumn=120
 "highlight ColorColumn ctermbg=darkgray
@@ -539,7 +490,6 @@ command! -bang -nargs=* Rg
   \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
 
-" source ./demo.vim
 
 " disable brake long line
 autocmd FileType * set formatoptions-=t
