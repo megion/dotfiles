@@ -88,15 +88,19 @@ if [ -z "$TMUX" ]; then
     base_session="work"
     # Create a new session if it doesn't exist
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
-    send-keys -t ${session}:forty 'sudo openfortivpn -c ~/development/openforti.config' C-m \; \
+    send-keys 'sudo openfortivpn -c ~/development/openforti.config' \; \
     split-window -h \; \
-    send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' C-m \; \
+    send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo sv restart docker && sudo docker-compose up --build' C-m \; \
+    send-keys 'sudo sv restart docker && sudo docker-compose up --build' \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 40 \;
+    resize-pane -R 40 \; \
+    new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
+    send-keys 'vimxs' \; \
+    split-window -h -c ~/workspaces/smev3-service/frontend \; \
+    resize-pane -R 20 \;
 
     #client_cnt=$(tmux list-clients | wc -l)
     # Are there any clients connected already?
