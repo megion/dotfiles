@@ -1,49 +1,42 @@
 {
-    "suggest.timeout": 10000,
-    "java.jdt.ls.vmargs": "-Xmx16G -javaagent:/home/ilya/development/lombok.jar -Xbootclasspath/a:/home/ilya/development/lombok.jar",
-    "java.format.enabled": true,
-    "java.home": "/usr/lib/jvm/java-17-openjdk",
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-1.8",
-            "path": "/usr/lib/jvm/java-8-openjdk"
-        },
-        {
-            "name": "JavaSE-11",
-            "path": "/usr/lib/jvm/java-11-openjdk"
-        },
-        {
-            "name": "JavaSE-17",
-            "path": "/usr/lib/jvm/java-17-openjdk",
-            "default": true
-        },
-        {
-            "name": "JavaSE-19",
-            "path": "/usr/lib/jvm/java-19-openjdk",
-            "default": true
-        }
-    ],
-    "java.import.gradle.version": "7.5.1",
-    "java.import.gradle.enabled": true,
-    "java.imports.gradle.wrapper.checksums": [
-        {
-            "sha256": "8e89409bcf7aa09bc34b6c1b2aea60f742b1b82ae1bf341294b98a9e6e5583ae",
-            "allowed": false
-        }
-    ],
-    "suggest.floatConfig": {
-        "border": true
+  "suggest.timeout": 10000,
+  "java.jdt.ls.vmargs": " -Xmx16G -javaagent:/home/ilya/development/lombok-1.18.16.jar ",
+  "java.jdt.ls.java.home": "/usr/lib/jvm/java-17-openjdk",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.import.gradle.java.home": "/usr/lib/jvm/java-8-openjdk",
+  "java.jdt.ls.lombokSupport.enabled": false,
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "/usr/lib/jvm/java-8-openjdk",
+      "default": true
     },
-    "hover.floatConfig": {
-        "border": true
+    {
+      "name": "JavaSE-11",
+      "path": "/usr/lib/jvm/java-11-openjdk"
     },
-    "signature.floatConfig": {
-        "border": true
-    },
-    "diagnostic.floatConfig": {
-        "border": true
-    },
-    "eslint.autoFixOnSave": true,
-    "java.format.settings.url": "/home/ilya/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
-    "angular.enable-strict-mode-prompt": false
+    {
+      "name": "JavaSE-17",
+      "path": "/usr/lib/jvm/java-17-openjdk"
+    }
+  ],
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "8e89409bcf7aa09bc34b6c1b2aea60f742b1b82ae1bf341294b98a9e6e5583ae",
+      "allowed": false
+    }
+  ],
+  "suggest.floatConfig": {
+    "border": true
+  },
+  "hover.floatConfig": {
+    "border": true
+  },
+  "signature.floatConfig": {
+    "border": true
+  },
+  "diagnostic.floatConfig": {
+    "border": true
+  },
+  "eslint.autoFixOnSave": true
 }
