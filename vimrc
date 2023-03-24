@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'scrooloose/nerdtree-project-plugin'
 
 " solarized theme
@@ -79,6 +79,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'mhinz/vim-grepper'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 call plug#end()
@@ -491,3 +493,24 @@ command! -bang -nargs=* Rg
 
 " disable brake long line
 autocmd FileType * set formatoptions-=t
+
+" airline
+" let g:airline_statusline_ontop=1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" enable/disable coc integration >
+" let g:airline#extensions#coc#enabled = 1
+" change error symbol: >
+" let airline#extensions#coc#error_symbol = 'E:'
+" change warning symbol: >
+" let airline#extensions#coc#warning_symbol = 'W:'
+" enable/disable coc status display >
+" let g:airline#extensions#coc#show_coc_status = 1
+
+" change the error format (%C - error count, %L - line number): >
+" let airline#extensions#coc#stl_format_err = '%C(L%L)'
+" change the warning format (%C - error count, %L - line number): >
+" let airline#extensions#coc#stl_format_warn = '%C(L%L)'
+
+let g:indentLine_char = '┊'
