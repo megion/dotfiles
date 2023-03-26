@@ -1,5 +1,6 @@
 {
   "suggest.timeout": 10000,
+  "tsserver.log": "normal",
   "java.jdt.ls.vmargs": " -Xmx16G -javaagent:/home/ilya/development/lombok-1.18.16.jar ",
   "java.jdt.ls.java.home": "/usr/lib/jvm/java-17-openjdk",
   "java.compile.nullAnalysis.mode": "automatic",

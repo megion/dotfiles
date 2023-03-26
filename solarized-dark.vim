@@ -21,3 +21,7 @@ autocmd ColorScheme * hi FgCocHintFloatBgCocFloating ctermfg=10
 
 highlight DiagnosticHint ctermfg=10
 autocmd ColorScheme * hi DiagnosticHint ctermfg=10
+
+" two times toggle tree for update icon colors
+if exists('g:NERDTreeCreator.ToggleTabTree') | execute 'NERDTreeToggle' |
+            \ execute 'NERDTreeToggle' | endif

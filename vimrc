@@ -81,6 +81,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Yggdroot/indentLine'
+Plug 'leafOfTree/vim-project'
 
 " Initialize plugin system
 call plug#end()
@@ -104,17 +105,6 @@ autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 " or
 set foldlevel=99 " Open all folds
 
-" open new tab
-nnoremap tn :tabnew<CR>
-
-" open nerdtree
-nnoremap tt :NERDTreeToggle<CR>
-
-" find file in tree
-nnoremap tf :NERDTreeFind<CR>
-
-let g:NERDTreeChDirMode=3
-let g:netrw_keepdir=0
 
 " search current word
 " noremap <Leader>a :Ack <cword><cr>
@@ -130,7 +120,6 @@ nnoremap ct :checktime<CR>
 "nnoremap <leader>z :YcmCompleter GoToDefi<CR>
 nnoremap <leader>t :vertical resize +10<CR>
 nnoremap <leader>g :vertical resize -10<CR>
-nnoremap <F7> :UndotreeToggle<CR>
 
 " plugin 'Chiel92/vim-autoformat' required install clang and astyle
 "nnoremap <leader>f :Autoformat<CR>
@@ -296,6 +285,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
@@ -318,17 +308,37 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " configure coc.nvim ---
 
-"autocmd StdinReadPre * let s:std_in=1
-" open a NERDTree automatically when vim starts up if no files were specified 
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" remove signcolumn 
+" NERDTree configs +++
+"
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | wincmd p | endif
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" remove signcolumn
 autocmd FileType tagbar,nerdtree setlocal signcolumn=no
 
 " fix for https://github.com/christoomey/vim-tmux-navigator/issues/205
 let g:NERDTreeMapJumpPrevSibling=""
 let g:NERDTreeMapJumpNextSibling=""
+
+" open new tab
+nnoremap tn :tabnew<CR>
+
+" open nerdtree
+nnoremap tt :NERDTreeToggle<CR>
+
+" find file in tree
+nnoremap tf :NERDTreeFind<CR>
+
+let g:NERDTreeChDirMode=3
+" let g:netrw_keepdir=0
+
+" NERDTree configs ---
 
 set autoread
 
@@ -351,21 +361,6 @@ set diffopt+=iwhite
 set diffexpr=""
 
 " code fold
-" let g:javascript_plugin_flow = 1
-"set foldmethod=syntax
-"set foldlevelstart=20
-"set foldlevelstart=0
-" let javaScript_fold=1
-"let c_no_comment_fold = 1
-
-"let g:xml_syntax_folding=1
-"au FileType xml,html,xhtml setlocal foldmethod=indent
-"autocmd Syntax xml,html,xhtml setlocal foldmethod=indent
-
-" set ignorecase
-"set smartcase
-"set smartindent
-"set autoindent
 set number
 set tabstop=4 " count of space which show tab
 set softtabstop=4 " count of space which show tab when it added
@@ -389,23 +384,6 @@ map zz :Git<CR>
 map fw :w<CR>
 map fwq :wq<CR>
 
-" let g:lsp_cxx_hl_use_text_props = 1
-
-" java highlighting 
-"let java_comment_strings=1
-" let java_highlight_functions=1
-"let java_highlight_java_lang_ids=1
-"let java_highlight_functions = 1
-"let java_highlight_all = 1
-
-" TODO: not work
-"let mapleader=","
-
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
 "augroup ProjectDrawer
   "autocmd!
   "autocmd VimEnter * :Vexplore
@@ -514,3 +492,6 @@ autocmd FileType * set formatoptions-=t
 " let airline#extensions#coc#stl_format_warn = '%C(L%L)'
 
 let g:indentLine_char = '┊'
+
+" json that supports comments
+autocmd FileType json syntax match Comment +\/\/.\+$+
