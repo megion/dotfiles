@@ -16,7 +16,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'PhilRunninger/nerdtree-visual-selection'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'scrooloose/nerdtree-project-plugin'
 
 " solarized theme
@@ -81,7 +82,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Yggdroot/indentLine'
-Plug 'leafOfTree/vim-project'
+" Plug 'leafOfTree/vim-project'
 
 " Initialize plugin system
 call plug#end()
