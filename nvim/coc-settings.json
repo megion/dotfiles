@@ -39,5 +39,12 @@
   "diagnostic.floatConfig": {
     "border": true
   },
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+  ],
 }
