@@ -495,6 +495,8 @@ autocmd FileType * set formatoptions-=t
 " let airline#extensions#coc#stl_format_warn = '%C(L%L)'
 
 let g:indentLine_char = '┊'
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
 " json that supports comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
