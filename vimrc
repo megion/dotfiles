@@ -47,7 +47,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 "
-Plug 'neoclide/jsonc.vim'
+" Plug 'neoclide/jsonc.vim'
 
 " coc.nvim
 " dnf install ruby-devel
@@ -83,7 +83,7 @@ Plug 'mhinz/vim-grepper'
 
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 " Plug 'leafOfTree/vim-project'
 
 " Initialize plugin system
@@ -498,3 +498,6 @@ let g:indentLine_char = '┊'
 
 " json that supports comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" see: https://github.com/Yggdroot/indentLine/issues/172
+autocmd Filetype json let g:indentLine_setConceal = 0
