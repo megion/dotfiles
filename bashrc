@@ -96,12 +96,12 @@ if [ -z "$TMUX" ]; then
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 40 \; \
-    new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
-    send-keys 'vimxs' \; \
-    split-window -h -c ~/workspaces/smev3-service/frontend \; \
-    resize-pane -R 20 \; \
-    send-keys 'pnpm build:dev' \;
+    resize-pane -R 40 \;
+    # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
+    # send-keys 'vimxs' \; \
+    # split-window -h -c ~/workspaces/smev3-service/frontend \; \
+    # resize-pane -R 20 \; \
+    # send-keys 'pnpm build:dev' \;
 
     #client_cnt=$(tmux list-clients | wc -l)
     # Are there any clients connected already?

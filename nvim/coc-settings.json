@@ -4,7 +4,7 @@
   "java.jdt.ls.vmargs": " -Xmx16G -javaagent:/home/ilya/development/lombok-1.18.16.jar ",
   "java.jdt.ls.java.home": "/usr/lib/jvm/java-17-openjdk",
   "java.compile.nullAnalysis.mode": "automatic",
-  "java.import.gradle.java.home": "/usr/lib/jvm/java-8-openjdk",
+  // "java.import.gradle.java.home": "/usr/lib/jvm/java-8-openjdk",
   "java.jdt.ls.lombokSupport.enabled": false,
   "java.configuration.runtimes": [
     {
