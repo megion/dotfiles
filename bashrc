@@ -40,6 +40,9 @@ export GRADLE_OPTS="-Xmx8G"
 # export GDK_SCALE=2
 # export GDK_DPI_SCALE=0.5
 # export QT_AUTO_SCREEN_SCALE_FACTOR=2
+#
+# QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=126 QT_SCREEN_SCALE_FACTORS=1 freecad
+alias cad='QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=126 QT_SCREEN_SCALE_FACTORS=1 freecad'
 
 git config --global core.editor "vimxs"
 git config --global merge.conflictstyle diff3

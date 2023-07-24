@@ -92,4 +92,4 @@ mkdir -p ~/.config/pulse
 ln -sfv $dir/pulse/client.conf ~/.config/pulse/client.conf
 
 # process .Xresources config
-ln -sfv $dir/Xresources ~/.Xresources
+# ln -sfv $dir/Xresources ~/.Xresources

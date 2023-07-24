@@ -83,7 +83,7 @@ Plug 'mhinz/vim-grepper'
 
 Plug 'christoomey/vim-tmux-navigator'
 
-" Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " Plug 'leafOfTree/vim-project'
 
 " Initialize plugin system
@@ -503,3 +503,10 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " see: https://github.com/Yggdroot/indentLine/issues/172
 autocmd Filetype json let g:indentLine_setConceal = 0
+
+augroup my_filetype_detect
+    autocmd!
+
+    " Associate filetype ".qss" with CSS mode.
+    autocmd BufNewFile,BufRead *.qss setfiletype css
+augroup END
