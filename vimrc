@@ -469,7 +469,7 @@ noremap <Leader>a /<C-R><C-W><cr> :Rg <C-R><C-W><cr>
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
+  \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
 
 " disable brake long line
