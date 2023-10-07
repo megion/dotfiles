@@ -91,9 +91,11 @@ if [ -z "$TMUX" ]; then
     base_session="work"
     # Create a new session if it doesn't exist
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
-    send-keys 'sudo openfortivpn -c ~/development/openforti.config' \; \
+    send-keys 'sudo openfortivpn -c ~/development/openforti.config --pppd-accept-remote' \; \
     split-window -h \; \
     send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' \; \
+    split-window -v \; \
+    send-keys 'sudo sv restart NetworkManager' \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
     send-keys 'sudo sv restart docker && sudo docker-compose up --build' \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
