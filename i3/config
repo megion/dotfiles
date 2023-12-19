@@ -254,6 +254,7 @@ assign [class="Skype"] 3
 exec i3-sensible-terminal
 exec google-chrome-stable
 exec telegram-desktop
+exec skypeforlinux
 exec_always --no-startup-id i3-msg 'workspace 4; exec atril ~/Documents/compilers/compilers2.djvu; exec atril ~/Documents/compilers/compilers1.pdf'
 
 # exec i3-msg 'workspace 1; exec i3-sensible-terminal; workspace 2; exec google-chrome-stable; workspace 3; exec telegram-desktop | skypeforlinux'

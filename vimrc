@@ -14,8 +14,8 @@ call plug#begin('~/.vim/plugged')
 "Plug 'preservim/nerdcommenter'
 
 Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'PhilRunninger/nerdtree-visual-selection'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'PhilRunninger/nerdtree-visual-selection'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'scrooloose/nerdtree-project-plugin'
@@ -84,6 +84,11 @@ Plug 'mhinz/vim-grepper'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Yggdroot/indentLine'
+Plug 'will133/vim-dirdiff'
+Plug 'ZSaberLv0/ZFVimDirDiff'
+Plug 'ZSaberLv0/ZFVimJob' " required
+" Plug 'ZSaberLv0/ZFVimIgnore' " optional, but recommended for auto ignore setup
+" Plug 'ZSaberLv0/ZFVimBackup' " optional, but recommended for auto backup
 " Plug 'leafOfTree/vim-project'
 
 " Initialize plugin system
@@ -452,7 +457,8 @@ let g:syntastic_mode_map = {
 set hlsearch
 
 " make terminal background transparent if set to 1 (default: 0).
-" fix bub: 
+" https://github.com/altercation/solarized/issues/220
+" fix bug: 
 " https://stackoverflow.com/questions/35801832/how-to-solve-the-conflict-with-the-color-of-dark-solarized-and-some-output
 let g:solarized_termtrans=1
 

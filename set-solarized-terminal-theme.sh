@@ -47,6 +47,7 @@ if [ $os == "LINUX" ]; then
         xfconf-query -c xfce4-terminal -p /color-cursor -s "#93a1a1"
         xfconf-query -c xfce4-terminal -p /color-bold -s "#93a1a1"
         xfconf-query -c xfce4-terminal -p /color-palette -s "#073642;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#93a1a1;#fdf6e3"
+        # xfconf-query -c xfce4-terminal -p /color-palette -s "#073642;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#eee8d5;#475b62;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#93a1a1;#fdf6e3"
     else 
         xfconf-query -c xfce4-terminal -p /color-foreground -s "#657b83"
         xfconf-query -c xfce4-terminal -p /color-background -s "#fdf6e3"

@@ -1,0 +1,28 @@
+[merge]
+	conflictstyle = diff3
+	tool = nvimdiff
+[mergetool "my-git-merge"]
+	cmd = my-git-merge.sh \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	trustExitCode = false
+	keepBackup = false
+[core]
+	excludesfile = /home/ilya/.gitignore
+	editor = vimxs
+	autocrlf = input
+[user]
+	email = ilya.zadorozhny@gmail.com
+	name = Ilya Zadorozhny
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = vimxs -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+[difftool "neovimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+[mergetool "nvimdiff"]
+	cmd = vimxs -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+	trustExitCode = false
+[alias]
+    dirdiff = difftool --ignore-submodules --dir-diff --no-symlinks --tool=vimdirdiff
+[difftool "vimdirdiff"]
+    cmd = vimxs -f '+next' '+execute \"ZFDirDiff\" argv(0) argv(1)' $LOCAL $REMOTE

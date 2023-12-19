@@ -87,9 +87,15 @@ ln -sfv $dir/polybar/launch.sh ~/.config/polybar/launch.sh
 mkdir -p ~/.config/i3status
 ln -sfv $dir/i3status/config ~/.config/i3status/config
 
+mkdir -p ~/.config/alacritty
+ln -sfv $dir/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+
 # process pulse audio config
 mkdir -p ~/.config/pulse
 ln -sfv $dir/pulse/client.conf ~/.config/pulse/client.conf
+
+# gitconfig file
+ln -sfv $dir/.gitconfig ~/.gitconfig
 
 # process .Xresources config
 # ln -sfv $dir/Xresources ~/.Xresources
