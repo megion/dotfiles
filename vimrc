@@ -84,12 +84,14 @@ Plug 'mhinz/vim-grepper'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Yggdroot/indentLine'
-Plug 'will133/vim-dirdiff'
+" Plug 'will133/vim-dirdiff'
 Plug 'ZSaberLv0/ZFVimDirDiff'
 Plug 'ZSaberLv0/ZFVimJob' " required
-" Plug 'ZSaberLv0/ZFVimIgnore' " optional, but recommended for auto ignore setup
-" Plug 'ZSaberLv0/ZFVimBackup' " optional, but recommended for auto backup
+Plug 'ZSaberLv0/ZFVimIgnore' " optional, but recommended for auto ignore setup
+Plug 'ZSaberLv0/ZFVimBackup' " optional, but recommended for auto backup
 " Plug 'leafOfTree/vim-project'
+
+Plug 'lbrayner/vim-rzip'
 
 " Initialize plugin system
 call plug#end()
