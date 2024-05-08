@@ -72,8 +72,6 @@ Plug 'pseewald/vim-anyfold'
 "Plug 'tpope/vim-obsession'
 "Plug 'dhruvasagar/vim-prosession'
 
-"Plug 'eslint/eslint'
-"
 " jsx commentary support
 Plug 'tpope/vim-commentary'
 Plug 'suy/vim-context-commentstring'
@@ -518,3 +516,6 @@ augroup my_filetype_detect
     " Associate filetype ".qss" with CSS mode.
     autocmd BufNewFile,BufRead *.qss setfiletype css
 augroup END
+
+" see https://github.com/neoclide/coc-css
+autocmd FileType scss setl iskeyword+=@-@
