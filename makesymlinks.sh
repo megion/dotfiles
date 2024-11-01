@@ -25,7 +25,7 @@ termialAutostartFile="terminal.desktop"
 
 # add secure_path="......:/home/ilya/bin" by run sudo visudo
 # for view this files by sudo
-binFiles="my-git-diff.sh my-git-merge.sh vimxs" # list of executable files
+binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims" # list of executable files
 
 ##########
 

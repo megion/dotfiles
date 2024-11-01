@@ -1,0 +1,6 @@
+#!/bin/bash
+############################
+# run nvim as server for remote control ############################
+
+nvim --listen ~/.cache/nvim/server.pipe "${@}"
+exit $?
