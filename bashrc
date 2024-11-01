@@ -91,7 +91,7 @@ if [ -z "$TMUX" ]; then
     base_session="work"
     # Create a new session if it doesn't exist
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
-    send-keys 'sudo openfortivpn -c ~/development/openforti.config' \; \
+    send-keys 'sudo openfortivpn -c ~/development/openforti.config --no-dns' \; \
     split-window -h \; \
     send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' \; \
     split-window -v \; \
