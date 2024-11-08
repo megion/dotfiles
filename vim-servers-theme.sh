@@ -19,4 +19,12 @@ for instance in $(vim --serverlist); do
     fi
 done
 
+if [ $scheme == "dark" ]; then
+    nvim --server ~/.cache/nvim/server.pipe --remote-send $'\e:source ~/dotfiles/solarized-dark.vim\n'
+elif [ $scheme == "light" ]; then
+    nvim --server ~/.cache/nvim/server.pipe --remote-send $'\e:source ~/dotfiles/solarized-light.vim\n'
+else 
+    echo "NO background"
+fi
+
 # exit 0 

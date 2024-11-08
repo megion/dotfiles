@@ -2,7 +2,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-
 " set termguicolors
 
 " Specify a directory for plugins
@@ -21,28 +20,27 @@ Plug 'preservim/nerdtree'
 "Plug 'scrooloose/nerdtree-project-plugin'
 
 " solarized theme
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'overcache/NeoSolarized'
-Plug 'romainl/flattened'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'romainl/flattened'
+" Plug 'lifepillar/vim-solarized8'
 " Plug 'sainnhe/gruvbox-material'
 " Plug 'sainnhe/edge'
 
 " Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/vcscommand.vim'
-Plug 'othree/html5.vim'
+" Plug 'vim-scripts/vcscommand.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 "to highlight tsx
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 " highlight js
 Plug 'pangloss/vim-javascript'
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'yuezk/vim-js'
+" Plug 'maxmellon/vim-jsx-pretty'
 
 " improve highlight cxx
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
@@ -57,6 +55,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+" Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
 
 "Plug 'vhdirk/vim-cmake'
 " fuzzy finder
@@ -81,7 +81,7 @@ Plug 'mhinz/vim-grepper'
 
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 " Plug 'will133/vim-dirdiff'
 Plug 'ZSaberLv0/ZFVimDirDiff'
 Plug 'ZSaberLv0/ZFVimJob' " required
@@ -91,12 +91,18 @@ Plug 'ZSaberLv0/ZFVimBackup' " optional, but recommended for auto backup
 
 Plug 'lbrayner/vim-rzip'
 
+Plug 'vim-scripts/dbext.vim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
+" Plug 'sheerun/vim-polyglot'
+
 " Initialize plugin system
 call plug#end()
 
 set encoding=utf-8
 "set guifont=SourceCodePro\ Nerd\ Font\ 10
-
 
 " see nerdcommenter 
 filetype plugin on
@@ -500,15 +506,20 @@ autocmd FileType * set formatoptions-=t
 " change the warning format (%C - error count, %L - line number): >
 " let airline#extensions#coc#stl_format_warn = '%C(L%L)'
 
-let g:indentLine_char = '┊'
-let g:vim_json_conceal=0
-let g:markdown_syntax_conceal=0
+" let g:indentLine_char = '┊'
+" let g:vim_json_conceal=0
+" let g:markdown_syntax_conceal=0
+" autocmd FileType md set conceallevel=0
+" autocmd Bufread *.md  let g:conceallevel=0
+" set conceallevel=0
+" au FileType markdown setl conceallevel=0
+" let g:indentLine_conceallevel = 0
 
 " json that supports comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " see: https://github.com/Yggdroot/indentLine/issues/172
-autocmd Filetype json let g:indentLine_setConceal = 0
+" autocmd Filetype json let g:indentLine_setConceal = 0
 
 augroup my_filetype_detect
     autocmd!
