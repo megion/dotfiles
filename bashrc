@@ -97,7 +97,7 @@ if [ -z "$TMUX" ]; then
     split-window -v \; \
     send-keys 'sudo sv restart NetworkManager' \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo sv restart docker && sudo COMPOSE_PROFILES=micro docker compose up --build --remove-orphans' \; \
+    send-keys 'sudo docker-compose up --build --remove-orphans' \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'vimxs' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \

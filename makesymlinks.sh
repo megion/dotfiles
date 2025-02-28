@@ -66,10 +66,10 @@ for file in $binFiles; do
 done
 
 # process nvim 
-mkdir -p ~/.config/nvim
-ln -sfv $dir/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
-ln -sfv $dir/nvim/coc-settings.json ~/.vim/coc-settings.json
-ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
+# mkdir -p ~/.config/nvim
+ln -sfv $dir/nvim/ ~/.config/
+# ln -sfv $dir/nvim/coc-settings.json ~/.vim/coc-settings.json
+# ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
 
 # process autostart configs
 ln -sfv  $dir/$termialAutostartFile $autostartDir
