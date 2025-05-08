@@ -249,12 +249,16 @@ for_window [class="^.*"] border pixel 1
 # }
 
 assign [class="Google"] → 2
-assign [class="Telegram"] 3
-assign [class="Skype"] 3
+# assign [class="Telegram"] 3
+# assign [class="Skype"] 3
 exec i3-sensible-terminal
 exec google-chrome-stable
-exec telegram-desktop
-exec skypeforlinux
+# exec 'workspace 3; exec telegram-desktop'
+# exec 'workspace 3; telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 3; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 3; exec /opt/teams-for-linux/teams-for-linux'
+# exec skypeforlinux
+# exec_always --no-startup-id i3-msg 'workspace 3; exec /opt/teams-for-linux/teams-for-linux'
 exec_always --no-startup-id i3-msg 'workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers2.djvu'
 exec_always --no-startup-id i3-msg 'workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers1.pdf'
 
