@@ -24,6 +24,9 @@ fi
 export JAVA_OPTS="-Xmx16G"
 export GRADLE_OPTS="-Xmx8G"
 
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+
 #export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
