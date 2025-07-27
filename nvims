@@ -1,6 +1,22 @@
 #!/bin/bash
 ############################
-# run nvim as server for remote control ############################
+# run nvim as server for remote control
+############################
 
-nvim --listen ~/.cache/nvim/server.pipe "${@}"
+# see
+# https://github.com/neovim/neovim/issues/33150
+# https://github.com/eylles/pywal-extra/tree/master/scripts/nvim-colo-reload
+mypid="$$"
+pipe="${XDG_RUNTIME_DIR:-/tmp}/nvim.pipe"
+
+# make pipe dir
+if [ ! -d "$pipe" ]; then
+  mkdir -p "$pipe"
+fi
+
+pipe_file="${pipe}/nvim.${mypid}.pipe"
+
+# exec $nv_bin --listen "$pipe_file" "$@"
+
+nvim --listen "$pipe_file" "${@}"
 exit $?

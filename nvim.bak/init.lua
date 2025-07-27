@@ -5,5 +5,5 @@ vim.g.loaded_netrwPlugin = 1
 -- use only for vim-X11
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+require("config.keymaps")

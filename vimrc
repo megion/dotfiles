@@ -52,7 +52,14 @@ Plug 'pangloss/vim-javascript'
 " run :CocInstall coc-json coc-tsserver coc-html coc-css coc-java
 " coc-solargraph coc-eslint coc-angular coc-clangd coc-prettier
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'commit': 'a9ab3e4885bc8ed0aa38c5a8ee5953b0a7bc9bd3', 'do': 'npm ci'}
+" Plug 'neoclide/coc.nvim', {'commit': 'a9ab3e4885bc8ed0aa38c5a8ee5953b0a7bc9bd3'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+
+" Plug 'neoclide/coc.nvim', {'commit': 'ed1056cdde78f7c30c9137f72a35040220268a18', 'do': 'npm ci'}
+
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile', 'tag': '2.2.0'}
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Plug 'godlygeek/tabular'
@@ -479,10 +486,19 @@ source ~/dotfiles/solarized-light.vim
 noremap <Leader>a /<C-R><C-W><cr> :Rg <C-R><C-W><cr>
 " let g:grepper = { 'dir': 'cwd' }
 
+" https://github.com/junegunn/fzf.vim/issues/528
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000']}), <bang>0)
+  \   fzf#vim#with_preview({'options': ['--color', 'hl:#ff8787,hl+:#ff0000', '--bind', 'ctrl-s:select-all,ctrl-d:deselect-all']}), <bang>0)
+
+" " see: https://github.com/junegunn/fzf.vim/issues/528#issuecomment-585561554
+" if has('nvim')
+"   tnoremap <a-a> <esc>a
+"   tnoremap <a-b> <esc>b
+"   tnoremap <a-d> <esc>d
+"   tnoremap <a-f> <esc>f
+" endif
 
 " disable brake long line
 autocmd FileType * set formatoptions-=t

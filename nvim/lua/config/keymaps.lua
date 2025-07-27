@@ -1,9 +1,3 @@
-local map = vim.api.nvim_set_keymap
-local default_opts = {noremap = true, silent = true}
-
--- Типа 'Нажимает' на ESC при быстром нажатии jj, чтобы не тянутся
-map('i', 'jj', '<Esc>', {noremap = true})
-
--- open new tab
-map('n', 'tn', ':tabnew<CR>',  default_opts)
-
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
