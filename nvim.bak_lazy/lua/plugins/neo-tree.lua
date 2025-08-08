@@ -1,0 +1,44 @@
+return {
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   lazy = false,
+  --   cmd = "Neotree", -- Ensure Neo-tree is loaded when the command is called
+  --   keys = {
+  --     {
+  --       "tt",
+  --       "toggle_node", -- This refers to a built-in Neo-tree command
+  --       desc = "Neo-tree: Toggle Node",
+  --       -- function()
+  --       --   require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+  --       -- end,
+  --       -- desc = "Explorer NeoTree (Root Dir)",
+  --     },
+  --     -- Example: Change 'h' to move to the parent node
+  --     -- {
+  --     --   "h",
+  --     --   function()
+  --     --     local state = require("neo-tree.sources.manager").get_state("filesystem")
+  --     --     local node = state.tree:get_node()
+  --     --     require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+  --     --   end,
+  --     --   desc = "Neo-tree: Go to parent node",
+  --     -- },
+  --     -- Example: Add a new keymap for toggling a node
+  --     -- {
+  --     --   "<leader>nt",
+  --     --   "toggle_node", -- This refers to a built-in Neo-tree command
+  --     --   desc = "Neo-tree: Toggle Node",
+  --     -- },
+  --     -- Example: Overwrite a default keymap (e.g., 'l' to open a file)
+  --     -- {
+  --     --   "l",
+  --     --   "open_with_window_picker", -- Use a different command than default
+  --     --   desc = "Neo-tree: Open with Window Picker",
+  --     -- },
+  --   },
+  --   -- Other Neo-tree options can go here as well
+  --   opts = {
+  --     -- ... your other Neo-tree configurations ...
+  --   },
+  -- },
+}

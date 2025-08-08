@@ -1,6 +1,6 @@
 #!/bin/bash
 ############################
-Need implements next:
+NBeed implements next:
 1. when vim open read gnome terminal background color
 2. define $scheme by background color
 3. call `~/dotfiles/vim-servers-theme.sh $scheme >/dev/null 2>&1`

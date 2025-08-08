@@ -5,5 +5,25 @@ vim.g.loaded_netrwPlugin = 1
 -- use only for vim-X11
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
--- bootstrap lazy.nvim, LazyVim and your plugins
+vim.g.autoformat = false
+
+local opt = vim.opt
+opt.shiftwidth = 4
+opt.number = true
+
+-- set vertical diff for vimdiff
+opt.diffopt:append("vertical")
+
 require("config.lazy")
+require("config.keymaps")
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    -- Only open nvim-tree if no files are opened and the current buffer is empty
+    if
+      #vim.api.nvim_list_bufs() == 1 and vim.api.nvim_buf_get_name(0) == ""
+    then
+      require("nvim-tree.api").tree.open()
+    end
+  end,
+})

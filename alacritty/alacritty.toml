@@ -1,0 +1,14 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/_active.toml"
+]
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "Mononoki Nerd Font Mono"
+style = "Regular"
+
+[env]
+TERM = "xterm-256color"

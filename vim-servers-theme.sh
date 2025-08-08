@@ -26,9 +26,9 @@ pipe="${XDG_RUNTIME_DIR:-/tmp}/nvim.pipe"
 for pipe_instance in "${pipe}"/nvim.*.pipe; do
   # $nv_bin --server "$pipe_instance" --remote-send ":${1}<CR>"
   if [ $scheme == "dark" ]; then
-    nvim --server "$pipe_instance" --remote-send $'\e:source ~/dotfiles/solarized-dark.vim\n'
+    nvim --server "$pipe_instance" --remote-send $'\e:source ~/dotfiles/neo_solarized-dark.vim\n'
   elif [ $scheme == "light" ]; then
-    nvim --server "$pipe_instance" --remote-send $'\e:source ~/dotfiles/solarized-light.vim\n'
+    nvim --server "$pipe_instance" --remote-send $'\e:source ~/dotfiles/neo_solarized-light.vim\n'
   else
     echo "NO background"
   fi
