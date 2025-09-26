@@ -27,3 +27,18 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     end
   end,
 })
+
+-- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage 
+local lsp = require("lsp-zero").preset({
+  name = "minimal",
+  set_lsp_keymaps = true,
+  manage_nvim_cmp = true,
+  suggest_lsp_servers = false,
+})
+
+lsp.setup_servers({'tsserver', 'eslint', 'jdtls', 'lua_ls'})
+
+-- (Optional) Configure lua language server for neovim
+lsp.nvim_workspace()
+
+lsp.setup()

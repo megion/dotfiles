@@ -82,8 +82,14 @@ return {
         -- Nvim-tree will update the Neovim's current working directory to that location
         sync_root_with_cwd = true,
         respect_buf_cwd = true,
+        hijack_cursor = true,
+        disable_netrw = true,
+        view = { width = {
+          max = 100,
+        } },
         filters = {
           dotfiles = true,
+          git_ignored = false,
         },
         on_attach = my_on_attach,
       })

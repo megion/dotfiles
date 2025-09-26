@@ -128,3 +128,11 @@ if [ -z "$TMUX" ]; then
 
     tmux -2 attach-session -t $base_session
 fi
+
+# pnpm
+# export PNPM_HOME="/home/ilya/.local/share/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
+# pnpm end

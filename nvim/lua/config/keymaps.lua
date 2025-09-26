@@ -32,6 +32,14 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Find file in Tree" }
 )
 
+-- vertical resize
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>t",
+  ":vertical resize +10<CR>",
+  { noremap = true, silent = true, desc = "Vertical resize" }
+)
+
 -- copy file path to clipboard
 -- vim.api.nvim_set_keymap(
 --   "n",
