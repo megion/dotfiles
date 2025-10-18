@@ -64,6 +64,9 @@ local function my_on_attach(bufnr)
     api.node.open.horizontal_no_picker,
     opts("Open: Horizontal Split")
   )
+
+  -- override open 'o', disable pick window
+  vim.keymap.set("n", "o", api.node.open.no_window_picker, opts("Open"))
   vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>", opts("Open: New Tab"))
 end
 
