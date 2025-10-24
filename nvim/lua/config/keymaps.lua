@@ -1,12 +1,11 @@
 local map = vim.api.nvim_set_keymap
-local default_opts = {noremap = true, silent = true}
+local default_opts = { noremap = true, silent = true }
 
 -- Типа 'Нажимает' на ESC при быстром нажатии jj, чтобы не тянутся
 -- map('i', 'jj', '<Esc>', {noremap = true})
 
 -- open new tab
 -- map('n', 'tn', ':tabnew<CR>',  default_opts)
-
 
 -- " open new tab
 vim.api.nvim_set_keymap(
@@ -40,10 +39,22 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Vertical resize" }
 )
 
+-- <esc> to exit terminal-mode
+vim.api.nvim_set_keymap(
+  "t",
+  "<Esc>",
+  [[<C-\><C-n>]],
+  { noremap = true, silent = true, desc = "to exit terminal-mode" }
+)
+
+-- vim.api.nvim_set
+
+-- :tnoremap <Esc> <C-\><C-n>
+
 -- copy file path to clipboard
--- vim.api.nvim_set_keymap(
---   "n",
---   "<Leader>yp",
---   ":let @+ = expand('%:p')<CR>",
---   { noremap = true, silent = true, desc = "Copy full path to clipboard" }
--- )
+vim.api.nvim_set_keymap(
+  "n",
+  ",cl",
+  ":let @+ = expand('%:p')<CR>",
+  { noremap = true, silent = true, desc = "Copy full path to clipboard" }
+)

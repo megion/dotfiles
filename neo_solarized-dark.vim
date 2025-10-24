@@ -4,4 +4,4 @@ set background=dark
 " colorscheme solarized8
 "colorscheme NeoSolarized
 "colorscheme NeoSolarized
-" colorscheme solarized-osaka
+"colorscheme solarized-osaka

@@ -39,7 +39,7 @@ local function my_on_attach(bufnr)
       api.tree.toggle({
         -- path = "<args>",
         -- find_file = false,
-        -- update_root = true,
+        update_root = true,
         focus = true,
       })
       print(node.absolute_path)
@@ -74,7 +74,8 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = false, opts = {} },
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
+    -- version = "*",
+    branch = "master",
     lazy = false,
     -- dependencies = {
     --   "nvim-tree/nvim-web-devicons",
@@ -84,7 +85,8 @@ return {
         -- ensures that when you navigate to a new directory or open a directory in a new tab/split,
         -- Nvim-tree will update the Neovim's current working directory to that location
         sync_root_with_cwd = true,
-        respect_buf_cwd = true,
+        -- update_cwd = false,
+        respect_buf_cwd = false,
         hijack_cursor = true,
         disable_netrw = true,
         view = { width = {
@@ -94,6 +96,12 @@ return {
           dotfiles = true,
           git_ignored = false,
         },
+        -- tab = {
+        --   sync = {
+        --     open = true,
+        --     close = true,
+        --   },
+        -- },
         on_attach = my_on_attach,
       })
     end,

@@ -3,4 +3,4 @@ set background=light
 " colorscheme solarized
 " colorscheme solarized8
 "colorscheme NeoSolarized
-" colorscheme solarized-osaka
+"colorscheme solarized-osaka
