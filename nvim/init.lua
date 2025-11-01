@@ -6,6 +6,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 vim.g.autoformat = false
+-- vim.opt.termguicolors = true
 
 local opt = vim.opt
 opt.shiftwidth = 4
@@ -28,7 +29,18 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
--- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage 
+vim.cmd([[
+source ~/dotfiles/neo_solarized-light.vim
+
+" https://github.com/junegunn/fzf.vim/issues/528
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg -g '!{node_modules,build,dist,release}' --sort-files --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': ['--bind', 'ctrl-s:select-all,ctrl-d:deselect-all']}), <bang>0)
+
+]])
+
+-- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage
 local lsp = require("lsp-zero").preset({
   name = "minimal",
   set_lsp_keymaps = true,
@@ -36,9 +48,21 @@ local lsp = require("lsp-zero").preset({
   suggest_lsp_servers = false,
 })
 
-lsp.setup_servers({'tsserver', 'eslint', 'jdtls', 'lua_ls'})
+lsp.setup_servers({ "tsserver", "eslint", "jdtls", "lua_ls" })
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
 lsp.setup()
+--
+-- require("conform").setup({
+--   formatters_by_ft = {
+--     java = { "google_java_format" }, -- Prioritize google_java_format, then fallback to jdtls
+--     -- python = { "isort", "black" },
+--     -- javascript = { "prettierd", "prettier", stop_after_first = true },
+--   },
+-- })
+
+-- require("conform").setup({
+--   log_level = vim.log.levels.DEBUG,
+-- })

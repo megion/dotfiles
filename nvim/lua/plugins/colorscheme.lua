@@ -17,7 +17,7 @@ return {
   --   config = function(_, opts)
   --     vim.o.background = "light"
   --     vim.cmd.colorscheme("solarized")
-  --     vim.opt.termguicolors = true
+  --     -- vim.opt.termguicolors = true
   --     -- vim.cmd("colorscheme solarized-high")
   --     -- vim.g.solarized_diffmode = "high"
   --     -- vim.g.solarized_termtrans = 1
@@ -30,7 +30,8 @@ return {
     lazy = false,
     config = function(_, opts)
       vim.o.background = "light"
-      vim.cmd.colorscheme("solarized8_flat")
+      -- vim.cmd.colorscheme("solarized8_flat")
+      vim.cmd.colorscheme("solarized8")
       vim.opt.termguicolors = true
     end,
   },

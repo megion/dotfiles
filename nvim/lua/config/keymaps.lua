@@ -40,12 +40,12 @@ vim.api.nvim_set_keymap(
 )
 
 -- <esc> to exit terminal-mode
-vim.api.nvim_set_keymap(
-  "t",
-  "<Esc>",
-  [[<C-\><C-n>]],
-  { noremap = true, silent = true, desc = "to exit terminal-mode" }
-)
+-- vim.api.nvim_set_keymap(
+--   "t",
+--   "<Esc>",
+--   [[<C-\><C-n>]],
+--   { noremap = true, silent = true, desc = "to exit terminal-mode" }
+-- )
 
 -- vim.api.nvim_set
 
