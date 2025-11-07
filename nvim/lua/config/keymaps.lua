@@ -16,10 +16,16 @@ vim.api.nvim_set_keymap(
 )
 
 -- open tree
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "tt",
+--   ":NvimTreeToggle<CR>",
+--   { noremap = true, silent = true, desc = "Toggle Tree" }
+-- )
 vim.api.nvim_set_keymap(
   "n",
   "tt",
-  ":NvimTreeToggle<CR>",
+  ":Neotree toggle<CR>",
   { noremap = true, silent = true, desc = "Toggle Tree" }
 )
 
