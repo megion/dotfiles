@@ -26,7 +26,7 @@ vim.api.nvim_set_keymap(
   "n",
   "tt",
   ":Neotree toggle<CR>",
-  { noremap = true, silent = true, desc = "Toggle Tree" }
+  { noremap = true, silent = false, desc = "Toggle Tree" }
 )
 
 -- find file in tree
