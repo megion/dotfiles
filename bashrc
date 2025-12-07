@@ -96,7 +96,7 @@ if [ -z "$TMUX" ]; then
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
     send-keys 'sudo openfortivpn -c ~/development/openforti.config --no-dns' \; \
     split-window -h \; \
-    send-keys 'sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn' \; \
+    send-keys 'sudo openvpn --config development/artezio-dco.ovpn' \; \
     split-window -v \; \
     send-keys 'sudo sv restart NetworkManager' \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
