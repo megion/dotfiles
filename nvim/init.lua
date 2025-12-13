@@ -24,7 +24,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     if
       #vim.api.nvim_list_bufs() == 1 and vim.api.nvim_buf_get_name(0) == ""
     then
-      require("nvim-tree.api").tree.open()
+      -- require("nvim-tree.api").tree.open()
+      require("neo-tree.command").execute({
+        action = "focus", -- OPTIONAL, this is the default value
+        -- source = "filesystem", -- OPTIONAL, this is the default value
+        -- position = "left", -- OPTIONAL, this is the default value
+      })
     end
   end,
 })

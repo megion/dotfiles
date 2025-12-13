@@ -11,17 +11,39 @@ return {
 
     config = function()
       require("neo-tree").setup({
+        default_component_configs = {
+          file_size = {
+            enabled = false,
+          },
+        },
         use_default_mappings = false,
-        -- filesystem = {
+        show_scrolled_off_parent_node = true,
+        filesystem = {
+          filtered_items = {
+            show_hidden_count = false, -- when true, the number of hidden items in each folder will be shown as the last entry
+            hide_dotfiles = true,
+            hide_gitignored = false,
+            hide_ignored = false, -- hide files that are ignored by other gitignore-like files
+          },
+        },
         -- bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
         commands = {
           open_node_to_newtab = function(state)
             local node = state.tree:get_node()
 
-            print(node)
+            -- print(node)
 
             if node.type == "directory" then
-              -- vim.cmd("tabnew")
+              vim.cmd("tabnew")
+              -- vim.cmd("Neotree action=focus")
+              require("neo-tree.command").execute({
+                action = "focus", -- OPTIONAL, this is the default value
+                source = "filesystem", -- OPTIONAL, this is the default value
+                position = "left", -- OPTIONAL, this is the default value
+                -- reveal_file = node.path, -- path to file or folder to reveal
+                dir = node.path,
+                reveal_force_cwd = true, -- change cwd without asking if needed
+              })
               -- api.tree.change_root_to_node(node)
               -- api.tree.toggle({
               --   -- path = "<args>",
@@ -29,37 +51,25 @@ return {
               --   update_root = true,
               --   focus = true,
               -- })
-              -- print(node.absolute_path)
+              print(node.path)
             else
+              -- vim.cmd("tabnew")
+              require("neo-tree.sources.filesystem.commands").open_tabnew(state)
+              -- require("neo-tree.command").execute({
+              --   action = "open_tabnew", -- OPTIONAL, this is the default value
+              --   -- source = "filesystem", -- OPTIONAL, this is the default value
+              --   -- position = "left", -- OPTIONAL, this is the default value
+              --   -- reveal_file = node.path, -- path to file or folder to reveal
+              --   -- dir = node.path,
+              --   -- reveal_force_cwd = true, -- change cwd without asking if needed
+              -- })
+              print(node.path)
               -- api.node.open.tab()
               -- api.node.open.vertical()
             end
           end,
           my_toggle = function(state)
-            local node = state.tree:get_node()
-
-            print("my_toggle")
             vim.cmd("Neotree toggle")
-            -- require("neo-tree.command").execute({
-            --   -- source = "buffers",
-            --   action = "toggle",
-            --   -- toggle = true,
-            -- })
-
-            if node.type == "directory" then
-              -- vim.cmd("tabnew")
-              -- api.tree.change_root_to_node(node)
-              -- api.tree.toggle({
-              --   -- path = "<args>",
-              --   -- find_file = false,
-              --   update_root = true,
-              --   focus = true,
-              -- })
-              -- print(node.absolute_path)
-            else
-              -- api.node.open.tab()
-              -- api.node.open.vertical()
-            end
           end,
         },
         window = {
@@ -76,26 +86,64 @@ return {
               desc = "print name",
               -- nowait = true,
             },
-            ["i"] = {
-              command = function(state)
-                local node = state.tree:get_node()
-                print(node.name)
-              end,
-              desc = "print name",
-              -- nowait = true,
-            },
             ["o"] = {
               command = "open",
+              -- nowait = true,
+            },
+            ["e"] = {
+              command = "toggle_auto_expand_width",
+              -- nowait = true,
+            },
+            ["s"] = {
+              command = "open_vsplit",
+              -- nowait = true,
+            },
+            ["I"] = {
+              command = "toggle_hidden",
+              -- nowait = true,
+            },
+            ["i"] = {
+              command = "open_split",
               -- nowait = true,
             },
             ["O"] = {
               "open",
               -- nowait = true,
             },
+            -- file actions
+            ["a"] = {
+              "add",
+            },
+            ["d"] = {
+              "delete",
+            },
+            ["r"] = {
+              "rename",
+            },
+            ["y"] = {
+              "copy_to_clipboard",
+            },
+            ["x"] = {
+              "cut_to_clipboard",
+            },
+            ["p"] = {
+              "paste_from_clipboard",
+            },
+            ["c"] = {
+              "copy",
+            },
+            ["m"] = {
+              "move",
+            },
+            -- end file actions
+            [".."] = {
+              "navigate_up",
+              -- nowait = true,
+            },
             ["tt"] = {
               command = "my_toggle",
-              -- nowait = true,
-              -- noremap = true,
+              nowait = true,
+              -- noremap = false,
               -- command = function(state)
               --   local node = state.tree:get_node()
               --   print(node.name)
@@ -105,8 +153,9 @@ return {
             },
             ["t"] = {
               command = "open_node_to_newtab",
-              -- nowait = true,
-              -- noremap = true,
+              -- wait for `tt` key
+              nowait = false,
+              -- noremap = false,
               -- command = function(state)
               --   local node = state.tree:get_node()
               --   print(node.name)

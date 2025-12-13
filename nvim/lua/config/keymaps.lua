@@ -33,7 +33,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   "tf",
-  ":NvimTreeFindFile<CR>",
+  ":Neotree reveal<CR>",
   { noremap = true, silent = true, desc = "Find file in Tree" }
 )
 
