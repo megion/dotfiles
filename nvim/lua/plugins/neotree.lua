@@ -15,6 +15,10 @@ return {
           file_size = {
             enabled = false,
           },
+          symlink_target = {
+            enabled = true,
+            -- text_format = " ➛ %s", -- %s will be replaced with the symlink target's path.
+          },
         },
         use_default_mappings = false,
         show_scrolled_off_parent_node = true,
