@@ -114,6 +114,10 @@ return {
               "open",
               -- nowait = true,
             },
+            ["R"] = {
+              "refresh",
+              -- nowait = true,
+            },
             -- file actions
             ["a"] = {
               "add",
@@ -124,7 +128,7 @@ return {
             ["r"] = {
               "rename",
             },
-            ["y"] = {
+            ["Y"] = {
               "copy_to_clipboard",
             },
             ["x"] = {

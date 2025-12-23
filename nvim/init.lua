@@ -45,29 +45,95 @@ command! -bang -nargs=* Rg
 
 ]])
 
--- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage
-local lsp = require("lsp-zero").preset({
-  name = "minimal",
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
+vim.lsp.config("groovyls", {
+  -- Unix
+  cmd = {
+    "java",
+    "-jar",
+    "/home/ilya/workspaces/java/groovy-language-server/build/libs/groovy-language-server-all.jar",
+  },
+  ...,
 })
 
-lsp.setup_servers({ "tsserver", "eslint", "jdtls", "lua_ls" })
+vim.lsp.config("jdtls", {
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-25",
+            path = "/usr/lib/jvm/java-25-openjdk",
+          },
+          {
+            name = "JavaSE-17",
+            path = "/usr/lib/jvm/java-17-openjdk",
+            -- default = true, -- Set as the default if no project config is found
+          },
+        },
+      },
+    },
+  },
+})
 
--- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
+-- open float window for diagnostic
+vim.o.winborder = "single"
 
-lsp.setup()
+vim.lsp.enable("groovyls")
+
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("jdtls")
+
+-- Global diagnostics configuration
+vim.diagnostic.config({
+  -- Set virtual_text to false to disable inline diagnostic messages
+  virtual_text = false,
+  -- Configure the appearance of the floating window if needed (optional)
+  float = {
+    border = "rounded", -- or 'single', 'double', etc.
+    source = "always",
+    severity_sort = true,
+    -- Add close events to make the window close automatically
+    close_events = {
+      "CursorMoved",
+      "CursorMovedI",
+      "BufHidden",
+      "InsertCharPre",
+      "WinLeave",
+    },
+  },
+})
+
+-- Reduce updatetime to make the hover effect feel faster (default is 4000ms)
+-- 250ms is a common value and does not aggressively write to swap files
+vim.o.updatetime = 250
+
+-- Autocommand to open the diagnostic float when the cursor stops moving
+vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  command = "lua vim.diagnostic.open_float(nil, { focusable = false })",
+  group = "lsp_diagnostics_hold",
+})
+
+-- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage
+-- local lsp = require("lsp-zero").preset({
+--   name = "minimal",
+--   set_lsp_keymaps = true,
+--   manage_nvim_cmp = true,
+--   suggest_lsp_servers = false,
+-- })
 --
--- require("conform").setup({
---   formatters_by_ft = {
---     java = { "google_java_format" }, -- Prioritize google_java_format, then fallback to jdtls
---     -- python = { "isort", "black" },
---     -- javascript = { "prettierd", "prettier", stop_after_first = true },
---   },
+-- lsp.setup_servers({ "tsserver", "eslint", "jdtls", "lua_ls" })
+--
+-- -- (Optional) Configure lua language server for neovim
+-- lsp.nvim_workspace()
+--
+-- lsp.setup()
+
+-- vim.lsp.config('luals', {
+--   cmd = {'lua-language-server'},
+--   filetypes = {'lua'},
+--   root_markers = {'.luarc.json', '.luarc.jsonc'},
 -- })
 
--- require("conform").setup({
---   log_level = vim.log.levels.DEBUG,
--- })
+-- vim.lsp.enable('luals')

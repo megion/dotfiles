@@ -21,7 +21,12 @@ return {
         lua = { "stylua" },
         java = { "google_java_format" }, -- Prioritize google_java_format, then fallback to jdtls
         -- python = { "isort", "black" },
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        less = { "prettier" },
+        scss = { "prettier" },
+        css = { "prettier" },
+        typescriptreact = { "prettier" },
       },
       formatters = {
         google_java_format = {
