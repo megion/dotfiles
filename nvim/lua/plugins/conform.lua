@@ -26,12 +26,14 @@ return {
         less = { "prettier" },
         scss = { "prettier" },
         css = { "prettier" },
+        html = { "prettier" },
         typescriptreact = { "prettier" },
       },
       formatters = {
         google_java_format = {
           -- Change where to find the command
-          command = "/home/ilya/Downloads/google-java-format_linux-x86-64",
+          -- command = "/home/ilya/Downloads/google-java-format_linux-x86-64",
+          command = "google-java-format",
           -- Optional: Specify the full path if not in your PATH
           -- command = "/path/to/google-java-format",
           -- Optional: Add arguments if needed

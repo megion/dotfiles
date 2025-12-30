@@ -65,21 +65,22 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Copy full path to clipboard" }
 )
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    -- Buffer-local keymaps. The { buffer = ev.buf } option is crucial.
-    local opts = { buffer = args.buf }
-
-    -- Map 'gi' to go to implementation
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-
-    -- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-    -- vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
-    -- vim.keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
-
-    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     -- Buffer-local keymaps. The { buffer = ev.buf } option is crucial.
+--     local opts = { buffer = args.buf }
+--
+--     -- Map 'gi' to go to implementation
+--     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+--     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+--     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+--     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+--     vim.keymap.set("n", "fi", vim.lsp.buf.code_action, opts)
+--
+--     -- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+--     -- vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+--     -- vim.keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+--
+--     -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+--   end,
+-- })

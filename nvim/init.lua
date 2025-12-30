@@ -17,6 +17,7 @@ opt.diffopt:append("vertical")
 
 require("config.lazy")
 require("config.keymaps")
+require("config.lsp")
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
@@ -45,75 +46,7 @@ command! -bang -nargs=* Rg
 
 ]])
 
-vim.lsp.config("groovyls", {
-  -- Unix
-  cmd = {
-    "java",
-    "-jar",
-    "/home/ilya/workspaces/java/groovy-language-server/build/libs/groovy-language-server-all.jar",
-  },
-  ...,
-})
 
-vim.lsp.config("jdtls", {
-  settings = {
-    java = {
-      configuration = {
-        runtimes = {
-          {
-            name = "JavaSE-25",
-            path = "/usr/lib/jvm/java-25-openjdk",
-          },
-          {
-            name = "JavaSE-17",
-            path = "/usr/lib/jvm/java-17-openjdk",
-            -- default = true, -- Set as the default if no project config is found
-          },
-        },
-      },
-    },
-  },
-})
-
--- open float window for diagnostic
-vim.o.winborder = "single"
-
-vim.lsp.enable("groovyls")
-
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("jdtls")
-
--- Global diagnostics configuration
-vim.diagnostic.config({
-  -- Set virtual_text to false to disable inline diagnostic messages
-  virtual_text = false,
-  -- Configure the appearance of the floating window if needed (optional)
-  float = {
-    border = "rounded", -- or 'single', 'double', etc.
-    source = "always",
-    severity_sort = true,
-    -- Add close events to make the window close automatically
-    close_events = {
-      "CursorMoved",
-      "CursorMovedI",
-      "BufHidden",
-      "InsertCharPre",
-      "WinLeave",
-    },
-  },
-})
-
--- Reduce updatetime to make the hover effect feel faster (default is 4000ms)
--- 250ms is a common value and does not aggressively write to swap files
-vim.o.updatetime = 250
-
--- Autocommand to open the diagnostic float when the cursor stops moving
-vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  pattern = "*",
-  command = "lua vim.diagnostic.open_float(nil, { focusable = false })",
-  group = "lsp_diagnostics_hold",
-})
 
 -- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage
 -- local lsp = require("lsp-zero").preset({

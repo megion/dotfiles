@@ -1,10 +1,28 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    -- or , branch = '0.1.x',
     dependencies = { "nvim-lua/plenary.nvim" },
-
+    main = "telescope",
+    opts = {
+      defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--no-ignore",
+          "--fixed-strings",
+        },
+      },
+      pickers = {
+        find_files = {
+          no_ignore_parent = true,
+        },
+      },
+    },
     config = function()
       local builtin = require("telescope.builtin")
       vim.keymap.set(
