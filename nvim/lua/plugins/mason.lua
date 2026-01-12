@@ -10,6 +10,7 @@ return {
         "stylua",
         "eslint",
         "stylelint_lsp",
+	"json-lsp",
       },
     },
     config = function()
