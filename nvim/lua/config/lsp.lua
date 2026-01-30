@@ -1,4 +1,3 @@
-
 -- Diagnostics {{{
 local config = {
   signs = {
@@ -25,18 +24,8 @@ local config = {
 vim.diagnostic.config(config)
 -- }}}
 
--- vim.lsp.config("groovyls", {
---   -- Unix
---   cmd = {
---     "java",
---     "-jar",
---     "/home/ilya/workspaces/java/groovy-language-server/build/libs/groovy-language-server-all.jar",
---   },
--- })
-
 -- open float window for diagnostic
 vim.o.winborder = "single"
-
 
 -- Global diagnostics configuration
 vim.diagnostic.config({
@@ -69,3 +58,12 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   command = "lua vim.diagnostic.open_float(nil, { focusable = false })",
   group = "lsp_diagnostics_hold",
 })
+
+-- vim.lsp.config("gradle_ls", {
+--   -- Unix
+--   cmd = {
+--     "/home/ilya/workspaces/lua/vscode-gradle/gradle-language-server/build/install/gradle-language-server/bin/gradle-language-server",
+--   },
+--   filetypes = { "gradle", "groovy" },
+-- })
+-- vim.lsp.enable('gradle_ls')

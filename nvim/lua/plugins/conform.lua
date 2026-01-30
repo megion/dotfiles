@@ -27,7 +27,14 @@ return {
         scss = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
+        htmlangular = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        jsonls = { "prettier" },
+        yaml = { "prettier" },
         typescriptreact = { "prettier" },
+        -- groovy = { "npm_groovy_lint" },
+        -- groovy = { lsp_format = "fallback" },
       },
       formatters = {
         google_java_format = {
@@ -45,6 +52,10 @@ return {
           --   YAMLFIX_SEQUENCE_STYLE = "block_style",
           -- },
         },
+        -- npm_groovy_lint = {
+        --   args = { "--stdin", "--fix", "--insight=false" }, -- Use --fix for auto-fixing
+        --   -- conform handles stdin and stdout automatically
+        -- },
       },
       -- Set default options
       -- default_format_opts = {

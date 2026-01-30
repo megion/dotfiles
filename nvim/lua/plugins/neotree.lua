@@ -20,6 +20,8 @@ return {
             -- text_format = " ➛ %s", -- %s will be replaced with the symlink target's path.
           },
         },
+        -- enable_git_status = false,
+        enable_diagnostics = false,
         use_default_mappings = false,
         show_scrolled_off_parent_node = true,
         filesystem = {
@@ -29,6 +31,8 @@ return {
             hide_gitignored = false,
             hide_ignored = false, -- hide files that are ignored by other gitignore-like files
           },
+          scan_mode = "deep",
+          group_empty_dirs = true,
         },
         -- bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
         commands = {
@@ -72,6 +76,12 @@ return {
               -- api.node.open.vertical()
             end
           end,
+          -- toggle_git_status = function(state)
+          --   -- print("toggle_git_status")
+          --   -- print(state.config.enable_git_status)
+          --   state.config.enable_git_status = not state.config.enable_git_status
+          --
+          -- end,
           my_toggle = function(state)
             vim.cmd("Neotree toggle")
           end,
@@ -171,6 +181,18 @@ return {
               desc = "open file to new tab",
               -- nowait = true,
             },
+            -- ["g"] = {
+            --   command = "toggle_git_status",
+            --   -- wait for `tt` key
+            --   nowait = true,
+            --   -- noremap = false,
+            --   -- command = function(state)
+            --   --   local node = state.tree:get_node()
+            --   --   print(node.name)
+            --   -- end,
+            --   desc = "toggle git integration",
+            --   -- nowait = true,
+            -- },
           },
         },
         -- },

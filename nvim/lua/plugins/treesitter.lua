@@ -21,8 +21,8 @@ return {
         "json5",
         "jsdoc",
         "markdown",
-	"nginx",
-	"typespec",
+        "nginx",
+        "typespec",
       }, -- Install specific parsers
       auto_install = true,
       highlight = {

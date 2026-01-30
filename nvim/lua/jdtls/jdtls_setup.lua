@@ -3,11 +3,17 @@ local M = {}
 function M:setup()
   local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
   local equinox_launcher_path =
-    vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+    vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar", 1)
   local config_path = vim.fn.glob(jdtls_path .. "/config_linux")
   local lombok_path = jdtls_path .. "/lombok.jar"
 
-  local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+  local root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" })
+  -- TODO: case 1: project_name depend on cwd
+  -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+  --
+  -- TODO: case 2: project_name = root_dir
+  local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+
   local data_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
   -- local workspace_dir = vim.fn.stdpath("data")
   --   .. package.config:sub(1, 1)
@@ -67,13 +73,18 @@ function M:setup()
 
     -- `root_dir` must point to the root of your project.
     -- See `:help vim.fs.root`
-    root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }),
+    root_dir = root_dir,
 
     -- Here you can configure eclipse.jdt.ls specific settings
     -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     -- for a list of options
     settings = {
       java = {
+        -- format = {
+        --   settings = {
+        --     url = "/home/ilya/workspaces/hcs/format.xml",
+        --   },
+        -- },
         -- sources = {
         --   organizeImports = {
         --     starThreshold = 9999,
@@ -174,6 +185,11 @@ function M:setup()
       bundles = {},
     },
   }
+  -- debug logs:
+  -- print("Starting jdtls ...")
+  -- print("root_dir: ", root_dir)
+  -- print("data_dir ", data_dir)
+  -- print(table.concat(config.cmd, " "))
   require("jdtls").start_or_attach(config)
 end
 
