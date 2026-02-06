@@ -34,7 +34,7 @@ return {
           scan_mode = "deep",
           group_empty_dirs = true,
         },
-        -- bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+        -- bind_to_cwd = false, -- true creates a 2-way binding between vim's cwd and neo-tree's root
         commands = {
           open_node_to_newtab = function(state)
             local node = state.tree:get_node()
@@ -63,14 +63,6 @@ return {
             else
               -- vim.cmd("tabnew")
               require("neo-tree.sources.filesystem.commands").open_tabnew(state)
-              -- require("neo-tree.command").execute({
-              --   action = "open_tabnew", -- OPTIONAL, this is the default value
-              --   -- source = "filesystem", -- OPTIONAL, this is the default value
-              --   -- position = "left", -- OPTIONAL, this is the default value
-              --   -- reveal_file = node.path, -- path to file or folder to reveal
-              --   -- dir = node.path,
-              --   -- reveal_force_cwd = true, -- change cwd without asking if needed
-              -- })
               print(node.path)
               -- api.node.open.tab()
               -- api.node.open.vertical()
@@ -148,7 +140,25 @@ return {
               "paste_from_clipboard",
             },
             ["c"] = {
-              "copy",
+              command = "copy",
+              -- wait for `cd` key
+              nowait = false,
+              desc = "copy",
+            },
+            ["cd"] = {
+              nowait = true,
+              command = function(state)
+                local node = state.tree:get_node()
+                if node and node.type == "directory" then
+                  -- This command changes the current working directory in Neovim
+                  -- local cwd = vim.loop.cwd()
+                  -- print("CWD: " .. cwd)
+                  vim.cmd(":cd " .. node.path)
+                  -- vim.cmd(":Neotree dir=" .. cwd)
+                  print("CWD is now: " .. node.path)
+                end
+              end,
+              desc = "change working directory",
             },
             ["m"] = {
               "move",

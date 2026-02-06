@@ -3,7 +3,7 @@ return {
     "mfussenegger/nvim-lint",
     lazy = false,
     config = function(_, opts)
-      print(opts)
+      -- print(opts)
       local lint = require("lint")
       lint.linters_by_ft = {
         java = { "checkstyle" },

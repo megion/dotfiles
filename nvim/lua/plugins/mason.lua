@@ -34,6 +34,7 @@ return {
           "groovyls",
           "stylua",
           "eslint",
+	  "angularls",
           -- "json-lsp",
           -- "gradle-language-server",
           -- "stylelint_lsp",

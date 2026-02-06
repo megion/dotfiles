@@ -12,12 +12,20 @@ local opt = vim.opt
 opt.shiftwidth = 4
 opt.number = true
 
+-- %l for line number, %s for sign column
+-- opt.statuscolumn = "%l%s"
+-- opt.numberwidth = 4
+-- opt.signwidth = 4
+opt.signcolumn = "yes"
+
 -- set vertical diff for vimdiff
 opt.diffopt:append("vertical")
+-- opt.cursorline = true
 
 require("config.lazy")
 require("config.keymaps")
 require("config.lsp")
+require("config.lualine_themes")
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
@@ -46,27 +54,4 @@ command! -bang -nargs=* Rg
 
 ]])
 
-
-
--- see https://github.com/VonHeikemen/lsp-zero.nvim/tree/v1.x?tab=readme-ov-file#usage
--- local lsp = require("lsp-zero").preset({
---   name = "minimal",
---   set_lsp_keymaps = true,
---   manage_nvim_cmp = true,
---   suggest_lsp_servers = false,
--- })
---
--- lsp.setup_servers({ "tsserver", "eslint", "jdtls", "lua_ls" })
---
--- -- (Optional) Configure lua language server for neovim
--- lsp.nvim_workspace()
---
--- lsp.setup()
-
--- vim.lsp.config('luals', {
---   cmd = {'lua-language-server'},
---   filetypes = {'lua'},
---   root_markers = {'.luarc.json', '.luarc.jsonc'},
--- })
-
--- vim.lsp.enable('luals')
+vim.cmd('command! -nargs=1 LualineTheme lua ChangeLualineTheme("<args>")')

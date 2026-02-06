@@ -4,10 +4,16 @@ import = [
 ]
 
 [font]
-size = 11.0
+size = 10.0
 
 [font.normal]
-family = "Mononoki Nerd Font Mono"
+# family = "Ioskeley Mono"
+# family = "Mononoki Nerd Font Mono"
+# family = "InconsolataGo Nerd Font Mono"
+# family = "Monoid Nerd Font Mono"
+# family = "IosevkaTerm Nerd Font Mono"
+# family = "IosevkaTermSlab Nerd Font Mono"
+family = "Hasklug Nerd Font Mono"
 style = "Regular"
 
 [env]

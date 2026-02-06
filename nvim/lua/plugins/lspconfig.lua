@@ -1,66 +1,9 @@
 return {
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   -- "mfussenegger/nvim-jdtls",
-  -- },
   {
     "mfussenegger/nvim-jdtls",
-    -- ft = "java",
     dependencies = { "neovim/nvim-lspconfig", "mason-org/mason-lspconfig.nvim" },
-    --    opts = {
-    --      cmd = (function()
-    --        -- Use vim.fn.expand to expand ~ in JAVA_HOME path
-    --        vim.env.JAVA_HOME = vim.fn.expand("/usr/lib/jvm/java-25-openjdk")
-    --
-    -- -- /home/ilya/.local/share/nvim/mason/packages/jdtls
-    --        local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
-    --        -- local java_debug_path =
-    --        --   vim.fn.expand("$MASON/packages/java-debug-adapter")
-    --        -- local java_test_path = vim.fn.expand("$MASON/packages/java-test")
-    --
-    -- -- vim.fn.glob("/home/ilya/.local/share/nvim/mason/packages/jdtls" .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-    -- -- ==
-    -- -- /home/ilya/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar
-    --        local equinox_launcher_path = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-    --
-    --        -- local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
-    --        local jdtls_bin = jdtls_path .. "/jdtls"
-    --        -- local jdtls_pkg = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
-    --        local workspace = vim.fn.stdpath("cache") .. "/nvim/jdtls/workspace"
-    --
-    --        -- vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'),
-    --
-    --        -- Determine platform config folder
-    --        local uv = vim.uv or vim.loop
-    --        local os_name = uv.os_uname().sysname
-    --        local config_folder = "config_linux"
-    --
-    --        if os_name == "Darwin" then
-    --          config_folder = "config_mac"
-    --        elseif os_name == "Windows_NT" then
-    --          config_folder = "config_win"
-    --        end
-    --
-    --        local cmd = {
-    --          jdtls_path .. "/jdtls",
-    --          "--jvm-arg=-javaagent:" .. jdtls_path .. "/lombok.jar",
-    --          "-configuration",
-    --          jdtls_path .. "/" .. config_folder,
-    --          "-data",
-    --          workspace,
-    --        }
-    --
-    --        -- Notify the full command for debugging
-    --        vim.schedule(function()
-    --          vim.notify(
-    --            "Starting jdtls with command:\n" .. table.concat(cmd, " "),
-    --            vim.log.levels.INFO,
-    --            { title = "jdtls cmd" }
-    --          )
-    --        end)
-    --
-    --        return cmd
-    --      end)(),
-    --    },
+  },
+  {
+    "neovim/nvim-lspconfig",
   },
 }

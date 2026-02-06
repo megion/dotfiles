@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   -- pattern = { "java", "groovy" },
   callback = function(args)
+    -- require("lint").try_lint("checkstyle")
     require("jdtls.jdtls_setup").setup()
   end,
 })
@@ -71,7 +72,8 @@ vim.api.nvim_create_autocmd("FileType", {
 --     -- try_lint without arguments runs the linters defined in `linters_by_ft`
 --     -- for the current filetype
 --     require("lint").try_lint("checkstyle")
---     -- print(lint_progress())
+--     -- require("lint").try_lint()
+--     print(lint_progress())
 --
 --     -- You can call `try_lint` with a linter name or a list of names to always
 --     -- run specific linters, independent of the `linters_by_ft` configuration
