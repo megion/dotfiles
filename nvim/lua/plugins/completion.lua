@@ -53,7 +53,25 @@ return {
   --   opts_extend = { "sources.default" },
   -- },
   {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      -- library = {
+      --   -- See the configuration section for more details
+      --   -- Load luvit types when the `vim.uv` word is found
+      --   { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      -- },
+    },
+  },
+  {
     "hrsh7th/nvim-cmp",
+    -- opts = function(_, opts)
+    --   opts.sources = opts.sources or {}
+    --   table.insert(opts.sources, {
+    --     name = "lazydev",
+    --     group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+    --   })
+    -- end,
     config = function()
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -101,7 +119,17 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          },
           { name = "nvim_lsp" },
+          {
+            name = "path",
+            option = {
+              -- Options go into this table
+            },
+          },
           -- { name = "vsnip" }, -- For vsnip users.
           -- { name = 'luasnip' }, -- For luasnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -114,5 +142,8 @@ return {
   },
   {
     "hrsh7th/cmp-nvim-lsp",
+  },
+  {
+    "hrsh7th/cmp-path",
   },
 }

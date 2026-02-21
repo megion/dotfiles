@@ -1,11 +1,24 @@
 return {
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    config = function()
-      require("tiny-inline-diagnostic").setup()
-      vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
-    end,
-  },
+  -- {
+  --   "rachartier/tiny-inline-diagnostic.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   config = function()
+  --     require("tiny-inline-diagnostic").setup({
+  --       preset = "modern",
+  --
+  --       options = {
+  --         -- Display the source of diagnostics (e.g., "lua_ls", "pyright")
+  --         show_source = {
+  --           enabled = true, -- Enable showing source names
+  --           -- if_many = false, -- Only show source if multiple sources exist for the same diagnostic
+  --         },
+  --
+  --         -- Display the diagnostic code of diagnostics (e.g., "F401", "no-dupe-args")
+  --         show_code = true,
+  --       },
+  --     })
+  --     vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+  --   end,
+  -- },
 }

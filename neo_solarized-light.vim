@@ -28,7 +28,7 @@ let $FZF_DEFAULT_OPTS=$"
 	    \ --color fg:-1,bg:-1,hl:{blue},fg+:{base02},bg+:{base2},hl+:{blue}
 	    \ --color info:{yellow},prompt:{yellow},pointer:{base03},marker:{base03},spinner:{yellow}"
 
-lua ChangeLualineTheme("solarized_light")
+"lua ChangeLualineTheme("solarized_light")
 " or in lua
 "vim.env.BAT_THEME = '...'
 "vim.env.FZF_DEFAULT_OPTS = '...'

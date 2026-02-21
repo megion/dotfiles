@@ -102,9 +102,9 @@ if [ -z "$TMUX" ]; then
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
     send-keys 'sudo docker-compose up --build --remove-orphans' \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
-    send-keys 'vimxs' C-m \; \
+    send-keys 'nvims' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 40 \;
+    resize-pane -R 60 \;
     # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
     # send-keys 'vimxs' \; \
     # split-window -h -c ~/workspaces/smev3-service/frontend \; \

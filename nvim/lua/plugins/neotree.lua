@@ -20,16 +20,28 @@ return {
             -- text_format = " ➛ %s", -- %s will be replaced with the symlink target's path.
           },
         },
-        -- enable_git_status = false,
+        enable_git_status = false,
         enable_diagnostics = false,
         use_default_mappings = false,
         show_scrolled_off_parent_node = true,
         filesystem = {
           filtered_items = {
             show_hidden_count = false, -- when true, the number of hidden items in each folder will be shown as the last entry
-            hide_dotfiles = true,
             hide_gitignored = false,
             hide_ignored = false, -- hide files that are ignored by other gitignore-like files
+	    -- show dotfiles by default, but hide some dotfiles by name. It need if reveal file in parent dot folder for show all hidden files
+            hide_dotfiles = false,
+            hide_by_name = {
+              ".git",
+              ".settings",
+              ".turbo",
+              ".project",
+              ".pnpm-debug.log",
+              ".gradle",
+              ".vim",
+	      ".cache",
+	      ".jest",
+            },
           },
           scan_mode = "deep",
           group_empty_dirs = true,

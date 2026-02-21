@@ -26,15 +26,20 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
     config = function()
+      -- vim.lsp.config("angularls", {
+      --   -- filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" },
+      --   filetypes = { "html", "htmlangular" },
+      -- })
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "ts_ls",
+          -- "ts_ls",
+          "vtsls",
           "jdtls",
           "groovyls",
           "stylua",
           "eslint",
-	  "angularls",
+          "angularls",
           -- "json-lsp",
           -- "gradle-language-server",
           -- "stylelint_lsp",
@@ -43,6 +48,7 @@ return {
           exclude = {
             "jdtls",
             "groovyls",
+            -- "angularls",
             -- "gradle-language-server",
           },
         },

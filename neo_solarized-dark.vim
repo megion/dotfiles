@@ -29,7 +29,7 @@ let $FZF_DEFAULT_OPTS=$"
 	    \ --color fg:-1,bg:-1,hl:{blue},fg+:{base2},bg+:{base02},hl+:{blue}
 	    \ --color info:{yellow},prompt:{yellow},pointer:{base3},marker:{base3},spinner:{yellow}"
 
-lua ChangeLualineTheme("solarized_dark")
+"lua ChangeLualineTheme("solarized_dark")
 "LualineTheme gruvbox
 
 

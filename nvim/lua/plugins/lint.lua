@@ -1,68 +1,68 @@
 return {
-  {
-    "mfussenegger/nvim-lint",
-    lazy = false,
-    config = function(_, opts)
-      -- print(opts)
-      local lint = require("lint")
-      lint.linters_by_ft = {
-        java = { "checkstyle" },
-      }
-      -- lint.checkstyle = function()
-      --   return {
-      --     cmd = table.concat({
-      --       "/usr/lib/jvm/java-21-openjdk/bin/java",
-      --       "-jar",
-      --       "/home/ilya/development/checkstyle-10.12.3-all.jar",
-      --       "-c=",
-      --       "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
-      --       "-p=",
-      --       "/home/ilya/workspaces/hcs/checkstyle.properties",
-      --     }, ' '),
-      --     -- cmd = "/usr/lib/jvm/java-21-openjdk/bin/java ",
-      --     -- args = {
-      --     --   "-jar",
-      --     --   "/home/ilya/development/checkstyle-10.12.3-all.jar",
-      --     -- },
-      --   }
-      -- end
-      -- lint.linters_by_ft.checkstyle = {
-      lint.linters.checkstyle = {
-        cmd = "/home/ilya/.local/share/nvim/mason/packages/checkstyle/checkstyle",
-        -- cmd = "/usr/lib/jvm/java-21-openjdk/bin/java -jar /home/ilya/development/checkstyle-10.12.3-all.jar",
-        args = {
-          "-f",
-          "sarif",
-          "-c",
-          "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
-          "-p",
-          "/home/ilya/workspaces/hcs/checkstyle.properties",
-        },
-        ignore_exitcode = true,
-        -- ignore_exitcode = false,
-        parser = require("lint.parser").for_sarif({}),
-        -- use the bundled Google style by default
-        config_file = "/google_checks.xml",
-        -- cmd = {
-        --   "/usr/lib/jvm/java-21-openjdk/bin/java",
-        --   "-jar",
-        --   "/home/ilya/development/checkstyle-10.12.3-all.jar",
-        --   "-c=",
-        --   "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
-        --   "-p=",
-        --   "/home/ilya/workspaces/hcs/checkstyle.properties",
-        -- },
-        -- local phpcs = require('lint').linters.phpcs
-        -- phpcs.args = {
-        --   '-q',
-        --   -- <- Add a new parameter here
-        --   '--report=json',
-        --   '-'
-        -- }
-      }
-
-      -- print(table.concat(config.cmd, " "))
-      -- print(table.concat(lint.linters_by_ft.checkstyle.cmd, " "))
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   lazy = false,
+  --   config = function(_, opts)
+  --     -- print(opts)
+  --     local lint = require("lint")
+  --     lint.linters_by_ft = {
+  --       java = { "checkstyle" },
+  --     }
+  --     -- lint.checkstyle = function()
+  --     --   return {
+  --     --     cmd = table.concat({
+  --     --       "/usr/lib/jvm/java-21-openjdk/bin/java",
+  --     --       "-jar",
+  --     --       "/home/ilya/development/checkstyle-10.12.3-all.jar",
+  --     --       "-c=",
+  --     --       "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
+  --     --       "-p=",
+  --     --       "/home/ilya/workspaces/hcs/checkstyle.properties",
+  --     --     }, ' '),
+  --     --     -- cmd = "/usr/lib/jvm/java-21-openjdk/bin/java ",
+  --     --     -- args = {
+  --     --     --   "-jar",
+  --     --     --   "/home/ilya/development/checkstyle-10.12.3-all.jar",
+  --     --     -- },
+  --     --   }
+  --     -- end
+  --     -- lint.linters_by_ft.checkstyle = {
+  --     lint.linters.checkstyle = {
+  --       cmd = "/home/ilya/.local/share/nvim/mason/packages/checkstyle/checkstyle",
+  --       -- cmd = "/usr/lib/jvm/java-21-openjdk/bin/java -jar /home/ilya/development/checkstyle-10.12.3-all.jar",
+  --       args = {
+  --         "-f",
+  --         "sarif",
+  --         "-c",
+  --         "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
+  --         "-p",
+  --         "/home/ilya/workspaces/hcs/checkstyle.properties",
+  --       },
+  --       ignore_exitcode = true,
+  --       -- ignore_exitcode = false,
+  --       parser = require("lint.parser").for_sarif({}),
+  --       -- use the bundled Google style by default
+  --       config_file = "/google_checks.xml",
+  --       -- cmd = {
+  --       --   "/usr/lib/jvm/java-21-openjdk/bin/java",
+  --       --   "-jar",
+  --       --   "/home/ilya/development/checkstyle-10.12.3-all.jar",
+  --       --   "-c=",
+  --       --   "/home/ilya/workspaces/hcs/config/checkstyle/checkstyle.xml",
+  --       --   "-p=",
+  --       --   "/home/ilya/workspaces/hcs/checkstyle.properties",
+  --       -- },
+  --       -- local phpcs = require('lint').linters.phpcs
+  --       -- phpcs.args = {
+  --       --   '-q',
+  --       --   -- <- Add a new parameter here
+  --       --   '--report=json',
+  --       --   '-'
+  --       -- }
+  --     }
+  --
+  --     -- print(table.concat(config.cmd, " "))
+  --     -- print(table.concat(lint.linters_by_ft.checkstyle.cmd, " "))
+  --   end,
+  -- },
 }

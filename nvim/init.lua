@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
     -- Only open nvim-tree if no files are opened and the current buffer is empty
     if
-      #vim.api.nvim_list_bufs() == 1 and vim.api.nvim_buf_get_name(0) == ""
+      #vim.api.nvim_list_bufs() >= 1 and vim.api.nvim_buf_get_name(0) == ""
     then
       -- require("nvim-tree.api").tree.open()
       require("neo-tree.command").execute({
@@ -54,4 +54,4 @@ command! -bang -nargs=* Rg
 
 ]])
 
-vim.cmd('command! -nargs=1 LualineTheme lua ChangeLualineTheme("<args>")')
+vim.cmd('command! -nargs=* MyLint lua MyEslint()')
