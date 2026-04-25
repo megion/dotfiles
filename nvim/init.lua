@@ -54,4 +54,8 @@ command! -bang -nargs=* Rg
 
 ]])
 
-vim.cmd('command! -nargs=* MyLint lua MyEslint()')
+vim.cmd("command! -nargs=* MyLint lua MyEslint()")
+vim.cmd("command! -nargs=* MyGradle lua MyGradle()")
+vim.cmd("command! -nargs=* MyBuild lua MyBuild()")
+
+vim.opt.exrc = true

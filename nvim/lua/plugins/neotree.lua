@@ -96,12 +96,16 @@ return {
             nowait = true,
           },
           mappings = {
+            -- ["?"] = {
+            --   function(state)
+            --     local node = state.tree:get_node()
+            --     print(node.name)
+            --   end,
+            --   desc = "print name",
+            --   -- nowait = true,
+            -- },
             ["?"] = {
-              function(state)
-                local node = state.tree:get_node()
-                print(node.name)
-              end,
-              desc = "print name",
+              command = "show_file_details",
               -- nowait = true,
             },
             ["o"] = {

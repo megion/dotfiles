@@ -109,7 +109,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- Reduce updatetime to make the hover effect feel faster (default is 4000ms)
 -- 250ms is a common value and does not aggressively write to swap files
-vim.o.updatetime = 150
+-- vim.o.updatetime = 150
 
 -- Autocommand to open the diagnostic float when the cursor stops moving
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
@@ -121,7 +121,6 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
-
     -- require("origami.features.lsp-and-treesitter-foldexpr").checkForLsp(event.buf, event.data.client_id)
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -139,6 +138,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- vim.keymap.set("n", "gi", builtin.lsp_implementations, opts)
     -- vim.keymap.set("n", "gr", builtin.lsp_references, opts)
 
+    vim.keymap.set("n", "gk", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -147,6 +147,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", builtin.lsp_references, opts)
     vim.keymap.set("n", "fi", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gs", builtin.lsp_workspace_symbols, opts)
+
+    -- vim.keymap.set(
+    --   "n",
+    --   "K",
+    --   vim.lsp.buf.hover,
+    --   { buffer = bufnr, desc = "Hover Documentation" }
+    -- )
     -- vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     -- vim.keymap.set(
     --   { "n", "x" },
@@ -185,3 +192,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --     end
 --   end,
 -- })
+
+vim.lsp.enable('clangd')

@@ -7,9 +7,11 @@ return {
         "java-test",
         "google-java-format",
         "checkstyle",
+	"clang-format",
         -- "npm_groovy_lint",
         -- to use local registries
         "yq",
+	"css-lsp",
       },
     },
     config = function()

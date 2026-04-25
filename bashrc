@@ -96,11 +96,11 @@ if [ -z "$TMUX" ]; then
     tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
     send-keys 'sudo openfortivpn -c ~/development/openforti.config --no-dns' \; \
     split-window -h \; \
-    send-keys 'sudo openvpn --config development/artezio-dco.ovpn' \; \
+    send-keys 'sudo openvpn --config development/artezio2026.ovpn' \; \
     split-window -v \; \
     send-keys 'sudo sv restart NetworkManager' \; \
     new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo docker-compose up --build --remove-orphans' \; \
+    send-keys 'sudo docker-compose --profile connect up --build --remove-orphans' \; \
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'nvims' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \

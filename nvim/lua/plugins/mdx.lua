@@ -1,8 +1,8 @@
 return {
-  {
-    "davidmh/mdx.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
+  -- {
+  --   "davidmh/mdx.nvim",
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  -- },
   -- {
   --   "m4xshen/smartcolumn.nvim",
   --   opts = {},
