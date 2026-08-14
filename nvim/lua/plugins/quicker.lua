@@ -1,5 +1,6 @@
 return {
   {
+    -- Improved UI and workflow for the Neovim quickfix
     "stevearc/quicker.nvim",
     ft = "qf",
     ---@module "quicker"

@@ -147,6 +147,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", builtin.lsp_references, opts)
     vim.keymap.set("n", "fi", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gs", builtin.lsp_workspace_symbols, opts)
+    -- vim.keymap.set("n", "sh", vim.lsp.buf.signature_help, opts)
 
     -- vim.keymap.set(
     --   "n",
@@ -177,6 +178,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- -- Set up lspconfig.
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- vim.lsp.config("vtsls", {
+--   capabilities = capabilities,
+-- })
+
 -- firing FileType to attach all LSPs
 -- vim.api.nvim_create_autocmd("SessionLoadPost", {
 --   group = vim.api.nvim_create_augroup("LspAfterSession", { clear = true }),
@@ -193,4 +201,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --   end,
 -- })
 
-vim.lsp.enable('clangd')
+-- vim.lsp.enable("clangd")
+vim.lsp.enable('ccls')
+vim.lsp.enable("cmake")

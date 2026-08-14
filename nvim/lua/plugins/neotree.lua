@@ -29,7 +29,7 @@ return {
             show_hidden_count = false, -- when true, the number of hidden items in each folder will be shown as the last entry
             hide_gitignored = false,
             hide_ignored = false, -- hide files that are ignored by other gitignore-like files
-	    -- show dotfiles by default, but hide some dotfiles by name. It need if reveal file in parent dot folder for show all hidden files
+            -- show dotfiles by default, but hide some dotfiles by name. It need if reveal file in parent dot folder for show all hidden files
             hide_dotfiles = false,
             hide_by_name = {
               ".git",
@@ -39,8 +39,8 @@ return {
               ".pnpm-debug.log",
               ".gradle",
               ".vim",
-	      ".cache",
-	      ".jest",
+              ".cache",
+              ".jest",
             },
           },
           scan_mode = "deep",
@@ -89,6 +89,48 @@ return {
           my_toggle = function(state)
             vim.cmd("Neotree toggle")
           end,
+          copy_with_symlinks = function(state)
+            local node = state.tree:get_node()
+            local src = node.path
+
+            -- Only run if a valid file/folder is selected
+            if src == nil then
+              return
+            end
+
+            -- Prompt user for the destination path
+            vim.ui.input({
+              prompt = "Copy to: ",
+              default = src,
+              completion = "file",
+            }, function(dest)
+              if dest == nil or dest == "" or dest == src then
+                vim.notify("Error copying folder", vim.log.levels.ERROR)
+                return
+              end
+
+              -- Use standard 'cp -a' to copy structure and keep symlinks intact
+              local cmd = string.format(
+                "cp -a %s %s",
+                vim.fn.shellescape(src),
+                vim.fn.shellescape(dest)
+              )
+
+              vim.fn.jobstart(cmd, {
+                on_exit = function(_, exit_code)
+                  if exit_code == 0 then
+                    -- Refresh Neo-tree UI to show the new folder
+                    require("neo-tree.sources.manager").refresh(state.name)
+                    vim.notify(
+                      "Folder copied successfully with symlinks preserved!"
+                    )
+                  else
+                    vim.notify("Error copying folder", vim.log.levels.ERROR)
+                  end
+                end,
+              })
+            end)
+          end,
         },
         window = {
           mapping_options = {
@@ -104,6 +146,25 @@ return {
             --   desc = "print name",
             --   -- nowait = true,
             -- },
+            -- Map the "g" key to toggle the setting
+            -- ["g"] = function(state)
+            --   -- Toggle the boolean value in the active state configuration
+            --   state.group_empty_dirs = not state.group_empty_dirs
+            --
+            --   -- Refresh the filesystem source to apply changes immediately
+            --   require("neo-tree.sources.manager").refresh(state)
+            -- end,
+            ["u"] = {
+              -- nowait = false,
+              command = function(state)
+                -- Toggle the boolean value in the active state configuration
+                state.group_empty_dirs = not state.group_empty_dirs
+
+                -- Refresh the filesystem source to apply changes immediately
+                require("neo-tree.sources.manager").refresh(state)
+              end,
+              desc = "toggle group_empty_dirs",
+            },
             ["?"] = {
               command = "show_file_details",
               -- nowait = true,
@@ -156,7 +217,8 @@ return {
               "paste_from_clipboard",
             },
             ["c"] = {
-              command = "copy",
+              -- command = "copy",
+              command = "copy_with_symlinks",
               -- wait for `cd` key
               nowait = false,
               desc = "copy",

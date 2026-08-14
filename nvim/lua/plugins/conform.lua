@@ -19,7 +19,8 @@ return {
       -- Define your formatters
       formatters_by_ft = {
         lua = { "stylua" },
-        java = { "google_java_format" }, -- Prioritize google_java_format, then fallback to jdtls
+        -- java = { "google_java_format" }, -- Prioritize google_java_format, then fallback to jdtls
+        java = { "clang-format" },
         -- python = { "isort", "black" },
         javascript = { "prettier" },
         typescript = { "prettier" },
@@ -36,10 +37,15 @@ return {
         c = { "clang-format" },
         cpp = { "clang-format" },
         objc = { "clang-format" },
+        xsd = { "xmlstarlet" },
         -- groovy = { "npm_groovy_lint" },
         -- groovy = { lsp_format = "fallback" },
       },
       formatters = {
+        xmlstarlet = {
+          command = "xml",
+          args = { "format" }, -- 'xml format' is the full CLI command for xmlstarlet
+        },
         google_java_format = {
           -- Change where to find the command
           -- command = "/home/ilya/Downloads/google-java-format_linux-x86-64",

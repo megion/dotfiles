@@ -1,36 +1,36 @@
 [merge]
-	conflictstyle = diff3
-	tool = nvimdiff
+    conflictstyle = diff3
+    tool = nvim_mergetool
 [core]
-	excludesfile = /home/ilya/.gitignore
-	editor = vimxs
-	autocrlf = input
+    excludesfile = /home/ilya/.gitignore
+    editor = nvims
+    autocrlf = input
 [user]
-	email = ilya.zadorozhny@gmail.com
-	name = Ilya Zadorozhny
+    email = ilya.zadorozhny@gmail.com
+    name = Ilya Zadorozhny
 [diff]
-	tool = nvimdiff
+    tool = nvim_diff
 [alias]
     dirdiff = difftool --ignore-submodules --dir-diff --no-symlinks --tool=vimdirdiff
     ndirdiff = difftool --ignore-submodules --dir-diff --no-symlinks --tool=nvimdirdiff
 [mergetool]
-	trustExitCode = false
-	keepBackup = false
-[mergetool "vimdiff"]
-	cmd = vimxs -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
-	trustExitCode = false
-[mergetool "nvimdiff"]
-	cmd = vimxs -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
-	trustExitCode = false
-[mergetool "my-git-merge"]
-	cmd = my-git-merge.sh \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-	trustExitCode = false
-	keepBackup = false
-[difftool "vimdiff"]
-	cmd = vimxs -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
-[difftool "nvimdiff"]
-	cmd = vimxs -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+    trustExitCode = false
+    keepBackup = false
+[difftool "vim_diff"]
+    cmd = vimxs -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+[difftool "nvim_diff"]
+    cmd = nvims -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 [difftool "vimdirdiff"]
     cmd = vimxs -f '+next' '+execute \"ZFDirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
 [difftool "nvimdirdiff"]
     cmd = nvims -f '+next' '+execute \"ZFDirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
+[mergetool "vim_mergetool"]
+    cmd = vimxs -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+    trustExitCode = false
+[mergetool "nvim_mergetool"]
+    cmd = nvims -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+    trustExitCode = false
+[mergetool "my-git-merge"]
+    cmd = my-git-merge.sh \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+    trustExitCode = false
+    keepBackup = false

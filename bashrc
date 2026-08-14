@@ -47,18 +47,18 @@ export HISTFILESIZE=10000
 # QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=126 QT_SCREEN_SCALE_FACTORS=1 freecad
 alias cad='QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=126 QT_SCREEN_SCALE_FACTORS=1 freecad'
 
-git config --global core.editor "vimxs"
-git config --global merge.conflictstyle diff3
-# git config --global merge.tool 'my-git-merge'
-git config --global merge.tool 'nvimdiff'
-git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
-git config --global mergetool.nvimdiff.cmd 'vimxs -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"'
-git config --global mergetool.nvimdiff.trustExitCode false
-git config --global mergetool.trustExitCode false 
-git config --global mergetool.keepBackup false
-git config --global diff.tool nvimdiff
-git config --global difftool.nvimdiff.cmd 'vimxs -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
-git config --global core.excludesfile $HOME/.gitignore
+# git config --global core.editor "vimxs"
+# git config --global merge.conflictstyle diff3
+# # git config --global merge.tool 'my-git-merge'
+# git config --global merge.tool 'nvimdiff'
+# git config --global mergetool.my-git-merge.cmd 'my-git-merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+# git config --global mergetool.nvimdiff.cmd 'vimxs -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"'
+# git config --global mergetool.nvimdiff.trustExitCode false
+# git config --global mergetool.trustExitCode false 
+# git config --global mergetool.keepBackup false
+# git config --global diff.tool nvimdiff
+# git config --global difftool.nvimdiff.cmd 'vimxs -d "$LOCAL" "$REMOTE" -c "wincmd w" -c "wincmd L"'
+# git config --global core.excludesfile $HOME/.gitignore
 
 ## Colorize the ls output ##
 alias ls='ls --color=auto'
@@ -104,7 +104,12 @@ if [ -z "$TMUX" ]; then
     new-window -n hcs -c ~/workspaces/hcs \; \
     send-keys 'nvims' C-m \; \
     split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 60 \;
+    resize-pane -R 70 \; \
+    new-window -n cpwite -c ~/workspaces/cpp/cpwite \; \
+    send-keys 'nvims' C-m \; \
+    split-window -h -c ~/workspaces/cpp/cpwite \; \
+    send-keys './watch.sh' \; \
+    resize-pane -R 40 \;
     # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
     # send-keys 'vimxs' \; \
     # split-window -h -c ~/workspaces/smev3-service/frontend \; \

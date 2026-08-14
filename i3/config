@@ -229,7 +229,6 @@ bindsym Mod4+$right      resize grow width 10 px or 10 ppt
 #######################################################################
 exec i3-config-wizard
 
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #Hide window title bar
@@ -248,20 +247,42 @@ for_window [class="^.*"] border pixel 1
 #         mixer_idx = 0
 # }
 
-assign [class="Google"] → 2
-# assign [class="Telegram"] 3
+assign [class="Alacritty"] $ws1
+
+for_window [class="Google"] move to workspace $ws2
+
+for_window [class="Telegram"] move to workspace $ws3
+for_window [class="Teams"] move to workspace $ws3
+
+for_window [class="atril"] move to workspace $ws4
+
+for_window [class="AmneziaVPN"] move to workspace $ws5
+for_window [class="MAX"] move to workspace $ws5
+
+# assign [instance="google-chrome-stable"] $ws2
+# assign [instance="telegram-desktop"] $ws3
+# assign [instance="teams-for-linux"] $ws3
+# assign [instance="AmneziaVPN"] $ws5
+# assign [instance="MAX"] $ws5
 # assign [class="Skype"] 3
 # exec i3-sensible-terminal
+# exec --no-startup-id i3-msg workspace 1; exec alacritty
+# exec --no-startup-id i3-msg workspace 2; exec google-chrome-stable
+# exec --no-startup-id i3-msg workspace 3; exec telegram-desktop
+# exec --no-startup-id i3-msg workspace 3; exec /opt/teams-for-linux/teams-for-linux
+# exec --no-startup-id i3-msg workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers2.djvu
+# exec --no-startup-id i3-msg workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers1.pdf
+# exec --no-startup-id i3-msg workspace 5; exec AmneziaVPN
+# exec --no-startup-id i3-msg workspace 5; exec MAX
+
 exec alacritty
 exec google-chrome-stable
-# exec 'workspace 3; exec telegram-desktop'
-# exec 'workspace 3; telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 3; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 3; exec /opt/teams-for-linux/teams-for-linux'
-# exec skypeforlinux
-# exec_always --no-startup-id i3-msg 'workspace 3; exec /opt/teams-for-linux/teams-for-linux'
-exec_always --no-startup-id i3-msg 'workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers2.djvu'
-exec_always --no-startup-id i3-msg 'workspace 4; exec atril ~/workspaces/compilers/compilers-book/compilers1.pdf'
+exec telegram-desktop
+exec /opt/teams-for-linux/teams-for-linux
+exec atril ~/workspaces/compilers/compilers-book/compilers2.djvu
+exec atril ~/workspaces/compilers/compilers-book/compilers1.pdf
+exec AmneziaVPN
+exec MAX
 
 # exec i3-msg 'workspace 1; exec i3-sensible-terminal; workspace 2; exec google-chrome-stable; workspace 3; exec telegram-desktop | skypeforlinux'
 # for_window [class="Skype"] move right
