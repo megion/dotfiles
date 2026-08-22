@@ -247,17 +247,28 @@ for_window [class="^.*"] border pixel 1
 #         mixer_idx = 0
 # }
 
+# assign [class="Alacritty"] $ws1
+#
+# for_window [class="Google"] move to workspace $ws2
+#
+# for_window [class="Telegram"] move to workspace $ws3
+# for_window [class="Teams"] move to workspace $ws3
+#
+# for_window [class="atril"] move to workspace $ws4
+#
+# for_window [class="AmneziaVPN"] move to workspace $ws5
+# for_window [class="MAX"] move to workspace $ws5
+
+
+
+# Assign by app_id (Wayland native apps)
 assign [class="Alacritty"] $ws1
-
-for_window [class="Google"] move to workspace $ws2
-
-for_window [class="Telegram"] move to workspace $ws3
-for_window [class="Teams"] move to workspace $ws3
-
-for_window [class="atril"] move to workspace $ws4
-
-for_window [class="AmneziaVPN"] move to workspace $ws5
-for_window [class="MAX"] move to workspace $ws5
+# assign [app_id="foot"] workspace number 1
+assign [app_id="google-chrome"] workspace number 2
+assign [app_id="org.telegram.desktop"] workspace number 3
+assign [app_id="teams-for-linux"] workspace number 3
+assign [class="AmneziaVPN"] workspace number 5
+assign [class="MAX"] workspace number 5
 
 # assign [instance="google-chrome-stable"] $ws2
 # assign [instance="telegram-desktop"] $ws3

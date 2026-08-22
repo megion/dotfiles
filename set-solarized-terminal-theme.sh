@@ -47,12 +47,14 @@ esac
 # WEZTERM_CONFIG="$HOME/dotfiles/wezterm/wezterm.lua"
 
 function dark() {
-    ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
-    touch ~/.config/alacritty/alacritty.toml
+    # ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
+    # touch ~/.config/alacritty/alacritty.toml
+    # pkill -SIGUSR1 foot
 }
 function light() {
-    ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
-    touch ~/.config/alacritty/alacritty.toml
+    # ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
+    # touch ~/.config/alacritty/alacritty.toml
+    # pkill -SIGUSR2 foot
 }
 
 # wezterm_theme="hello"
