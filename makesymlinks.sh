@@ -25,7 +25,7 @@ termialAutostartFile="terminal.desktop"
 
 # add secure_path="......:/home/ilya/bin" by run sudo visudo
 # for view this files by sudo
-binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims" # list of executable files
+binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims nx" # list of executable files
 
 ##########
 
@@ -78,6 +78,10 @@ ln -sfv  $dir/$termialAutostartFile $autostartDir
 mkdir -p ~/.config/i3
 ln -sfv $dir/i3/config ~/.config/i3/config
 
+# process sway config
+mkdir -p ~/.config/sway
+ln -sfv $dir/sway/config ~/.config/sway/config
+
 # process polybar config
 mkdir -p ~/.config/polybar
 ln -sfv $dir/polybar/config.ini ~/.config/polybar/config.ini
@@ -89,6 +93,9 @@ ln -sfv $dir/i3status/config ~/.config/i3status/config
 
 mkdir -p ~/.config/alacritty
 ln -sfv $dir/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+
+mkdir -p ~/.config/foot
+ln -sfv $dir/foot/foot.ini ~/.config/foot/foot.ini
 
 # process pulse audio config
 mkdir -p ~/.config/pulse

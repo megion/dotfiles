@@ -4,6 +4,8 @@ return {
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
       -- optional but recommended
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
@@ -62,7 +64,6 @@ return {
       --   builtin.help_tags,
       --   { desc = "Telescope help tags" }
       -- )
-
       require("telescope").setup({
         defaults = {
           -- mappings = {
@@ -114,8 +115,17 @@ return {
           --   extension_config_key = value,
           -- }
           -- please take a look at the readme of the extension you want to configure
+          media_files = {
+            -- filetypes whitelist
+            -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+            filetypes = { "svg", "png", "webp", "jpg", "jpeg" },
+            -- find command (defaults to `fd`)
+            find_cmd = "rg",
+          },
         },
       })
+
+      require("telescope").load_extension("media_files")
     end,
   },
 }

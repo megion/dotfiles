@@ -68,6 +68,7 @@ alias ll='ls -la'
 
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
+# alias nx='npx nx'
 
 # alias gnome-terminal='gnome-terminal --full-screen'
 # alias xfce4-terminal='gnome-terminal --maximize'
@@ -109,6 +110,10 @@ if [ -z "$TMUX" ]; then
     send-keys 'nvims' C-m \; \
     split-window -h -c ~/workspaces/cpp/cpwite \; \
     send-keys './watch.sh' \; \
+    resize-pane -R 40 \; \
+    new-window -n portal3 -c ~/workspaces/portal3/frontend \; \
+    send-keys 'nvims' C-m \; \
+    split-window -h -c ~/workspaces/portal3/frontend \; \
     resize-pane -R 40 \;
     # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
     # send-keys 'vimxs' \; \

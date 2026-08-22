@@ -7,11 +7,12 @@ return {
         "java-test",
         "google-java-format",
         "checkstyle",
-	"clang-format",
+        "clang-format",
         -- "npm_groovy_lint",
         -- to use local registries
         "yq",
-	"css-lsp",
+        "css-lsp",
+        "nxls",
       },
     },
     config = function()
@@ -42,6 +43,7 @@ return {
           "stylua",
           "eslint",
           "angularls",
+          -- "nxls",
           -- "json-lsp",
           -- "gradle-language-server",
           -- "stylelint_lsp",
