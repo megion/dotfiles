@@ -26,6 +26,7 @@ require("config.lazy")
 require("config.keymaps")
 require("config.lsp")
 require("config.lualine_themes")
+require("tools").setup()
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
@@ -59,3 +60,7 @@ vim.cmd("command! -nargs=* MyGradle lua MyGradle()")
 vim.cmd("command! -nargs=* MyBuild lua MyBuild()")
 
 vim.opt.exrc = true
+
+-- if init_debug then
+--   require("osv").launch({ port = 8086, blocking = true })
+-- end

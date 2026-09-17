@@ -44,7 +44,7 @@ esac
 # NEW_SCHEME="Solarized ($scheme) (terminal.sexy)"
 
 # Path to your wezterm.lua
-# WEZTERM_CONFIG="$HOME/dotfiles/wezterm/wezterm.lua"
+WEZTERM_CONFIG="$HOME/dotfiles/wezterm/wezterm.lua"
 
 function dark() {
     ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
@@ -55,22 +55,25 @@ function light() {
     touch ~/.config/alacritty/alacritty.toml
 }
 
-# wezterm_theme="hello"
-# if [ "$scheme" == "dark" ]; then
-#     # wezterm_theme="Solarized (dark) (terminal.sexy)"
-#     # wezterm_theme="Solarized Dark (Gogh)"
-#     wezterm_theme="Canonical Solarized Dark"
-# else
-#     # wezterm_theme="Solarized (light) (terminal.sexy)"
-#     # wezterm_theme="Solarized Light (Gogh)"
-#     wezterm_theme="Canonical Solarized Light"
-# fi
-#
+wezterm_theme="hello"
+if [ "$scheme" == "dark" ]; then
+    # wezterm_theme="Solarized (dark) (terminal.sexy)"
+    # wezterm_theme="Solarized Dark (Gogh)"
+    wezterm_theme="Canonical Solarized Dark"
+else
+    # wezterm_theme="Solarized (light) (terminal.sexy)"
+    # wezterm_theme="Solarized Light (Gogh)"
+    wezterm_theme="Canonical Solarized Light"
+fi
+
 # echo "$wezterm_theme"
 # echo "$NEW_SCHEME"
 
-# sed -i "s/^config.color_scheme = '.*'/config.color_scheme = '$wezterm_theme'/" "$WEZTERM_CONFIG"
+sed -i "s/^config.color_scheme = .*/config.color_scheme = '$wezterm_theme'/" "$WEZTERM_CONFIG"
+# touch ~/.config/wezterm/wezterm.lua
 
+# To switch to Gruvbox Dark
+# echo "$wezterm_theme" > ~/.current_theme.txt
 
 if [ "$scheme" == "dark" ]; then
     dark

@@ -64,6 +64,12 @@ return {
           group_empty_dirs = true,
 
           commands = {
+            -- image_wezterm = function(state)
+            --   local node = state.tree:get_node()
+            --   if node.type == "file" then
+            --     require("image_preview").PreviewImage(node.path)
+            --   end
+            -- end,
             open_node_to_newtab = function(state)
               local node = state.tree:get_node()
 
@@ -171,7 +177,7 @@ return {
               --
               --   -- Refresh the filesystem source to apply changes immediately
               --   require("neo-tree.sources.manager").refresh(state)
-              -- end,
+              -- ["<leader>p"] = "image_wezterm", -- " or another map
               ["u"] = {
                 -- nowait = false,
                 command = function(state)

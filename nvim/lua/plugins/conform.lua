@@ -38,6 +38,7 @@ return {
         cpp = { "clang-format" },
         objc = { "clang-format" },
         xsd = { "xmlstarlet" },
+        cmake = { "cmake_format" },
         -- groovy = { "npm_groovy_lint" },
         -- groovy = { lsp_format = "fallback" },
       },

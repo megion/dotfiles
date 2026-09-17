@@ -202,5 +202,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- })
 
 -- vim.lsp.enable("clangd")
-vim.lsp.enable('ccls')
+vim.lsp.config("ccls", {
+  init_options = {
+    compilationDatabaseDirectory = "build",
+    -- index = {
+    --   threads = 0,
+    -- },
+    -- clang = {
+    --   extraArgs = { "-std=c++23" },
+    -- },
+  },
+})
+vim.lsp.enable("ccls")
 vim.lsp.enable("cmake")

@@ -114,7 +114,9 @@ if [ -z "$TMUX" ]; then
     new-window -n portal3 -c ~/workspaces/portal3/frontend \; \
     send-keys 'nvims' C-m \; \
     split-window -h -c ~/workspaces/portal3/frontend \; \
-    resize-pane -R 40 \;
+    resize-pane -R 40 \; \
+    new-window -n dotfiles -c ~/dotfiles \; \
+    send-keys 'nvims' C-m \;
     # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
     # send-keys 'vimxs' \; \
     # split-window -h -c ~/workspaces/smev3-service/frontend \; \

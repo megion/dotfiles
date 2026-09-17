@@ -26,7 +26,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -50,13 +50,13 @@ set $right l
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec alacritty
+bindsym Mod1+Return exec wezterm
 
 # kill focused window
 bindsym Mod1+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym Mod1+d exec --no-startup-id dmenu_run -fn 'Droid Sans Mono-9'
+bindsym Mod1+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindsym Mod1+d exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -64,11 +64,6 @@ bindsym Mod1+d exec --no-startup-id dmenu_run -fn 'Droid Sans Mono-9'
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-# bindsym Control+$left focus left
-# bindsym Control+$down focus down
-# bindsym Control+$up focus up
-# bindsym Control+$right focus right
-
 bindsym Mod1+$left focus left
 bindsym Mod1+$down focus down
 bindsym Mod1+$up focus up
@@ -93,7 +88,7 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod1+semicolon split h
+# bindsym Mod1+h split h
 
 # split in vertical orientation
 bindsym Mod1+v split v
@@ -247,14 +242,14 @@ for_window [class="^.*"] border pixel 1
 #         mixer_idx = 0
 # }
 
-assign [class="Alacritty"] $ws1
+assign [class="wezterm"] $ws1
 
-for_window [class="Google"] move to workspace $ws2
+assign [class="Google"] $ws2
 
-for_window [class="Telegram"] move to workspace $ws3
-for_window [class="Teams"] move to workspace $ws3
+assign [instance="telegram-desktop"] $ws3
+assign [class="teams-for-linux"] $ws3
 
-for_window [class="atril"] move to workspace $ws4
+assign [class="atril"] $ws4
 
 for_window [class="AmneziaVPN"] move to workspace $ws5
 for_window [class="MAX"] move to workspace $ws5
@@ -275,12 +270,12 @@ for_window [class="MAX"] move to workspace $ws5
 # exec --no-startup-id i3-msg workspace 5; exec AmneziaVPN
 # exec --no-startup-id i3-msg workspace 5; exec MAX
 
-exec alacritty
+exec wezterm
 exec google-chrome-stable
 exec telegram-desktop
 exec /opt/teams-for-linux/teams-for-linux
-exec atril ~/workspaces/compilers/compilers-book/compilers2.djvu
-exec atril ~/workspaces/compilers/compilers-book/compilers1.pdf
+exec --no-startup-id atril ~/workspaces/compilers/compilers-book/compilers2.djvu --class atril
+exec --no-startup-id atril ~/workspaces/compilers/compilers-book/compilers1.pdf --class atril
 exec AmneziaVPN
 exec MAX
 
