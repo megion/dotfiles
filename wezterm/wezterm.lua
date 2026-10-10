@@ -21,7 +21,7 @@ config.font_size = 11
 local canonical_solarized = require("canonical_solarized")
 canonical_solarized.apply_to_config(config)
 
-config.color_scheme = 'Canonical Solarized Dark'
+config.color_scheme = 'Canonical Solarized Light'
 --
 -- Path to the file where your script will write the active theme name
 -- local theme_file = wezterm.home_dir .. "/.current_theme.txt"

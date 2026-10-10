@@ -44,6 +44,17 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
+-- Автоматическое обновление файлов при изменении на диске
+local checktime_group =
+  vim.api.nvim_create_augroup("AutoChecktime", { clear = true })
+
+-- vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  group = checktime_group,
+  pattern = "*",
+  command = "checktime",
+})
+
 vim.cmd([[
 source ~/dotfiles/neo_solarized-light.vim
 
@@ -61,6 +72,8 @@ vim.cmd("command! -nargs=* MyBuild lua MyBuild()")
 
 vim.opt.exrc = true
 
--- if init_debug then
---   require("osv").launch({ port = 8086, blocking = true })
--- end
+-- To debug the `init.lua` see:
+-- https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt#L211
+if init_debug then
+  require("osv").launch({ port = 8086, blocking = true })
+end

@@ -63,6 +63,8 @@ return {
         },
       }
 
+      -- To debug the `init.lua` see:
+      -- https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt#L211
       dap.adapters.nlua = function(callback, config)
         callback({
           type = "server",

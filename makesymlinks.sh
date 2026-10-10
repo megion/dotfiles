@@ -13,8 +13,8 @@ bindir=~/bin                      # bin directory
 files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in homedir
 # svnConfigFile="svn_config"
 
-autostartDir=~/.config/autostart
-termialAutostartFile="terminal.desktop"
+# autostartDir=~/.config/autostart
+# termialAutostartFile="terminal.desktop"
 
 # git config --global merge.conflictstyle diff3
 # git config --global merge.tool 'my-git-merge'
@@ -72,7 +72,7 @@ ln -sfv $dir/nvim/ ~/.config/
 # ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
 
 # process autostart configs
-ln -sfv  $dir/$termialAutostartFile $autostartDir
+# ln -sfv  $dir/$termialAutostartFile $autostartDir
 
 # process i3-wm config
 mkdir -p ~/.config/i3
@@ -96,14 +96,6 @@ ln -sfv $dir/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 mkdir -p ~/.config/foot
 ln -sfv $dir/foot/foot.ini ~/.config/foot/foot.ini
-
-# kitty
-mkdir -p ~/.config/kitty
-ln -sfv $dir/kitty/kitty.conf ~/.config/kitty/kitty.conf
-
-
-# yazi 
-ln -sfv $dir/yazi/ ~/.config/
 
 # process pulse audio config
 mkdir -p ~/.config/pulse
