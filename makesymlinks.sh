@@ -13,8 +13,6 @@ bindir=~/bin                      # bin directory
 files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in homedir
 # svnConfigFile="svn_config"
 
-# autostartDir=~/.config/autostart
-# termialAutostartFile="terminal.desktop"
 
 # git config --global merge.conflictstyle diff3
 # git config --global merge.tool 'my-git-merge'
@@ -71,8 +69,6 @@ ln -sfv $dir/nvim/ ~/.config/
 # ln -sfv $dir/nvim/coc-settings.json ~/.vim/coc-settings.json
 # ln -sfv $dir/nvim/init.vim ~/.config/nvim/init.vim
 
-# process autostart configs
-# ln -sfv  $dir/$termialAutostartFile $autostartDir
 
 # process i3-wm config
 mkdir -p ~/.config/i3
