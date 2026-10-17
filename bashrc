@@ -89,57 +89,6 @@ eval `dircolors $dircolorsDir/dircolors.256dark`
 source ~/dotfiles/bash_prompt.sh
 # sudo openvpn --config development/openvpn_vpn_dks_lanit_ru.ovpn
 
-# TMUX config
-if [ -z "$TMUX" ]; then
-    #base_session="${USER}_session"
-    base_session="work"
-    # Create a new session if it doesn't exist
-    tmux has-session -t $base_session || tmux new-session -d -s $base_session -n forty \; \
-    send-keys 'sudo openfortivpn -c ~/development/openforti.config --no-dns' \; \
-    split-window -h \; \
-    send-keys 'sudo openvpn --config development/artezio2026.ovpn' \; \
-    split-window -v \; \
-    send-keys 'sudo sv restart NetworkManager' \; \
-    new-window -n docker -c ~/workspaces/hcs_local_deploy \; \
-    send-keys 'sudo docker-compose --profile connect up --build --remove-orphans' \; \
-    new-window -n hcs -c ~/workspaces/hcs \; \
-    send-keys 'nvims' C-m \; \
-    split-window -h -c ~/workspaces/hcs \; \
-    resize-pane -R 70 \; \
-    new-window -n cpwite -c ~/workspaces/cpp/cpwite \; \
-    send-keys 'nvims' C-m \; \
-    split-window -h -c ~/workspaces/cpp/cpwite \; \
-    send-keys './watch.sh' \; \
-    resize-pane -R 40 \; \
-    new-window -n portal3 -c ~/workspaces/portal3/frontend \; \
-    send-keys 'nvims' C-m \; \
-    split-window -h -c ~/workspaces/portal3/frontend \; \
-    resize-pane -R 40 \; \
-    new-window -n dotfiles -c ~/dotfiles \; \
-    send-keys 'nvims' C-m \;
-    # new-window -n smev3 -c ~/workspaces/smev3-service/frontend \; \
-    # send-keys 'vimxs' \; \
-    # split-window -h -c ~/workspaces/smev3-service/frontend \; \
-    # resize-pane -R 20 \; \
-    # send-keys 'pnpm build:dev' \;
-
-    #client_cnt=$(tmux list-clients | wc -l)
-    # Are there any clients connected already?
-    #if [ $client_cnt -ge 1 ]; then
-        #client_id=0
-        #session_name=$base_session"-"$client_id
-        #while [ $(tmux has-session -t $session_name 2>& /dev/null; echo $?) -ne 1 ]; do
-            #client_id=$((client_id+1))
-            #session_name=$base_session"-"$client_id
-        #done
-        #tmux new-session -d -t $base_session -s $session_name
-        #tmux -2 attach-session -t $session_name \; set-option destroy-unattached
-    #else
-        #tmux -2 attach-session -t $base_session
-    #fi
-
-    tmux -2 attach-session -t $base_session
-fi
 
 # pnpm
 # export PNPM_HOME="/home/ilya/.local/share/pnpm"

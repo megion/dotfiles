@@ -25,7 +25,7 @@ termialAutostartFile="terminal.desktop"
 
 # add secure_path="......:/home/ilya/bin" by run sudo visudo
 # for view this files by sudo
-binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims nx vv" # list of executable files
+binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims nx vv tmuxs" # list of executable files
 
 ##########
 
@@ -101,7 +101,6 @@ ln -sfv $dir/foot/foot.ini ~/.config/foot/foot.ini
 mkdir -p ~/.config/kitty
 ln -sfv $dir/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
-
 # yazi 
 ln -sfv $dir/yazi/ ~/.config/
 
@@ -114,6 +113,12 @@ ln -sfv $dir/.gitconfig ~/.gitconfig
 
 # wezterm
 ln -sfv $dir/wezterm/ ~/.config
+
+# waybar
+ln -sfv $dir/waybar/ ~/.config
+
+# btop
+ln -sfv $dir/btop/ ~/.config
 
 # process .Xresources config
 # ln -sfv $dir/Xresources ~/.Xresources

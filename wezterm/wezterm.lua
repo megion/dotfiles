@@ -15,13 +15,13 @@ config.enable_tab_bar = false
 config.font = wezterm.font("Mononoki Nerd Font")
 
 -- or, changing the font size and color scheme.
-config.font_size = 11
+config.font_size = 13
 -- config.color_scheme = 'AdventureTime'
 
 local canonical_solarized = require("canonical_solarized")
 canonical_solarized.apply_to_config(config)
 
-config.color_scheme = 'Canonical Solarized Dark'
+config.color_scheme = 'Canonical Solarized Light'
 --
 -- Path to the file where your script will write the active theme name
 -- local theme_file = wezterm.home_dir .. "/.current_theme.txt"

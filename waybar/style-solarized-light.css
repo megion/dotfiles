@@ -1,0 +1,56 @@
+/**
+ * solarized light
+ */
+* {
+    font-family: "Mononoki Nerd Font";
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #eee8d5;
+    color: #586e75;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #657b83;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #268bd2;
+    border-bottom: 2px solid #268bd2;
+}
+
+#workspaces button:hover {
+    background-color: #d3ad6f;
+    color: #073642;
+}
+
+#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #network, #pulseaudio, #tray, #mode {
+    padding: 0 10px;
+    margin: 4px 2px;
+    color: #586e75;
+    background-color: #fdf6e3; /* чуть более светлый фон для модулей (base2) */
+    border-radius: 4px;
+}
+
+#battery.charging {
+    color: #859900;
+}
+
+#battery.warning:not(.charging) {
+    color: #b58900;
+}
+
+#battery.critical:not(.charging) {
+    color: #dc322f;
+}
+
+#network.disconnected {
+    color: #dc322f;
+}
