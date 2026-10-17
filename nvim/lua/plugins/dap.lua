@@ -63,6 +63,8 @@ return {
         },
       }
 
+      -- To debug the `init.lua` see:
+      -- https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt#L211
       dap.adapters.nlua = function(callback, config)
         callback({
           type = "server",
@@ -93,11 +95,14 @@ return {
       vim.keymap.set("n", "<F12>", function()
         dap.step_out()
       end)
-      vim.keymap.set("n", "<Leader>b", function()
+      vim.keymap.set("n", "<space>b", function()
         dap.toggle_breakpoint()
       end)
-      vim.keymap.set("n", "<Leader>B", function()
-        dap.set_breakpoint()
+      vim.keymap.set("n", "<space>gb", function()
+        dap.run_to_cursor()
+      end)
+      vim.keymap.set("n", "<space>?", function()
+        require("dapui").eval(nil, { enter = true })
       end)
 
       vim.api.nvim_create_user_command("DebugLua", function()
