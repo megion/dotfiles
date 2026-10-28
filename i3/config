@@ -270,10 +270,10 @@ for_window [class="MAX"] move to workspace $ws5
 # exec --no-startup-id i3-msg workspace 5; exec AmneziaVPN
 # exec --no-startup-id i3-msg workspace 5; exec MAX
 
-exec wezterm
+exec wezterm tmuxs
 exec google-chrome-stable
-exec telegram-desktop
-exec /opt/teams-for-linux/teams-for-linux
+exec Telegram
+exec teams-for-linux-electron
 exec --no-startup-id atril ~/workspaces/compilers/compilers-book/compilers2.djvu --class atril
 exec --no-startup-id atril ~/workspaces/compilers/compilers-book/compilers1.pdf --class atril
 exec AmneziaVPN

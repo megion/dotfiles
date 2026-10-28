@@ -23,7 +23,7 @@ files="vimrc tmux.conf bashrc ackrc gitignore" # list of files to symlink in hom
 
 # add secure_path="......:/home/ilya/bin" by run sudo visudo
 # for view this files by sudo
-binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims nx vv" # list of executable files
+binFiles="my-git-diff.sh my-git-merge.sh vimxs nvims nx vv tmuxs" # list of executable files
 
 ##########
 
@@ -105,6 +105,12 @@ ln -sfv $dir/wezterm/ ~/.config
 
 # opencode
 ln -sfv $dir/opencode/cli.json ~/.config/opencode/cli.json
+
+# waybar
+ln -sfv $dir/waybar/ ~/.config
+
+# btop
+ln -sfv $dir/btop/ ~/.config
 
 # process .Xresources config
 # ln -sfv $dir/Xresources ~/.Xresources

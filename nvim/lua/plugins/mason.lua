@@ -17,11 +17,11 @@ return {
     },
     config = function()
       require("mason").setup({
-        registries = {
-          -- requier install yq https://github.com/mikefarah/yq
-          "file:~/workspaces/lua/mason-registry",
-          -- "github:megion/mason-registry",
-        },
+        -- registries = {
+        --   -- requier install yq https://github.com/mikefarah/yq
+        --   "file:~/workspaces/lua/mason-registry",
+        --   -- "github:megion/mason-registry",
+        -- },
       })
     end,
   },

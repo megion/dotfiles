@@ -45,31 +45,52 @@ esac
 
 # Path to your wezterm.lua
 WEZTERM_CONFIG="$HOME/dotfiles/wezterm/wezterm.lua"
+BTOP_CONFIG="$HOME/dotfiles/btop/btop.conf"
 
 function dark() {
-    ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
-    touch ~/.config/alacritty/alacritty.toml
+    sed -i "s/^config.color_scheme = .*/config.color_scheme = 'Canonical Solarized Dark'/" "$WEZTERM_CONFIG"
+    sed -i 's/^color_theme = .*/color_theme = "solarized_dark"/' ~/.config/btop/btop.conf
+    # ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
+    # touch ~/.config/alacritty/alacritty.toml
+    ln -fs ~/.config/waybar/style-solarized-dark.css ~/.config/waybar/style.css
+    # touch ~/.config/waybar/style.css
+    killall -SIGUSR2 waybar
+    pkill -SIGUSR1 foot
+    pkill -USR2 btop
 }
 function light() {
-    ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
-    touch ~/.config/alacritty/alacritty.toml
+    sed -i "s/^config.color_scheme = .*/config.color_scheme = 'Canonical Solarized Light'/" "$WEZTERM_CONFIG"
+    sed -i 's/^color_theme = .*/color_theme = "solarized_light"/' ~/.config/btop/btop.conf
+    # ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
+    # touch ~/.config/alacritty/alacritty.toml
+    ln -fs ~/.config/waybar/style-solarized-light.css ~/.config/waybar/style.css
+    # touch ~/.config/waybar/style.css
+    killall -SIGUSR2 waybar
+    pkill -SIGUSR2 foot
+    pkill -USR2 btop
 }
 
-wezterm_theme="hello"
-if [ "$scheme" == "dark" ]; then
-    # wezterm_theme="Solarized (dark) (terminal.sexy)"
-    # wezterm_theme="Solarized Dark (Gogh)"
-    wezterm_theme="Canonical Solarized Dark"
-else
-    # wezterm_theme="Solarized (light) (terminal.sexy)"
-    # wezterm_theme="Solarized Light (Gogh)"
-    wezterm_theme="Canonical Solarized Light"
-fi
+
+# wezterm_theme="hello"
+# if [ "$scheme" == "dark" ]; then
+#     # wezterm_theme="Solarized (dark) (terminal.sexy)"
+#     # wezterm_theme="Solarized Dark (Gogh)"
+#     wezterm_theme="Canonical Solarized Dark"
+#     # dark
+#     # pkill -SIGUSR1 foot
+# else
+#     # wezterm_theme="Solarized (light) (terminal.sexy)"
+#     # wezterm_theme="Solarized Light (Gogh)"
+#     wezterm_theme="Canonical Solarized Light"
+#     # light
+#     # pkill -SIGUSR2 foot
+# # }
+# fi
 
 # echo "$wezterm_theme"
 # echo "$NEW_SCHEME"
 
-sed -i "s/^config.color_scheme = .*/config.color_scheme = '$wezterm_theme'/" "$WEZTERM_CONFIG"
+# sed -i "s/^config.color_scheme = .*/config.color_scheme = '$wezterm_theme'/" "$WEZTERM_CONFIG"
 # touch ~/.config/wezterm/wezterm.lua
 
 # To switch to Gruvbox Dark
