@@ -2,6 +2,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- views can only be fully collapsed with the global statusline
+-- see: https://github.com/avante-corp/avante.nvim
+vim.opt.laststatus = 3
+
 -- use only for vim-X11
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
