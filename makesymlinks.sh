@@ -104,13 +104,13 @@ ln -sfv $dir/.gitconfig ~/.gitconfig
 ln -sfv $dir/wezterm/ ~/.config
 
 # opencode
-ln -sfv $dir/opencode/cli.json ~/.config/opencode/cli.json
+# ln -sfv $dir/opencode/cli.json ~/.config/opencode/cli.json
 
 # waybar
 ln -sfv $dir/waybar/ ~/.config
 
 # btop
-ln -sfv $dir/btop/ ~/.config
+# ln -sfv $dir/btop/ ~/.config
 
 # process .Xresources config
 # ln -sfv $dir/Xresources ~/.Xresources

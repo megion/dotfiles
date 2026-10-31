@@ -53,6 +53,10 @@ function dark() {
     # ln -fs ~/.config/alacritty/themes/themes/solarized_dark.toml ~/.config/alacritty/themes/_active.toml
     # touch ~/.config/alacritty/alacritty.toml
     ln -fs ~/.config/waybar/style-solarized-dark.css ~/.config/waybar/style.css
+    jq '.theme.mode = "dark"' ~/.config/opencode/cli.json > temp.json \
+	&& mv temp.json ~/.config/opencode/cli.json
+    jq '.theme.name = "solarized"' ~/.config/opencode/cli.json > temp.json \
+	&& mv temp.json ~/.config/opencode/cli.json
     # touch ~/.config/waybar/style.css
     killall -SIGUSR2 waybar
     pkill -SIGUSR1 foot
@@ -63,6 +67,10 @@ function light() {
     sed -i 's/^color_theme = .*/color_theme = "solarized_light"/' ~/.config/btop/btop.conf
     # ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
     # touch ~/.config/alacritty/alacritty.toml
+    jq '.theme.mode = "light"' ~/.config/opencode/cli.json > temp.json \
+	&& mv temp.json ~/.config/opencode/cli.json
+    jq '.theme.name = "solarized"' ~/.config/opencode/cli.json > temp.json \
+	&& mv temp.json ~/.config/opencode/cli.json
     ln -fs ~/.config/waybar/style-solarized-light.css ~/.config/waybar/style.css
     # touch ~/.config/waybar/style.css
     killall -SIGUSR2 waybar

@@ -15,7 +15,7 @@ config.enable_tab_bar = false
 config.font = wezterm.font("Mononoki Nerd Font")
 
 -- or, changing the font size and color scheme.
-config.font_size = 13
+config.font_size = 11
 -- config.color_scheme = 'AdventureTime'
 
 local canonical_solarized = require("canonical_solarized")
